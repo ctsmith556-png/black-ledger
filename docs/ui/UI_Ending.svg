@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="560" rx="0" fill="#f5f3ef" stroke="none"/>
+<text x="30" y="32" font-size="20" fill="#1b1b1e" text-anchor="start" font-weight="bold">UI Wireframe — ENDING</text>
+<text x="30" y="50" font-size="12" fill="#6e1414" text-anchor="start" font-weight="normal">Post-cinematic fate card</text>
+<rect x="30" y="62" width="900" height="470" rx="6" fill="#23262d" stroke="#111"/>
+<text x="480" y="150" font-size="22" fill="#9b2226" text-anchor="middle" font-weight="bold">THE ENTRY HAS BEEN STRUCK</text>
+<text x="480" y="196" font-size="16" fill="#e7e2da" text-anchor="middle" font-weight="bold">THE SURGEON</text>
+<text x="480" y="232" font-size="13" fill="#b9b4ab" text-anchor="middle" font-weight="normal" font-style="italic">He saved her by never being her father.</text>
+<text x="480" y="300" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Endings witnessed:  1 / 15</text>
+<rect x="330" y="316" width="300" height="16" rx="3" fill="#2e323a" stroke="#5a6470"/>
+<rect x="330" y="316" width="20" height="16" rx="3" fill="#6e1414" stroke="none"/>
+<text x="480" y="352" font-size="10" fill="#8a93a0" text-anchor="middle" font-weight="normal">Vault unlocks when all 15 endings are seen.</text>
+<rect x="370" y="400" width="220" height="40" rx="5" fill="#6e1414" stroke="#5a6470"/><text x="480.0" y="424.0" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">Return to the Filing Cabinet</text>
+<text x="700" y="470" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">shown after the 60-90s</text>
+<text x="700" y="484" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">ending cinematic</text>
+</svg>

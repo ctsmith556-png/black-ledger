@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="560" rx="0" fill="#f5f3ef" stroke="none"/>
+<text x="30" y="32" font-size="20" fill="#1b1b1e" text-anchor="start" font-weight="bold">UI Wireframe — CAMPAIGN HUB</text>
+<text x="30" y="50" font-size="12" fill="#6e1414" text-anchor="start" font-weight="normal">Per-character route through Ashen Hollow</text>
+<rect x="30" y="62" width="900" height="470" rx="6" fill="#23262d" stroke="#111"/>
+<rect x="54" y="90" width="210" height="420" rx="6" fill="#2a2d34" stroke="#3a3f47"/>
+<rect x="74" y="110" width="170" height="150" rx="5" fill="#3a3f47" stroke="#566"/>
+<text x="159" y="190" font-size="11" fill="#7a818c" text-anchor="middle" font-weight="normal">PORTRAIT</text>
+<text x="74" y="288" font-size="15" fill="#e7e2da" text-anchor="start" font-weight="bold">THE SURGEON</text>
+<text x="74" y="310" font-size="11" fill="#9aa6b0" text-anchor="start" font-weight="normal">Progress: 3 / 8 arenas</text>
+<text x="74" y="348" font-size="11" fill="#6e8f6e" text-anchor="start" font-weight="bold">NEXT</text>
+<text x="74" y="368" font-size="13" fill="#e7e2da" text-anchor="start" font-weight="bold">The Mill</text>
+<text x="74" y="386" font-size="10" fill="#9aa6b0" text-anchor="start" font-weight="normal">Hazard: furnace pours</text>
+<text x="74" y="402" font-size="10" fill="#caa56a" text-anchor="start" font-weight="normal">Boss: The Foundryman</text>
+<line x1="320" y1="300" x2="866" y2="300" stroke="#5a6470" stroke-width="3"/>
+<circle cx="320" cy="300" r="16" fill="#2f6f4f" stroke="#cfcbd2"/>
+<text x="320" y="304" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">✓</text>
+<circle cx="398" cy="300" r="16" fill="#2f6f4f" stroke="#cfcbd2"/>
+<text x="398" y="304" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">✓</text>
+<circle cx="476" cy="300" r="16" fill="#2f6f4f" stroke="#cfcbd2"/>
+<text x="476" y="304" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">✓</text>
+<circle cx="554" cy="300" r="16" fill="#6e1414" stroke="#cfcbd2"/>
+<text x="554" y="304" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">▶</text>
+<circle cx="632" cy="300" r="16" fill="#2e323a" stroke="#cfcbd2"/>
+<text x="632" y="304" font-size="10" fill="#7a818c" text-anchor="middle" font-weight="normal">■</text>
+<circle cx="710" cy="300" r="16" fill="#2e323a" stroke="#cfcbd2"/>
+<text x="710" y="304" font-size="10" fill="#7a818c" text-anchor="middle" font-weight="normal">■</text>
+<circle cx="788" cy="300" r="16" fill="#2e323a" stroke="#cfcbd2"/>
+<text x="788" y="304" font-size="10" fill="#7a818c" text-anchor="middle" font-weight="normal">■</text>
+<circle cx="866" cy="300" r="16" fill="#2e323a" stroke="#cfcbd2"/>
+<text x="866" y="304" font-size="10" fill="#7a818c" text-anchor="middle" font-weight="normal">■</text>
+<text x="320" y="250" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">completed (Collector beaten)</text>
+<text x="554" y="340" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">current</text>
+<text x="700" y="250" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">locked = boss-gated (must beat each Collector to advance)</text>
+</svg>

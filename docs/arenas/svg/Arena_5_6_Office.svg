@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 700" font-family="Arial, sans-serif">
+<defs>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2f6f4f"/></marker>
+<marker id="arrO" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b5651d"/></marker>
+</defs>
+<rect x="0" y="0" width="940" height="700" fill="#faf8f4"/>
+<text x="30" y="38" font-size="22" fill="#1b1b1e" text-anchor="start" font-weight="bold">THE AUDITOR'S OFFICE</text>
+<text x="30" y="58" font-size="13" fill="#6e1414" text-anchor="start" font-weight="normal">Arena §5.6 · FINAL BOSS: The Auditor</text>
+<rect x="30" y="70" width="650" height="586" rx="6" fill="#1c1b22" stroke="#000000" stroke-width="3"/>
+<text x="44" y="90" font-size="11" fill="#c9c4d4" text-anchor="start" font-weight="bold">THE AUDITOR'S OFFICE — non-Euclidean; paths shift mid-match</text>
+<rect x="60" y="120" width="250" height="190" rx="4" fill="#26252e" stroke="#3a3850"/>
+<text x="70" y="142" font-size="10" fill="#8a85a0" text-anchor="start" font-weight="bold">ROOM A</text>
+<rect x="390" y="120" width="250" height="180" rx="4" fill="#26252e" stroke="#3a3850"/>
+<text x="400" y="142" font-size="10" fill="#8a85a0" text-anchor="start" font-weight="bold">ROOM B</text>
+<rect x="190" y="400" width="300" height="220" rx="4" fill="#26252e" stroke="#3a3850"/>
+<text x="200" y="422" font-size="10" fill="#8a85a0" text-anchor="start" font-weight="bold">ROOM C</text>
+<g stroke="#a99ad0" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.9"><line x1="310" y1="215" x2="390" y2="215"/><line x1="300" y1="310" x2="330" y2="400"/><line x1="500" y1="300" x2="470" y2="400"/></g>
+<text x="322" y="208" font-size="8.5" fill="#a99ad0" text-anchor="start" font-weight="normal">doorways re-route</text>
+<rect x="95" y="150" width="16" height="90" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="122" y="150" width="16" height="90" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="430" y="150" width="16" height="90" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="458" y="150" width="16" height="90" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="245" y="440" width="16" height="95" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="272" y="440" width="16" height="95" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="299" y="440" width="16" height="95" fill="#3a3850" stroke="#1c1b22"/>
+<rect x="70" y="100" width="120" height="14" fill="#4a4860" stroke="#1c1b22"/>
+<text x="74" y="112" font-size="8" fill="#c9c4d4" text-anchor="start" font-weight="normal">mezzanine</text>
+<circle cx="103" cy="150" r="11" fill="#6e1414"/><text x="103" y="154" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+<path d="M 103 150 L 103 116" stroke="#2f6f4f" stroke-width="2.5" fill="none" marker-end="url(#arrG)"/>
+<text x="150" y="150" font-size="9" fill="#caa56a" text-anchor="start" font-weight="bold">Pull the Stacks → topple to bridge the mezzanine</text>
+<rect x="600" y="140" width="40" height="26" fill="#33313f" stroke="#5a5870"/>
+<rect x="600" y="172" width="40" height="26" fill="#33313f" stroke="#5a5870"/>
+<rect x="600" y="204" width="40" height="26" fill="#33313f" stroke="#5a5870"/>
+<circle cx="620" cy="118" r="11" fill="#6e1414"/><text x="620" y="122" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+<text x="540" y="262" font-size="9" fill="#caa56a" text-anchor="middle" font-weight="bold">Open a Drawer →</text>
+<text x="540" y="275" font-size="8.5" fill="#caa56a" text-anchor="middle" font-weight="normal">slam hazard, or a</text>
+<text x="540" y="287" font-size="8.5" fill="#caa56a" text-anchor="middle" font-weight="normal">shortcut between rooms</text>
+<ellipse cx="300" cy="520" rx="34" ry="22" fill="#0b0a12" stroke="#3a3850"/>
+<circle cx="300" cy="490" r="11" fill="#6e1414"/><text x="300" y="494" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+<text x="140" y="500" font-size="9" fill="#caa56a" text-anchor="start" font-weight="bold">Spill the Ink → floods,</text>
+<text x="140" y="512" font-size="8.5" fill="#caa56a" text-anchor="start" font-weight="normal">redacts HUD/vision</text>
+<rect x="420" y="470" width="74" height="42" fill="#2a2833" stroke="#6e1414" stroke-width="2"/>
+<text x="457" y="495" font-size="8" fill="#c9c4d4" text-anchor="middle" font-weight="normal">desk + Ledger</text>
+<circle cx="457" cy="452" r="11" fill="#6e1414"/><text x="457" y="456" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">★</text>
+<text x="500" y="452" font-size="9" fill="#d05a5a" text-anchor="start" font-weight="bold">THE AUDITOR (final boss)</text>
+<rect x="220" y="170" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(20 220 170)"/>
+<rect x="520" y="430" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(-15 520 430)"/>
+<rect x="165" y="330" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(10 165 330)"/>
+<rect x="560" y="540" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(30 560 540)"/>
+<rect x="350" y="250" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(-20 350 250)"/>
+<rect x="120" y="470" width="10" height="13" fill="#d9d6e0" opacity="0.5" transform="rotate(15 120 470)"/>
+<circle cx="150" cy="180" r="11" fill="#2b5f8a"/><text x="150" y="184" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="270" cy="200" r="11" fill="#2b5f8a"/><text x="270" y="204" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="430" cy="180" r="11" fill="#2b5f8a"/><text x="430" y="184" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="560" cy="180" r="11" fill="#2b5f8a"/><text x="560" y="184" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="110" cy="270" r="11" fill="#2b5f8a"/><text x="110" y="274" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="330" cy="160" r="11" fill="#2b5f8a"/><text x="330" y="164" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="620" cy="300" r="11" fill="#2b5f8a"/><text x="620" y="304" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="230" cy="470" r="11" fill="#2b5f8a"/><text x="230" y="474" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="360" cy="560" r="11" fill="#2b5f8a"/><text x="360" y="564" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="470" cy="540" r="11" fill="#2b5f8a"/><text x="470" y="544" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="150" cy="560" r="11" fill="#2b5f8a"/><text x="150" y="564" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="540" cy="470" r="11" fill="#2b5f8a"/><text x="540" y="474" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="200" cy="270" r="12" fill="#9b2226"/><text x="200" y="274" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="560" cy="210" r="12" fill="#9b2226"/><text x="560" y="214" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="70" cy="135" r="11" fill="#2f6f4f"/><text x="70" y="139" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="620" cy="135" r="11" fill="#2f6f4f"/><text x="620" y="139" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="210" cy="420" r="11" fill="#2f6f4f"/><text x="210" y="424" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="470" cy="610" r="11" fill="#2f6f4f"/><text x="470" y="614" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<rect x="705" y="80" width="212" height="510" rx="8" fill="#ffffff" stroke="#cfc8bd" stroke-width="1.5"/>
+<text x="719" y="104" font-size="14" fill="#1b1b1e" text-anchor="start" font-weight="bold">LEGEND</text>
+<circle cx="727" cy="130" r="11" fill="#2b5f8a"/><text x="727" y="134" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<text x="747" y="134" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Pickup spawn</text>
+<circle cx="727" cy="157" r="12" fill="#9b2226"/><text x="727" y="161" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<text x="747" y="161" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Health pack</text>
+<circle cx="727" cy="184" r="11" fill="#2f6f4f"/><text x="727" y="188" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<text x="747" y="188" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Start / spawn</text>
+<circle cx="727" cy="211" r="9" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<text x="747" y="215" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Hazard zone</text>
+<circle cx="727" cy="238" r="11" fill="#6e1414"/><text x="727" y="242" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">#</text>
+<text x="747" y="242" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Destructible trigger</text>
+<line x1="727-9" y1="267" x2="727+9" y2="267" stroke="#a99ad0" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="747" y="271" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Doorway (re-routes)</text>
+<text x="719" y="300" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Destructibles (§5.6)</text>
+<text x="719" y="318" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">1 · Pull the Stacks (bridge a mezzanine)</text>
+<text x="719" y="333" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">2 · Open a Drawer of the Ledger</text>
+<text x="719" y="348" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">3 · Spill the Ink</text>
+<text x="719" y="371" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Hazard</text>
+<text x="719" y="386" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">Reality glitches: geometry</text>
+<text x="719" y="398" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">reshuffles every 60s — no</text>
+<text x="719" y="410" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">damage, but forces replanning.</text>
+<text x="30" y="686" font-size="10.5" fill="#8a8178" text-anchor="start" font-weight="normal">Surreal, shifting space; pickups move between fights. FINAL BOSS: The Auditor ("The Closing Entry").</text>
+</svg>

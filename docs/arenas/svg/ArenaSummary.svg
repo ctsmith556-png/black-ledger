@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 772" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="980" height="772" fill="#faf8f4"/>
+<text x="24" y="36" font-size="22" font-weight="bold" fill="#1b1b1e">BLACK LEDGER — ARENA REFERENCE</text>
+<text x="24" y="56" font-size="12.5" fill="#6e1414">Ten arenas: layout hazard, destructible features, pickups, and Collector boss · full blockouts follow</text>
+<rect x="24" y="80" width="932" height="28" fill="#2a2a2a"/>
+<text x="30" y="99" font-size="11" fill="#ffffff" font-weight="bold">§</text>
+<text x="70" y="99" font-size="11" fill="#ffffff" font-weight="bold">Arena</text>
+<text x="220" y="99" font-size="11" fill="#ffffff" font-weight="bold">Signature hazard</text>
+<text x="390" y="99" font-size="11" fill="#ffffff" font-weight="bold">Destructible features (§5)</text>
+<text x="690" y="99" font-size="11" fill="#ffffff" font-weight="bold">Pickups</text>
+<text x="782" y="99" font-size="11" fill="#ffffff" font-weight="bold">Collector boss</text>
+<rect x="24" y="108" width="932" height="62" fill="#f3eee7" stroke="#d8d2c6"/>
+<text x="30" y="144" font-size="11" fill="#6e1414" font-weight="bold">5.1</text>
+<text x="70" y="138" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Mill</text>
+<text x="220" y="144" font-size="10" fill="#3a3330">Furnace pours (~90s)</text>
+<text x="390" y="128" font-size="9.5" fill="#8a4a12">1 · Tap the Ladle</text>
+<text x="390" y="144" font-size="9.5" fill="#8a4a12">2 · Collapse the Catwalks</text>
+<text x="390" y="160" font-size="9.5" fill="#8a4a12">3 · Blow the Furnace</text>
+<text x="690" y="144" font-size="10" fill="#2b5f8a" font-weight="bold">High (12)</text>
+<text x="782" y="144" font-size="10.5" fill="#1b1b1e">The Foundryman "Tap"</text>
+<rect x="24" y="170" width="932" height="62" fill="#ffffff" stroke="#d8d2c6"/>
+<text x="30" y="206" font-size="11" fill="#6e1414" font-weight="bold">5.2</text>
+<text x="70" y="200" font-size="11.5" fill="#1b1b1e" font-weight="bold">Ashen Hollow Downtown</text>
+<text x="220" y="206" font-size="10" fill="#3a3330">Sinkholes (random)</text>
+<text x="390" y="190" font-size="9.5" fill="#8a4a12">1 · Drop the Water Tower</text>
+<text x="390" y="206" font-size="9.5" fill="#8a4a12">2 · Rupture the Gas Main</text>
+<text x="390" y="222" font-size="9.5" fill="#8a4a12">3 · Facade Demolition</text>
+<text x="690" y="206" font-size="10" fill="#2b5f8a" font-weight="bold">Med (8)</text>
+<text x="782" y="206" font-size="10.5" fill="#1b1b1e">Curfew</text>
+<rect x="24" y="232" width="932" height="62" fill="#f3eee7" stroke="#d8d2c6"/>
+<text x="30" y="268" font-size="11" fill="#6e1414" font-weight="bold">5.3</text>
+<text x="70" y="262" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Tenements</text>
+<text x="220" y="268" font-size="10" fill="#3a3330">Falling debris (~30s)</text>
+<text x="390" y="252" font-size="9.5" fill="#8a4a12">1 · Pancake the Tower</text>
+<text x="390" y="268" font-size="9.5" fill="#8a4a12">2 · Garage Collapse</text>
+<text x="390" y="284" font-size="9.5" fill="#8a4a12">3 · Tear Down Scaffolding</text>
+<text x="690" y="268" font-size="10" fill="#2b5f8a" font-weight="bold">Low (6)</text>
+<text x="782" y="268" font-size="10.5" fill="#1b1b1e">Condemned</text>
+<rect x="24" y="294" width="932" height="62" fill="#ffffff" stroke="#d8d2c6"/>
+<text x="30" y="330" font-size="11" fill="#6e1414" font-weight="bold">5.4</text>
+<text x="70" y="324" font-size="11.5" fill="#1b1b1e" font-weight="bold">Highway 6 Overpass</text>
+<text x="220" y="330" font-size="10" fill="#3a3330">Wind gusts (45-60s)</text>
+<text x="390" y="314" font-size="9.5" fill="#8a4a12">1 · Blow the Span</text>
+<text x="390" y="330" font-size="9.5" fill="#8a4a12">2 · Cut the Crane</text>
+<text x="390" y="346" font-size="9.5" fill="#8a4a12">3 · Release the Cargo</text>
+<text x="690" y="330" font-size="10" fill="#2b5f8a" font-weight="bold">Med (8)</text>
+<text x="782" y="330" font-size="10.5" fill="#1b1b1e">Jackknife</text>
+<rect x="24" y="356" width="932" height="62" fill="#f3eee7" stroke="#d8d2c6"/>
+<text x="30" y="392" font-size="11" fill="#6e1414" font-weight="bold">5.5</text>
+<text x="70" y="386" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Cemetery</text>
+<text x="220" y="392" font-size="10" fill="#3a3330">Fog (20s / ~90s)</text>
+<text x="390" y="376" font-size="9.5" fill="#8a4a12">1 · Topple the Bell Tower</text>
+<text x="390" y="392" font-size="9.5" fill="#8a4a12">2 · Crack the Crypts</text>
+<text x="390" y="408" font-size="9.5" fill="#8a4a12">3 · Open Ground</text>
+<text x="690" y="392" font-size="10" fill="#2b5f8a" font-weight="bold">Med (10)</text>
+<text x="782" y="392" font-size="10.5" fill="#1b1b1e">The Sexton</text>
+<rect x="24" y="418" width="932" height="62" fill="#f1e3e3" stroke="#d8d2c6"/>
+<text x="30" y="454" font-size="11" fill="#6e1414" font-weight="bold">5.6</text>
+<text x="70" y="448" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Auditor's Office</text>
+<text x="220" y="454" font-size="10" fill="#3a3330">Reality glitches (~60s)</text>
+<text x="390" y="438" font-size="9.5" fill="#8a4a12">1 · Pull the Stacks</text>
+<text x="390" y="454" font-size="9.5" fill="#8a4a12">2 · Open a Drawer</text>
+<text x="390" y="470" font-size="9.5" fill="#8a4a12">3 · Spill the Ink</text>
+<text x="690" y="454" font-size="10" fill="#2b5f8a" font-weight="bold">High (12, shifts)</text>
+<text x="782" y="454" font-size="10.5" fill="#1b1b1e">THE AUDITOR (final)</text>
+<rect x="24" y="480" width="932" height="62" fill="#f3eee7" stroke="#d8d2c6"/>
+<text x="30" y="516" font-size="11" fill="#6e1414" font-weight="bold">5.7</text>
+<text x="70" y="510" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Drowned Quarter</text>
+<text x="220" y="516" font-size="10" fill="#3a3330">Tidal Surge (~75s)</text>
+<text x="390" y="500" font-size="9.5" fill="#8a4a12">1 · Breach the Dam</text>
+<text x="390" y="516" font-size="9.5" fill="#8a4a12">2 · Drop the Steeple</text>
+<text x="390" y="532" font-size="9.5" fill="#8a4a12">3 · Cut the Moorings</text>
+<text x="690" y="516" font-size="10" fill="#2b5f8a" font-weight="bold">Med (8)</text>
+<text x="782" y="516" font-size="10.5" fill="#1b1b1e">Undertow</text>
+<rect x="24" y="542" width="932" height="62" fill="#ffffff" stroke="#d8d2c6"/>
+<text x="30" y="578" font-size="11" fill="#6e1414" font-weight="bold">5.8</text>
+<text x="70" y="572" font-size="11.5" fill="#1b1b1e" font-weight="bold">The Switchyard</text>
+<text x="220" y="578" font-size="10" fill="#3a3330">Ghost Train (~60s)</text>
+<text x="390" y="562" font-size="9.5" fill="#8a4a12">1 · Throw the Switch</text>
+<text x="390" y="578" font-size="9.5" fill="#8a4a12">2 · Topple the Stacks</text>
+<text x="390" y="594" font-size="9.5" fill="#8a4a12">3 · Drop the Gantry Crane</text>
+<text x="690" y="578" font-size="10" fill="#2b5f8a" font-weight="bold">Med-High (10)</text>
+<text x="782" y="578" font-size="10.5" fill="#1b1b1e">Lodestone</text>
+<rect x="24" y="604" width="932" height="62" fill="#f3eee7" stroke="#d8d2c6"/>
+<text x="30" y="640" font-size="11" fill="#6e1414" font-weight="bold">5.9</text>
+<text x="70" y="634" font-size="11.5" fill="#1b1b1e" font-weight="bold">Pinewood Drive-In</text>
+<text x="220" y="640" font-size="10" fill="#3a3330">Rides wake up (~80s)</text>
+<text x="390" y="624" font-size="9.5" fill="#8a4a12">1 · Fell the Ferris Wheel</text>
+<text x="390" y="640" font-size="9.5" fill="#8a4a12">2 · Drop the Screen</text>
+<text x="390" y="656" font-size="9.5" fill="#8a4a12">3 · Derail the Coaster</text>
+<text x="690" y="640" font-size="10" fill="#2b5f8a" font-weight="bold">High (12)</text>
+<text x="782" y="640" font-size="10.5" fill="#1b1b1e">The Headliner</text>
+<rect x="24" y="666" width="932" height="62" fill="#ffffff" stroke="#d8d2c6"/>
+<text x="30" y="702" font-size="11" fill="#6e1414" font-weight="bold">5.10</text>
+<text x="70" y="696" font-size="11.5" fill="#1b1b1e" font-weight="bold">Saint Dymphna's</text>
+<text x="220" y="702" font-size="10" fill="#3a3330">Arc &amp; Collapse (~50s)</text>
+<text x="390" y="686" font-size="9.5" fill="#8a4a12">1 · Bring Down the Rotunda</text>
+<text x="390" y="702" font-size="9.5" fill="#8a4a12">2 · Flood the Lower Ward</text>
+<text x="390" y="718" font-size="9.5" fill="#8a4a12">3 · Breach the Wards</text>
+<text x="690" y="702" font-size="10" fill="#2b5f8a" font-weight="bold">Low (6)</text>
+<text x="782" y="702" font-size="10.5" fill="#1b1b1e">The Alienist</text>
+<line x1="64" y1="80" x2="64" y2="728" stroke="#d8d2c6" stroke-width="1"/>
+<line x1="214" y1="80" x2="214" y2="728" stroke="#d8d2c6" stroke-width="1"/>
+<line x1="384" y1="80" x2="384" y2="728" stroke="#d8d2c6" stroke-width="1"/>
+<line x1="684" y1="80" x2="684" y2="728" stroke="#d8d2c6" stroke-width="1"/>
+<line x1="776" y1="80" x2="776" y2="728" stroke="#d8d2c6" stroke-width="1"/>
+<text x="24" y="750" font-size="10" fill="#8a8178">Every map is gated by its Collector boss (Section 6); beating it unlocks that Collector as a playable, overpowered pick.</text>
+</svg>

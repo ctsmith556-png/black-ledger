@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 700" font-family="Arial, sans-serif">
+  <rect x="0" y="0" width="940" height="700" fill="#faf8f4"/>
+  <text x="30" y="38" font-size="22" font-weight="bold" fill="#1b1b1e">THE MILL — Top-Down Blockout</text>
+  <text x="30" y="58" font-size="13" fill="#6e1414">Vertical-slice arena · Design Bible §5.1 · Boss: The Foundryman "Tap"</text>
+
+  <!-- Mill footprint -->
+  <rect x="30" y="80" width="650" height="580" rx="10" fill="#ece7df" stroke="#4a4540" stroke-width="3"/>
+  <text x="46" y="104" font-size="12" fill="#8a8178" font-weight="bold">MILL FLOOR (open central combat space)</text>
+
+  <!-- Loading bays -->
+  <rect x="40" y="560" width="120" height="90" fill="#dfd8cd" stroke="#9b9388" stroke-width="2"/>
+  <text x="52" y="610" font-size="11" fill="#5a534b">loading bay</text>
+  <rect x="540" y="560" width="120" height="90" fill="#dfd8cd" stroke="#9b9388" stroke-width="2"/>
+  <text x="552" y="610" font-size="11" fill="#5a534b">loading bay</text>
+
+  <!-- Sealed breachable bay (Blow the Furnace) -->
+  <rect x="560" y="250" width="110" height="95" fill="#e7d3c0" stroke="#b5651d" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="568" y="293" font-size="10.5" fill="#8a4a12" font-weight="bold">SEALED BAY</text>
+  <text x="568" y="309" font-size="9.5" fill="#8a4a12">breach via</text>
+  <text x="568" y="322" font-size="9.5" fill="#8a4a12">Furnace 2 blast</text>
+
+  <!-- Pour hazard rings -->
+  <circle cx="180" cy="200" r="78" fill="none" stroke="#d8762b" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <circle cx="520" cy="200" r="78" fill="none" stroke="#d8762b" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <circle cx="350" cy="500" r="86" fill="none" stroke="#d8762b" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- Furnaces -->
+  <g>
+    <circle cx="180" cy="200" r="40" fill="#3a3330"/><circle cx="180" cy="200" r="26" fill="#e08029"/>
+    <text x="180" y="204" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">F1</text>
+    <circle cx="520" cy="200" r="40" fill="#3a3330"/><circle cx="520" cy="200" r="26" fill="#e08029"/>
+    <text x="520" y="204" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">F2</text>
+    <circle cx="350" cy="500" r="44" fill="#3a3330" stroke="#b5651d" stroke-width="3"/><circle cx="350" cy="500" r="28" fill="#ef9a3d"/>
+    <text x="350" y="504" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">F3</text>
+  </g>
+  <text x="350" y="560" font-size="10" fill="#8a4a12" text-anchor="middle" font-weight="bold">★ boss rises here</text>
+
+  <!-- Overhead catwalks (collapsible) -->
+  <g stroke="#7c8a99" stroke-width="6" stroke-dasharray="2 7" opacity="0.85">
+    <line x1="60" y1="330" x2="650" y2="330"/>
+    <line x1="350" y1="110" x2="350" y2="470"/>
+  </g>
+  <!-- catwalk support nodes (shoot to collapse) -->
+  <g fill="#b5651d">
+    <rect x="150" y="324" width="12" height="12"/><rect x="500" y="324" width="12" height="12"/>
+    <rect x="344" y="200" width="12" height="12"/>
+  </g>
+  <text x="60" y="322" font-size="10.5" fill="#41525f" font-weight="bold">Overhead catwalks (fast-vehicle shortcut)</text>
+  <text x="60" y="356" font-size="9.5" fill="#b5651d">▮ shoot supports → COLLAPSE → wreck becomes ramp to surviving gantry</text>
+
+  <!-- Suspended slag ladle (interactive) -->
+  <g>
+    <polygon points="320,290 380,290 372,316 328,316" fill="#5a4632" stroke="#b5651d" stroke-width="2"/>
+    <text x="350" y="306" font-size="9" fill="#ffd9a8" text-anchor="middle" font-weight="bold">LADLE</text>
+  </g>
+  <text x="392" y="300" font-size="10" fill="#8a4a12" font-weight="bold">Suspended slag ladle</text>
+  <text x="392" y="313" font-size="9.5" fill="#8a4a12">TAP → dumps molten wave across floor</text>
+
+  <!-- Spawns -->
+  <g fill="#2f6f4f">
+    <circle cx="80" cy="140" r="13"/><circle cx="630" cy="140" r="13"/>
+    <circle cx="80" cy="610" r="13"/><circle cx="630" cy="610" r="13"/>
+  </g>
+  <g fill="#fff" font-size="11" text-anchor="middle" font-weight="bold">
+    <text x="80" y="144">S</text><text x="630" y="144">S</text><text x="80" y="614">S</text><text x="630" y="614">S</text>
+  </g>
+
+  <!-- Pickups (P) and Health (H): high density, 12 pickups -->
+  <g>
+    <g fill="#2b5f8a"><circle cx="120" cy="280" r="11"/><circle cx="270" cy="160" r="11"/><circle cx="430" cy="160" r="11"/><circle cx="600" cy="290" r="11"/><circle cx="120" cy="430" r="11"/><circle cx="250" cy="420" r="11"/><circle cx="470" cy="420" r="11"/><circle cx="600" cy="430" r="11"/><circle cx="200" cy="600" r="11"/><circle cx="500" cy="600" r="11"/><circle cx="350" cy="380" r="11"/><circle cx="350" cy="630" r="11"/></g>
+    <g fill="#fff" font-size="10" text-anchor="middle" font-weight="bold">
+      <text x="120" y="284">P</text><text x="270" y="164">P</text><text x="430" y="164">P</text><text x="600" y="294">P</text><text x="120" y="434">P</text><text x="250" y="424">P</text><text x="470" y="424">P</text><text x="600" y="434">P</text><text x="200" y="604">P</text><text x="500" y="604">P</text><text x="350" y="384">P</text><text x="350" y="634">P</text>
+    </g>
+    <g fill="#9b2226"><circle cx="350" cy="120" r="12"/><circle cx="90" cy="500" r="12"/><circle cx="620" cy="500" r="12"/></g>
+    <g fill="#fff" font-size="11" text-anchor="middle" font-weight="bold"><text x="350" y="124">H</text><text x="90" y="504">H</text><text x="620" y="504">H</text></g>
+  </g>
+
+  <!-- Legend -->
+  <rect x="705" y="90" width="210" height="430" rx="8" fill="#fff" stroke="#cfc8bd" stroke-width="1.5"/>
+  <text x="718" y="114" font-size="14" font-weight="bold" fill="#1b1b1e">LEGEND</text>
+  <g font-size="11.5" fill="#3a3330">
+    <circle cx="728" cy="140" r="11" fill="#3a3330"/><circle cx="728" cy="140" r="7" fill="#e08029"/>
+    <text x="748" y="144">Furnace pit</text>
+    <circle cx="728" cy="170" r="9" fill="none" stroke="#d8762b" stroke-dasharray="4 4"/>
+    <text x="748" y="174">Pour hazard zone</text>
+    <line x1="718" y1="200" x2="740" y2="200" stroke="#7c8a99" stroke-width="6" stroke-dasharray="2 6"/>
+    <text x="748" y="204">Catwalk (collapsible)</text>
+    <rect x="722" y="222" width="12" height="12" fill="#b5651d"/>
+    <text x="748" y="232">Shootable support</text>
+    <polygon points="720,254 742,254 739,266 723,266" fill="#5a4632" stroke="#b5651d"/>
+    <text x="748" y="264">Slag ladle (interactive)</text>
+    <rect x="720" y="282" width="20" height="14" fill="#e7d3c0" stroke="#b5651d" stroke-dasharray="4 3"/>
+    <text x="748" y="294">Breachable sealed bay</text>
+    <circle cx="728" cy="320" r="11" fill="#2b5f8a"/><text x="724" y="324" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+    <text x="748" y="324">Pickup spawn (x12)</text>
+    <circle cx="728" cy="348" r="11" fill="#9b2226"/><text x="724" y="352" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+    <text x="748" y="352">Health pack (x3)</text>
+    <circle cx="728" cy="376" r="11" fill="#2f6f4f"/><text x="724" y="380" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+    <text x="748" y="380">Start / spawn</text>
+  </g>
+  <text x="718" y="416" font-size="12" font-weight="bold" fill="#6e1414">Destructibles (§5.1)</text>
+  <g font-size="10.5" fill="#3a3330">
+    <text x="718" y="436">1 · Tap the Ladle</text>
+    <text x="718" y="454">2 · Collapse the Catwalks</text>
+    <text x="718" y="472">3 · Blow the Furnace (F2)</text>
+  </g>
+  <text x="718" y="500" font-size="10" fill="#8a8178">Hazard: furnace pour every ~90s,</text>
+  <text x="718" y="513" font-size="10" fill="#8a8178">5s warning (steam + orange light).</text>
+
+  <text x="30" y="685" font-size="10.5" fill="#8a8178">Greybox to this layout first; verticality = catwalks + collapsed-catwalk ramp. The Foundryman (Cupola) surfaces from Furnace 3 to begin the boss phase.</text>
+</svg>

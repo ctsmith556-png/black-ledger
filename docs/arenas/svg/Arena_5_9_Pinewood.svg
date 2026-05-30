@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 700" font-family="Arial, sans-serif">
+<defs>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2f6f4f"/></marker>
+<marker id="arrO" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b5651d"/></marker>
+</defs>
+<rect x="0" y="0" width="940" height="700" fill="#faf8f4"/>
+<text x="30" y="38" font-size="22" fill="#1b1b1e" text-anchor="start" font-weight="bold">PINEWOOD DRIVE-IN &amp; FAIRGROUND</text>
+<text x="30" y="58" font-size="13" fill="#6e1414" text-anchor="start" font-weight="normal">Arena §5.9 · Boss: The Headliner "Mr. Marrow"</text>
+<rect x="30" y="70" width="650" height="586" rx="6" fill="#46422f" stroke="#262316" stroke-width="3"/>
+<text x="44" y="90" font-size="11" fill="#e4dcc0" text-anchor="start" font-weight="bold">PINEWOOD DRIVE-IN &amp; FAIRGROUND — sun-faded primary colors gone sinister</text>
+<rect x="120" y="104" width="470" height="40" fill="#cfc7b4" stroke="#5a5440"/>
+<text x="355" y="129" font-size="10" fill="#3a3320" text-anchor="middle" font-weight="bold">THE SCREEN</text>
+<circle cx="602" cy="124" r="11" fill="#6e1414"/><text x="602" y="128" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+<path d="M 355 146 L 355 206" stroke="#2f6f4f" stroke-width="2.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="355" y="198" font-size="9" fill="#caa56a" text-anchor="middle" font-weight="bold">Drop the Screen → giant ramp + platform (blinding flare)</text>
+<circle cx="230" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="276" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="322" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="368" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="414" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="460" cy="250" r="2.5" fill="#7a745c"/>
+<circle cx="230" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="276" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="322" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="368" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="414" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="460" cy="295" r="2.5" fill="#7a745c"/>
+<circle cx="230" cy="340" r="2.5" fill="#7a745c"/>
+<circle cx="276" cy="340" r="2.5" fill="#7a745c"/>
+<circle cx="322" cy="340" r="2.5" fill="#7a745c"/>
+<circle cx="368" cy="340" r="2.5" fill="#7a745c"/>
+<circle cx="414" cy="340" r="2.5" fill="#7a745c"/>
+<circle cx="460" cy="340" r="2.5" fill="#7a745c"/>
+<text x="360" y="318" font-size="8.5" fill="#a99c72" text-anchor="middle" font-weight="normal">drive-in field (speaker poles)</text>
+<circle cx="130" cy="370" r="60" fill="none" stroke="#7a745c" stroke-width="3"/>
+<line x1="130" y1="370" x2="190" y2="370" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="172" y2="412" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="130" y2="430" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="88" y2="412" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="70" y2="370" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="88" y2="328" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="130" y2="310" stroke="#7a745c" stroke-width="2"/>
+<line x1="130" y1="370" x2="172" y2="328" stroke="#7a745c" stroke-width="2"/>
+<circle cx="130" cy="370" r="8" fill="#5a5440"/>
+<circle cx="130" cy="298" r="11" fill="#6e1414"/><text x="130" y="302" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+<path d="M 165 338 L 250 300" stroke="#b5651d" stroke-width="2.5" fill="none" marker-end="url(#arrO)"/>
+<text x="60" y="460" font-size="9" fill="#caa56a" text-anchor="start" font-weight="bold">Fell the Ferris Wheel</text>
+<text x="60" y="472" font-size="8.5" fill="#caa56a" text-anchor="start" font-weight="normal">→ rolls, then climbable wreck</text>
+<circle cx="565" cy="295" r="32" fill="#5a4a4a" stroke="#262316"/>
+<circle cx="565" cy="295" r="56" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<text x="565" y="248" font-size="8.5" fill="#caa089" text-anchor="middle" font-weight="normal">carousel</text>
+<path d="M 200 565 Q 330 480 470 560 T 645 545" fill="none" stroke="#8a6a4a" stroke-width="4"/>
+<rect x="192" y="520" width="14" height="48" fill="#8a6a4a"/>
+<circle cx="199" cy="508" r="11" fill="#6e1414"/><text x="199" y="512" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+<text x="118" y="498" font-size="9" fill="#caa56a" text-anchor="start" font-weight="bold">Derail the Coaster</text>
+<rect x="560" y="560" width="105" height="74" rx="2" fill="#4a4036" stroke="#262316"/>
+<text x="612" y="600" font-size="8" fill="#e4dcc0" text-anchor="middle" font-weight="normal">FUNHOUSE</text>
+<path d="M 540 548 L 572 572" stroke="#b5651d" stroke-width="2.5" fill="none" marker-end="url(#arrO)"/>
+<text x="430" y="628" font-size="8.5" fill="#caa56a" text-anchor="start" font-weight="normal">→ runaway car smashes into the funhouse (opens it)</text>
+<rect x="250" y="420" width="42" height="30" rx="2" fill="#6a5a3a" stroke="#262316"/>
+<rect x="310" y="420" width="42" height="30" rx="2" fill="#6a5a3a" stroke="#262316"/>
+<rect x="370" y="420" width="42" height="30" rx="2" fill="#6a5a3a" stroke="#262316"/>
+<rect x="430" y="420" width="42" height="30" rx="2" fill="#6a5a3a" stroke="#262316"/>
+<text x="345" y="470" font-size="8.5" fill="#a99c72" text-anchor="middle" font-weight="normal">midway booths (cover)</text>
+<circle cx="245" cy="250" r="11" fill="#2b5f8a"/><text x="245" y="254" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="360" cy="250" r="11" fill="#2b5f8a"/><text x="360" y="254" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="475" cy="250" r="11" fill="#2b5f8a"/><text x="475" y="254" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="290" cy="400" r="11" fill="#2b5f8a"/><text x="290" y="404" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="420" cy="400" r="11" fill="#2b5f8a"/><text x="420" y="404" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="560" cy="370" r="11" fill="#2b5f8a"/><text x="560" y="374" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="250" cy="520" r="11" fill="#2b5f8a"/><text x="250" y="524" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="370" cy="520" r="11" fill="#2b5f8a"/><text x="370" y="524" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="470" cy="500" r="11" fill="#2b5f8a"/><text x="470" y="504" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="610" cy="470" r="11" fill="#2b5f8a"/><text x="610" y="474" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="180" cy="470" r="11" fill="#2b5f8a"/><text x="180" y="474" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="360" cy="610" r="11" fill="#2b5f8a"/><text x="360" y="614" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="420" cy="340" r="12" fill="#9b2226"/><text x="420" y="344" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="140" cy="560" r="12" fill="#9b2226"/><text x="140" y="564" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="48" cy="110" r="11" fill="#2f6f4f"/><text x="48" y="114" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="665" cy="110" r="11" fill="#2f6f4f"/><text x="665" y="114" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="48" cy="640" r="11" fill="#2f6f4f"/><text x="48" y="644" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="665" cy="640" r="11" fill="#2f6f4f"/><text x="665" y="644" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<rect x="705" y="80" width="212" height="510" rx="8" fill="#ffffff" stroke="#cfc8bd" stroke-width="1.5"/>
+<text x="719" y="104" font-size="14" fill="#1b1b1e" text-anchor="start" font-weight="bold">LEGEND</text>
+<circle cx="727" cy="130" r="11" fill="#2b5f8a"/><text x="727" y="134" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<text x="747" y="134" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Pickup spawn</text>
+<circle cx="727" cy="157" r="12" fill="#9b2226"/><text x="727" y="161" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<text x="747" y="161" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Health pack</text>
+<circle cx="727" cy="184" r="11" fill="#2f6f4f"/><text x="727" y="188" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<text x="747" y="188" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Start / spawn</text>
+<circle cx="727" cy="211" r="9" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<text x="747" y="215" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Hazard zone</text>
+<circle cx="727" cy="238" r="11" fill="#6e1414"/><text x="727" y="242" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">#</text>
+<text x="747" y="242" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Destructible trigger</text>
+<circle cx="727" cy="267" r="9" fill="none" stroke="#d8762b" stroke-dasharray="4 4"/>
+<text x="747" y="271" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Ride debris radius</text>
+<text x="719" y="300" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Destructibles (§5.9)</text>
+<text x="719" y="318" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">1 · Fell the Ferris Wheel (climbable wreck)</text>
+<text x="719" y="333" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">2 · Drop the Screen (ramp + flare)</text>
+<text x="719" y="348" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">3 · Derail the Coaster (breach funhouse)</text>
+<text x="719" y="371" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Hazard</text>
+<text x="719" y="386" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">The Rides Wake Up every ~80s (3-4s</text>
+<text x="719" y="398" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">calliope/lights tell): a random ride</text>
+<text x="719" y="410" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">flings debris across the lot.</text>
+<text x="30" y="686" font-size="10.5" fill="#8a8178" text-anchor="start" font-weight="normal">Bright and chaotic by sick contrast. Boss: The Headliner "Mr. Marrow" (parade float "The Big Top").</text>
+</svg>

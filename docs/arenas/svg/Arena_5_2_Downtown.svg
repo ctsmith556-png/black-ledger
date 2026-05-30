@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 700" font-family="Arial, sans-serif">
+<defs>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2f6f4f"/></marker>
+<marker id="arrO" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b5651d"/></marker>
+</defs>
+<rect x="0" y="0" width="940" height="700" fill="#faf8f4"/>
+<text x="30" y="38" font-size="22" fill="#1b1b1e" text-anchor="start" font-weight="bold">ASHEN HOLLOW DOWNTOWN</text>
+<text x="30" y="58" font-size="13" fill="#6e1414" text-anchor="start" font-weight="normal">Arena §5.2 · Boss: Curfew</text>
+<rect x="30" y="70" width="650" height="586" rx="6" fill="#5e5e63" stroke="#33333a" stroke-width="3"/>
+<text x="44" y="90" font-size="11" fill="#d8d2c6" text-anchor="start" font-weight="bold">CITY GRID — boarded storefronts, traffic lights blinking out of sync</text>
+<rect x="60" y="108" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="250" y="108" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="440" y="108" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="60" y="298" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="250" y="298" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="440" y="298" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="60" y="488" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="440" y="488" width="150" height="150" rx="3" fill="#b9b1a4" stroke="#8a8276"/>
+<rect x="250" y="488" width="150" height="150" rx="3" fill="#9a9183" stroke="#6e655a" stroke-dasharray="6 4"/>
+<text x="262" y="556" font-size="9" fill="#3a3330" text-anchor="start" font-weight="normal">collapsed</text>
+<text x="262" y="568" font-size="9" fill="#3a3330" text-anchor="start" font-weight="normal">building</text>
+<path d="M 325 486 L 325 452" stroke="#2f6f4f" stroke-width="3" fill="none" marker-end="url(#arrG)"/>
+<text x="332" y="466" font-size="9" fill="#2f6f4f" text-anchor="start" font-weight="bold">ramp to rooftops</text>
+<circle cx="225" cy="283" r="24" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<path d="M 216 276 L 230 284 L 221 292" stroke="#d8762b" fill="none" stroke-width="1.4"/>
+<circle cx="415" cy="283" r="24" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<path d="M 406 276 L 420 284 L 411 292" stroke="#d8762b" fill="none" stroke-width="1.4"/>
+<circle cx="415" cy="473" r="24" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<path d="M 406 466 L 420 474 L 411 482" stroke="#d8762b" fill="none" stroke-width="1.4"/>
+<text x="415" y="255" font-size="9" fill="#8a4a12" text-anchor="middle" font-weight="normal">sinkhole-prone</text>
+<text x="415" y="245" font-size="9" fill="#8a4a12" text-anchor="middle" font-weight="normal">intersections</text>
+<ellipse cx="515" cy="135" rx="17" ry="11" fill="#7a6f5e" stroke="#4a4034"/>
+<line x1="503" y1="145" x2="500" y2="168" stroke="#4a4034" stroke-width="2"/><line x1="527" y1="145" x2="530" y2="168" stroke="#4a4034" stroke-width="2"/>
+<circle cx="540" cy="118" r="11" fill="#6e1414"/><text x="540" y="122" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+<path d="M 515 170 L 515 250" stroke="#b5651d" stroke-width="2.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrO)"/>
+<text x="556" y="140" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="bold">Drop the Water</text>
+<text x="556" y="152" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">Tower → rooftop</text>
+<text x="556" y="164" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">fighting layer</text>
+<circle cx="225" cy="473" r="11" fill="#6e1414"/><text x="225" y="477" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+<text x="120" y="520" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="bold">Rupture Gas Main →</text>
+<text x="120" y="532" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">flame corridor, then</text>
+<text x="120" y="544" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">caves a new sinkhole</text>
+<rect x="432" y="320" width="8" height="106" fill="#b5651d" opacity="0.7"/>
+<circle cx="620" cy="360" r="11" fill="#6e1414"/><text x="620" y="364" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+<text x="548" y="388" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="bold">Facade Demolition</text>
+<text x="548" y="400" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">→ rubble cover,</text>
+<text x="548" y="412" font-size="9" fill="#8a4a12" text-anchor="start" font-weight="normal">blocks a lane</text>
+<circle cx="225" cy="185" r="11" fill="#2b5f8a"/><text x="225" y="189" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="415" cy="185" r="11" fill="#2b5f8a"/><text x="415" y="189" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="135" cy="283" r="11" fill="#2b5f8a"/><text x="135" y="287" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="320" cy="135" r="11" fill="#2b5f8a"/><text x="320" y="139" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="225" cy="375" r="11" fill="#2b5f8a"/><text x="225" y="379" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="135" cy="565" r="11" fill="#2b5f8a"/><text x="135" y="569" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="505" cy="565" r="11" fill="#2b5f8a"/><text x="505" y="569" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="600" cy="283" r="11" fill="#2b5f8a"/><text x="600" y="287" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<circle cx="320" cy="283" r="12" fill="#9b2226"/><text x="320" y="287" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="135" cy="473" r="12" fill="#9b2226"/><text x="135" y="477" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<circle cx="50" cy="90" r="11" fill="#2f6f4f"/><text x="50" y="94" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="665" cy="90" r="11" fill="#2f6f4f"/><text x="665" y="94" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="50" cy="640" r="11" fill="#2f6f4f"/><text x="50" y="644" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="665" cy="640" r="11" fill="#2f6f4f"/><text x="665" y="644" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<rect x="705" y="80" width="212" height="510" rx="8" fill="#ffffff" stroke="#cfc8bd" stroke-width="1.5"/>
+<text x="719" y="104" font-size="14" fill="#1b1b1e" text-anchor="start" font-weight="bold">LEGEND</text>
+<circle cx="727" cy="130" r="11" fill="#2b5f8a"/><text x="727" y="134" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">P</text>
+<text x="747" y="134" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Pickup spawn</text>
+<circle cx="727" cy="157" r="12" fill="#9b2226"/><text x="727" y="161" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">H</text>
+<text x="747" y="161" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Health pack</text>
+<circle cx="727" cy="184" r="11" fill="#2f6f4f"/><text x="727" y="188" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<text x="747" y="188" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Start / spawn</text>
+<circle cx="727" cy="211" r="9" fill="none" stroke="#d8762b" stroke-width="1.6" stroke-dasharray="5 5"/>
+<text x="747" y="215" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Hazard zone</text>
+<circle cx="727" cy="238" r="11" fill="#6e1414"/><text x="727" y="242" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">#</text>
+<text x="747" y="242" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Destructible trigger</text>
+<rect x="727-9" y="267-7" width="18" height="14" fill="#9a9183" stroke="#6e655a" stroke-dasharray="4 3"/>
+<text x="747" y="271" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">Collapsed ramp / rubble</text>
+<text x="719" y="300" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Destructibles (§5.2)</text>
+<text x="719" y="318" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">1 · Drop the Water Tower</text>
+<text x="719" y="333" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">2 · Rupture the Gas Main</text>
+<text x="719" y="348" font-size="10" fill="#3a3330" text-anchor="start" font-weight="normal">3 · Facade Demolition</text>
+<text x="719" y="371" font-size="12" fill="#6e1414" text-anchor="start" font-weight="bold">Hazard</text>
+<text x="719" y="386" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">Sinkholes: 3 cracked intersections;</text>
+<text x="719" y="398" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">one collapses each match (4s rumble)</text>
+<text x="719" y="410" font-size="9.3" fill="#8a8178" text-anchor="start" font-weight="normal">— a permanent pit for that round.</text>
+<text x="30" y="686" font-size="10.5" fill="#8a8178" text-anchor="start" font-weight="normal">Verticality via the collapsed-building ramp + dropped water tower. Boss: Curfew (riot truck "Order") patrols the grid.</text>
+</svg>

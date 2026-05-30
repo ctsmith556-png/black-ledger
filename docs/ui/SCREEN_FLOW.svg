@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 860" font-family="Arial, sans-serif">
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8a8178"/></marker></defs>
+<rect x="0" y="0" width="980" height="860" fill="#faf8f4"/>
+<text x="28" y="36" font-size="22" font-weight="bold" fill="#1b1b1e">SCREEN FLOW &amp; MENU STRUCTURE</text>
+<text x="28" y="56" font-size="12.5" fill="#6e1414">Boot → menu → roster → campaign → match → win/lose → unlock/ending</text>
+<rect x="120" y="72" width="300" height="42" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="92" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">COLD OPEN / BOOT</text>
+<text x="270.0" y="109" font-size="9.3" fill="#5a534b" text-anchor="middle">the Auditor's letter + voiceover</text>
+<rect x="120" y="138" width="300" height="58" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="158" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">MAIN MENU</text>
+<text x="270.0" y="175" font-size="9.3" fill="#5a534b" text-anchor="middle">New Game · Continue · Roster</text>
+<text x="270.0" y="189" font-size="9.3" fill="#5a534b" text-anchor="middle">Options · Quit</text>
+<rect x="120" y="224" width="300" height="56" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="244" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">ROSTER — "The Filing Cabinet"</text>
+<text x="270.0" y="261" font-size="9.3" fill="#5a534b" text-anchor="middle">pick a contestant</text>
+<text x="270.0" y="275" font-size="9.3" fill="#5a534b" text-anchor="middle">SEALED = Collectors · REDACTED = Vault</text>
+<rect x="120" y="308" width="300" height="48" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="328" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">CAMPAIGN HUB</text>
+<text x="270.0" y="345" font-size="9.3" fill="#5a534b" text-anchor="middle">route through Ashen Hollow</text>
+<text x="270.0" y="359" font-size="9.3" fill="#5a534b" text-anchor="middle">next arena (gated in order)</text>
+<rect x="120" y="384" width="300" height="42" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="404" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">INTRO CINEMATIC</text>
+<text x="270.0" y="421" font-size="9.3" fill="#5a534b" text-anchor="middle">~30s, first visit only</text>
+<rect x="120" y="452" width="300" height="42" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="472" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">ARENA LOAD</text>
+<text x="270.0" y="489" font-size="9.3" fill="#5a534b" text-anchor="middle">tip card: controls · hazard · destructibles</text>
+<rect x="120" y="520" width="300" height="52" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="540" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">IN-MATCH (HUD)</text>
+<text x="270.0" y="557" font-size="9.3" fill="#5a534b" text-anchor="middle">health · special · pickups · radar · boss bar</text>
+<rect x="120" y="600" width="300" height="40" rx="6" fill="#ffffff" stroke="#6e1414" stroke-width="1.5"/>
+<text x="270.0" y="620" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">MATCH END</text>
+<rect x="40" y="672" width="210" height="70" rx="6" fill="#f1e3e3" stroke="#6e1414" stroke-width="1.5"/>
+<text x="145.0" y="692" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">DEFEAT</text>
+<text x="145.0" y="709" font-size="9.3" fill="#5a534b" text-anchor="middle">Retry (reload arena)</text>
+<text x="145.0" y="723" font-size="9.3" fill="#5a534b" text-anchor="middle">or Quit to Menu</text>
+<rect x="300" y="672" width="300" height="86" rx="6" fill="#e7efe7" stroke="#6e1414" stroke-width="1.5"/>
+<text x="450.0" y="692" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">VICTORY</text>
+<text x="450.0" y="709" font-size="9.3" fill="#5a534b" text-anchor="middle">first Collector kill → Unlock</text>
+<text x="450.0" y="723" font-size="9.3" fill="#5a534b" text-anchor="middle">final arena → Ending (~60-90s)</text>
+<text x="450.0" y="737" font-size="9.3" fill="#5a534b" text-anchor="middle">else → next arena</text>
+<rect x="560" y="520" width="330" height="64" rx="6" fill="#f3eee7" stroke="#9b9388" stroke-width="1.5"/>
+<text x="725.0" y="540" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">PAUSE (overlay)</text>
+<text x="725.0" y="557" font-size="9.3" fill="#5a534b" text-anchor="middle">Resume · Restart</text>
+<text x="725.0" y="571" font-size="9.3" fill="#5a534b" text-anchor="middle">Options · Quit to Menu</text>
+<rect x="640" y="672" width="300" height="52" rx="6" fill="#e7efe7" stroke="#6e1414" stroke-width="1.5"/>
+<text x="790.0" y="692" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">UNLOCK</text>
+<text x="790.0" y="709" font-size="9.3" fill="#5a534b" text-anchor="middle">the Collector joins the roster</text>
+<rect x="120" y="790" width="810" height="54" rx="6" fill="#f1e3e3" stroke="#6e1414" stroke-width="1.5"/>
+<text x="525.0" y="810" font-size="12.5" fill="#1b1b1e" text-anchor="middle" font-weight="bold">ENDGAME UNLOCKS</text>
+<text x="525.0" y="827" font-size="9.3" fill="#5a534b" text-anchor="middle">all 15 endings → Vault</text>
+<text x="525.0" y="841" font-size="9.3" fill="#5a534b" text-anchor="middle">all 10 Collectors + Auditor beaten → the Auditor playable</text>
+<path d="M 270 114 L 270 138" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 196 L 270 224" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 280 L 270 308" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 356 L 270 384" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 426 L 270 452" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 494 L 270 520" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 270 572 L 270 600" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<path d="M 200 640 L 150 672" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<text x="181.0" y="653.0" font-size="9.5" fill="#6e1414" font-weight="bold">lose</text>
+<path d="M 330 640 L 400 672" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<text x="371.0" y="653.0" font-size="9.5" fill="#6e1414" font-weight="bold">win</text>
+<path d="M 600 712 L 640 700" stroke="#8a8178" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<text x="626.0" y="703.0" font-size="9.5" fill="#6e1414" font-weight="bold">first time</text>
+<path d="M 420 546 L 560 546" stroke="#9b9388" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+<text x="455" y="540" font-size="9" fill="#8a8178">pause / resume</text>
+<path d="M 600 700 C 800 660, 470 332, 420 332" stroke="#2f6f4f" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#a)"/>
+<text x="640" y="470" font-size="9.5" fill="#2f6f4f" font-weight="bold">next arena (loop)</text>
+<path d="M 40 700 C 8 540, 20 473, 120 473" stroke="#2f6f4f" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#a)"/>
+<text x="30" y="560" font-size="9.5" fill="#2f6f4f" font-weight="bold">retry</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="560" rx="0" fill="#f5f3ef" stroke="none"/>
+<text x="30" y="32" font-size="20" fill="#1b1b1e" text-anchor="start" font-weight="bold">UI Wireframe — MAIN MENU</text>
+<text x="30" y="50" font-size="12" fill="#6e1414" text-anchor="start" font-weight="normal">Front screen · per SCREEN_FLOW</text>
+<rect x="30" y="62" width="900" height="470" rx="6" fill="#23262d" stroke="#111"/>
+<text x="700" y="90" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">moody key art behind:</text>
+<text x="700" y="103" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">ambulance in rain, Auditor silhouette</text>
+<text x="480" y="150" font-size="36" fill="#e7e2da" text-anchor="middle" font-weight="bold">BLACK LEDGER</text>
+<rect x="430" y="164" width="16" height="18" rx="2" fill="#1b1b1e" stroke="#7a7f84"/>
+<line x1="426" y1="173" x2="534" y2="173" stroke="#9b2226" stroke-width="2"/>
+<text x="480" y="196" font-size="12" fill="#9b2226" text-anchor="middle" font-weight="normal" font-style="italic">every debt comes due</text>
+<rect x="400" y="240" width="160" height="38" rx="5" fill="#6e1414" stroke="#5a6470"/><text x="480.0" y="263.0" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">New Game</text>
+<rect x="400" y="288" width="160" height="38" rx="5" fill="#24272d" stroke="#5a6470"/><text x="480.0" y="311.0" font-size="12" fill="#6f7681" text-anchor="middle" font-weight="bold">Continue</text>
+<rect x="400" y="336" width="160" height="38" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="359.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Roster</text>
+<rect x="400" y="384" width="160" height="38" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="407.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Options</text>
+<rect x="400" y="432" width="160" height="38" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="455.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Quit</text>
+<text x="566" y="290" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">greyed until a save exists</text>
+<text x="480" y="510" font-size="10" fill="#8a93a0" text-anchor="middle" font-weight="normal">Enter: select    ·    Arrows: move</text>
+</svg>

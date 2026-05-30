@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="560" rx="0" fill="#f5f3ef" stroke="none"/>
+<text x="30" y="32" font-size="20" fill="#1b1b1e" text-anchor="start" font-weight="bold">UI Wireframe — PAUSE</text>
+<text x="30" y="50" font-size="12" fill="#6e1414" text-anchor="start" font-weight="normal">In-match overlay</text>
+<rect x="30" y="62" width="900" height="470" rx="6" fill="#23262d" stroke="#111"/>
+<text x="50" y="96" font-size="11" fill="#9aa6b0" text-anchor="start" font-weight="bold">THE SURGEON  ·  THE MILL</text>
+<rect x="48" y="470" width="200" height="18" rx="5" fill="#2e323a" stroke="#3a3f47"/>
+<rect x="48" y="470" width="150" height="18" rx="5" fill="#3f5f3f" stroke="none"/>
+<text x="260" y="484" font-size="9.5" fill="#e0b400" text-anchor="start" font-weight="normal">gameplay frozen + dimmed behind the overlay</text>
+<rect x="330" y="150" width="300" height="300" rx="8" fill="#1b1d22" stroke="#5a6470"/>
+<text x="480" y="186" font-size="22" fill="#e7e2da" text-anchor="middle" font-weight="bold">PAUSED</text>
+<rect x="360" y="220" width="240" height="40" rx="5" fill="#6e1414" stroke="#5a6470"/><text x="480.0" y="244.0" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">Resume</text>
+<rect x="360" y="274" width="240" height="40" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="298.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Restart Arena</text>
+<rect x="360" y="328" width="240" height="40" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="352.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Options</text>
+<rect x="360" y="382" width="240" height="40" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="480.0" y="406.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Quit to Menu</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="560" rx="0" fill="#f5f3ef" stroke="none"/>
+<text x="30" y="32" font-size="20" fill="#1b1b1e" text-anchor="start" font-weight="bold">UI Wireframe — VICTORY / DEFEAT</text>
+<text x="30" y="50" font-size="12" fill="#6e1414" text-anchor="start" font-weight="normal">Match-end screen (both states)</text>
+<rect x="30" y="62" width="900" height="470" rx="6" fill="#23262d" stroke="#111"/>
+<line x1="480" y1="80" x2="480" y2="514" stroke="#3a3f47" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="255" y="120" font-size="22" fill="#7ec97e" text-anchor="middle" font-weight="bold">VICTORY</text>
+<text x="150" y="170" font-size="12" fill="#cfcbd2" text-anchor="start" font-weight="normal">Time      4:12</text>
+<text x="150" y="196" font-size="12" fill="#cfcbd2" text-anchor="start" font-weight="normal">Kills      3</text>
+<text x="150" y="222" font-size="12" fill="#cfcbd2" text-anchor="start" font-weight="normal">Damage taken  38%</text>
+<rect x="150" y="260" width="200" height="40" rx="5" fill="#6e1414" stroke="#5a6470"/><text x="250.0" y="284.0" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">Continue</text>
+<rect x="150" y="312" width="200" height="40" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="250.0" y="336.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Next Arena</text>
+<text x="705" y="120" font-size="22" fill="#d05a5a" text-anchor="middle" font-weight="bold">DEFEAT</text>
+<text x="705" y="176" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="normal">The account remains</text>
+<text x="705" y="194" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="normal">unbalanced.</text>
+<rect x="605" y="260" width="200" height="40" rx="5" fill="#6e1414" stroke="#5a6470"/><text x="705.0" y="284.0" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">Retry</text>
+<rect x="605" y="312" width="200" height="40" rx="5" fill="#2e323a" stroke="#5a6470"/><text x="705.0" y="336.0" font-size="12" fill="#cfcbd2" text-anchor="middle" font-weight="bold">Quit to Menu</text>
+<text x="255" y="470" font-size="9.5" fill="#e0b400" text-anchor="middle" font-weight="normal">two states of the same results screen</text>
+</svg>
