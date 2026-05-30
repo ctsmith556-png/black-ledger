@@ -1,0 +1,51 @@
+# ============================================================
+#  Black Ledger - Unreal Engine .gitignore
+#  Ignores engine-generated and build artifacts. Source,
+#  Config, Content, and docs are tracked. Content binaries
+#  are stored via Git LFS - see .gitattributes.
+# ============================================================
+
+# --- Unreal generated folders ---
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+!Build/.gitkeep
+
+# --- IDEs ---
+.vs/
+.vscode/
+.idea/
+*.VC.db
+*.VC.opendb
+*.opensdf
+*.opendb
+*.sdf
+*.suo
+*.sln
+*.user
+*.userprefs
+*.xcodeproj/
+*.xcworkspace/
+.vsconfig
+Makefile
+CMakeLists.txt
+
+# --- Plugin build output (keep plugin source) ---
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# --- OS clutter ---
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- Misc ---
+*.log
+*.tmp
+*.bak
+*.orig
+crashes/
