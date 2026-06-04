@@ -11,7 +11,7 @@
 
 Framing: contestants with dark pasts are pulled into a deadly competition run by **"The Auditor."** Each vehicle is documented as an Auditor **case-file dossier** — that grim dossier look is the project's signature art style.
 
-**Status (June 2026):** Pre-production is essentially complete (full design + reference + business package). The dev laptop just arrived; next phase is standing up the engine and building the vertical slice. **16 vehicle models have been generated in Meshy.** No Unreal project exists yet.
+**Status (June 2026):** Pre-production complete. Dev laptop is set up (Git+LFS, VS 2022 v143 toolset, UE 5.7, Blender); repo cloned to `C:\Users\csmit\black-ledger` and connected in Cowork. **16 vehicle models generated in Meshy** — not yet downloaded into the repo. No Unreal project exists yet.
 
 ---
 
@@ -67,23 +67,20 @@ The detailed specs are the source of truth — open them as needed:
 - **Engineering:** `TECHNICAL_DESIGN.md`, `DAY_ONE_CHECKLIST.md`, `CONVENTIONS.md`, `PROJECT_STRUCTURE.md`, `SETUP.md`, `PREPRODUCTION.md`, `NAME_AND_TRADEMARK.md`, `INDEX.md`
 - **Laptop setup:** `SETUP_NEW_LAPTOP.md` ← start here on a new machine
 - **Art / 3D:** `art/MESHY_PLAYBOOK.md`, `MESHY_PROMPTS.md`, `MESHY_API_SETUP.md`, `meshy_batch.py`, `meshy_assets.json`
-- **Reference sheets:** `vehicle-refs/` (26 dossiers, PDF + png + svg), `weapon-refs/` (14)
-- **Multi-view kit:** `MULTIVIEW_PROMPTS.md` + `multiview/<Vehicle>/` (front/side/top crops per vehicle) + `BlackLedger_Multiview_Kit.zip`
+- **Reference sheets:** `vehicle-refs/` (26 dossiers — `png/` = latest art, `html/` = latest sheet format, `svg/` = legacy, + PDF), `weapon-refs/` (14)
+- **Multi-view kit:** `MULTIVIEW_PROMPTS.md` + `multiview/<Vehicle>/` (front/side/top crops per vehicle)
 - **Other:** `vertical-slice/`, `arenas/` (10 blockouts), `vo/` (opponent barks), `audio/` (brief + event list), `ui/` (6 wireframes), `business/` (pitch, Steam, titles)
-- **Master bundle:** `BlackLedger_docs.zip`
-
-> Note: the latest reference art, the multi-view kit, and `SETUP_NEW_LAPTOP.md` currently live in `docs/vehicle-refs updated/`. Fold them into the main tree when convenient.
+- **Raw 3D source art:** `art/source/vehicles/<NN_Name>/` at repo root (Meshy FBX + PBR textures, committed via LFS)
 
 ---
 
 ## Immediate next steps
 
-1. **Commit & push** all docs from the machine that has them (Phase 0 in `SETUP_NEW_LAPTOP.md`) — LFS-track binaries first.
-2. **Laptop setup:** Windows update + GPU driver → Git + LFS → VS Community **+ v143 toolset** → UE **5.7** → Blender → Claude desktop. (Full steps in `SETUP_NEW_LAPTOP.md`.)
-3. **Clone** the repo, `git lfs pull`, and **re-connect the folder in Cowork** on the laptop.
-4. **Bring in the 16 Meshy models** → `art/source/vehicles/<NN_Name>/` → commit via LFS.
-5. **Create the UE 5.7 C++ project** "BlackLedger" inside the repo; add the UE `.gitignore`/`.gitattributes`; compile; **import the Surgeon** as the first round-trip.
-6. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md`.
+1. **Bring in the 16 Meshy models** — download FBX + PBR textures from Meshy into `art/source/vehicles/<NN_Name>/` (folders + README ready) → commit via LFS.
+2. **Create the UE 5.7 C++ project** "BlackLedger" inside the repo (root `.gitignore`/`.gitattributes` already in place); compile; **import the Surgeon** as the first round-trip.
+3. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md`.
+
+*(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded into the main tree.)*
 
 ---
 

@@ -36,6 +36,9 @@ CMakeLists.txt
 Plugins/**/Binaries/
 Plugins/**/Intermediate/
 
+# --- Office lock files ---
+~$*
+
 # --- OS clutter ---
 .DS_Store
 ._*
