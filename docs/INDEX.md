@@ -1,50 +1,43 @@
 # Black Ledger — Documentation Index
 
-The complete pre-production package — design through build-ready spec. Unzip at the repo root so this merges into `docs/`. The **Design Bible** is authoritative for content; the **tuning spreadsheet** is authoritative for numbers.
+The complete pre-production package — design, art reference, and the Meshy 3D pipeline. Unzip at the repo root so this merges into `docs/`. The **Design Bible** is authoritative for content; the **tuning spreadsheet** for numbers.
 
 ## Core
-- **DesignBible_v0.3.docx** — master design bible: 15 characters, 10 arenas, 10 Collector bosses, 14 weapons, lore, roadmap.
-- **BlackLedger_CombatTuning.xlsx** — live balance model (stats, effective HP, weapons, boss phases). Edit here to re-tune.
-- **BALANCE_SIM.md** — time-to-kill simulation against the sheet, with tuning guidance.
-- **PREPRODUCTION.md** — milestone/sprint plan (M0–M5), GitHub-ready.
-- **NAME_AND_TRADEMARK.md** — "Black Ledger" availability scan + recommendations.
+- **DesignBible_v0.3.docx** — master design bible (15 characters, 10 arenas, 10 Collector bosses, 14 weapons, lore, roadmap).
+- **BlackLedger_CombatTuning.xlsx** — live balance model. **BALANCE_SIM.md** — TTK simulation + tuning notes.
+- **PREPRODUCTION.md** — milestone/sprint plan. **NAME_AND_TRADEMARK.md** — title availability scan.
 
 ## Engineering
-- **TECHNICAL_DESIGN.md** — UE5 architecture: classes, components, data-driven systems, build order (Phases 0–3).
-- **DAY_ONE_CHECKLIST.md** — sequenced first-sprint tasks for when the dev machine arrives. *Open this first.*
-- **CONVENTIONS.md** — asset / code / git naming.
-- **PROJECT_STRUCTURE.md** — repo + Content folder layout.
-- **SETUP.md** — environment setup + Phase 0 verification.
+- **TECHNICAL_DESIGN.md** — UE5 architecture + build order. **DAY_ONE_CHECKLIST.md** — first-sprint tasks (open first).
+- **CONVENTIONS.md** · **PROJECT_STRUCTURE.md** · **SETUP.md** — naming, layout, environment.
+
+## art/  (3D pipeline — Meshy)
+- **MESHY_PLAYBOOK.md** — how to take prompts → game-ready assets (Pro-tuned).
+- **MESHY_PROMPTS.md** — paste-ready prompts + settings for all 14 weapons, 16 vehicles, 10 bosses.
+- **MESHY_API_SETUP.md** — connect Meshy (Unreal/Blender bridge + the API batch driver).
+- **meshy_batch.py** + **meshy_assets.json** — batch driver that runs all 40 prompts through Meshy's API and downloads FBX + PBR maps.
+
+## vehicle-refs/
+- **VEHICLE_REFERENCE.pdf** — 26-page codex (all vehicle dossier sheets).
+- **svg/** (editable sources) · **png/** (renders) — the 26 case-file reference sheets to feed Meshy image-to-3D.
 
 ## vertical-slice/
-- **VERTICAL_SLICE_SCOPE.md** — the locked demo scope (in/out lists, cut-line).
-- **CONTROL_SCHEME.md** — gamepad + keyboard mapping.
-- **TheMill_Blockout.svg / .png** — the slice arena blockout.
+- **VERTICAL_SLICE_SCOPE.md** · **CONTROL_SCHEME.md** · **TheMill_Blockout** (svg/png).
 
 ## arenas/
-- **ARENA_REFERENCE.pdf** — one-page summary sheet + all 10 full blockouts.
-- **svg/** — editable blockout sources (10 arenas + summary sheet).
-- **png/** — rendered blockouts.
+- **ARENA_REFERENCE.pdf** + **svg/** + **png/** — the 10 arena blockouts.
 
 ## vo/
-- **THE_SURGEON_SCRIPT.md** — player-character script (intro/ending shot-list + barks).
-- **OPPONENT_BARKS.md** — 5 opponents + The Foundryman.
-- **BARKS_REMAINING.md** — remaining 9 characters + Vault, and 9 bosses + the Auditor.
-- **CINEMATIC_SHOTLISTS.md** — pivotal intro/ending cinematics formalized into shot-lists.
+- **THE_SURGEON_SCRIPT.md** · **OPPONENT_BARKS.md** · **BARKS_REMAINING.md** · **CINEMATIC_SHOTLISTS.md**.
 
 ## audio/
-- **AUDIO_DESIGN_BRIEF.md** — 3-layer impact model, per-arena music, diegetic signatures, full VO casting.
-- **AUDIO_EVENTS.md** — Wwise/FMOD event list, RTPCs, switch groups, music states.
+- **AUDIO_DESIGN_BRIEF.md** · **AUDIO_EVENTS.md** (Wwise/FMOD).
 
 ## ui/
-- **SCREEN_FLOW.md** + **SCREEN_FLOW.svg/.png** — front-to-back screen flow + rules.
-- **HUD_Wireframe** / **RosterScreen_Wireframe** — in-match HUD + the "filing cabinet" select screen.
-- **UI_MainMenu / UI_Pause / UI_CampaignHub / UI_Unlock / UI_Result / UI_Ending** — the menu/flow screens.
+- **SCREEN_FLOW** (md/svg/png) · **HUD_Wireframe** · **RosterScreen_Wireframe** · **UI_MainMenu/Pause/CampaignHub/Unlock/Result/Ending**.
 
 ## business/
-- **PITCH_ONE_PAGER.md** — the sell sheet.
-- **STEAM_PAGE_DRAFT.md** — store-page draft (descriptions, tags, art/trailer plan) + backup titles.
-- **ASSET_SHOPPING_LIST.md** — free/placeholder asset sources for prototyping.
+- **PITCH_ONE_PAGER.md** · **STEAM_PAGE_DRAFT.md** · **ASSET_SHOPPING_LIST.md**.
 
 ---
-*Black Ledger pre-production package, 2026. SVG files are the editable sources; PNGs are renders for quick viewing.*
+*Black Ledger pre-production package, 2026. SVGs are editable sources; PNGs are renders.*

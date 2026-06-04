@@ -1,0 +1,202 @@
+[
+  {
+    "name": "homing_missile",
+    "polycount": 6000,
+    "prompt": "A small sleek homing missile with stubby fins and a red sensor tip, scuffed military-green metal, weathered game-ready PBR prop."
+  },
+  {
+    "name": "power_missile",
+    "polycount": 6000,
+    "prompt": "A large heavy unguided rocket, blunt warhead, riveted scorched steel casing, weathered game-ready PBR prop."
+  },
+  {
+    "name": "ricochet",
+    "polycount": 6000,
+    "prompt": "A glowing chrome ricochet round, a polished metal bullet with angled deflection fins, sci-fi, game-ready PBR prop."
+  },
+  {
+    "name": "remote_bomb",
+    "polycount": 6000,
+    "prompt": "A satchel remote bomb, taped explosive bricks with a blinking detonator and a short antenna, grimy, game-ready PBR prop."
+  },
+  {
+    "name": "freeze_missile",
+    "polycount": 6000,
+    "prompt": "A cryo freeze missile, a frost-covered pale-blue canister with vapor nozzles and ice crystals, game-ready PBR prop."
+  },
+  {
+    "name": "emp",
+    "polycount": 6000,
+    "prompt": "An EMP grenade, a matte-black orb wrapped in copper coils with glowing electric-blue nodes and a stub antenna, game-ready PBR prop."
+  },
+  {
+    "name": "napalm",
+    "polycount": 6000,
+    "prompt": "An incendiary napalm canister, a dented orange fuel cylinder with hazard stripes and a spray nozzle, scorched, game-ready PBR prop."
+  },
+  {
+    "name": "spike_strip",
+    "polycount": 6000,
+    "prompt": "A coiled road spike strip, folded steel caltrops and rebar spikes on a canvas band, rusty, game-ready PBR prop."
+  },
+  {
+    "name": "concussion_charge",
+    "polycount": 6000,
+    "prompt": "A squat steel concussion charge, a blast canister with a pressure dome and a grip handle, industrial, game-ready PBR prop."
+  },
+  {
+    "name": "arc_lance",
+    "polycount": 6000,
+    "prompt": "An industrial arc-welding cutting torch, a heavy handle with copper electrodes and trailing cables, game-ready PBR prop."
+  },
+  {
+    "name": "process_server",
+    "polycount": 6000,
+    "prompt": "A small deployable auto-turret, a tripod-mounted single barrel with a glowing sensor eye, riveted steel, game-ready PBR prop."
+  },
+  {
+    "name": "effigy",
+    "polycount": 6000,
+    "prompt": "A battered decoy projector device, a dented metal box with a glass lens emitter and an antenna, eerie, game-ready PBR prop."
+  },
+  {
+    "name": "final_notice",
+    "polycount": 6000,
+    "prompt": "An ornate seeker orb stamped with a red wax ledger seal, black metal filigree, faintly glowing, ominous, game-ready PBR prop."
+  },
+  {
+    "name": "health_pack",
+    "polycount": 6000,
+    "prompt": "A weathered first-aid crate, an olive metal box with a faded red cross and steel latches, scuffed, game-ready PBR prop."
+  },
+  {
+    "name": "surgeon_ambulance",
+    "polycount": 50000,
+    "prompt": "A weathered 1980s city ambulance, peeling white paint stained yellow-brown, red crosses crudely overpainted in black then white, surgical tools on the dash, dented and rusted, grimy, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "hollow_fire_engine",
+    "polycount": 50000,
+    "prompt": "A 1970s pumper fire engine completely blackened and scorched, a warped fire ladder, one gleaming polished chrome bell, charred ash-covered metal and ember marks, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "antoinette_cadillac",
+    "polycount": 50000,
+    "prompt": "A 1957 Cadillac Eldorado convertible, glossy pink with heavy chrome trim and tail fins, an ornate hood ornament shaped like a young woman, pristine from afar but rotted and mildewed up close, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "warden_prison_van",
+    "polycount": 50000,
+    "prompt": "A black armored prison transport van, reinforced steel mesh over the windows, a barred rear holding compartment, a scratched-off county insignia, riveted grimy steel, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "pup_ice_cream_truck",
+    "polycount": 50000,
+    "prompt": "A 1980s ice cream truck, faded patchy pastel paint, peeling cartoon decals whose features look slightly wrong, a rooftop loudspeaker, a frosted-over freezer, rusty and eerie, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "crucible_slag_hauler",
+    "polycount": 50000,
+    "prompt": "A massive industrial steel-mill slag hauler, huge front ladle bucket dripping molten orange slag, welded and bolted mill-steel armor plates, heavy rust, hulking and intimidating, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "cartographer_wagon",
+    "polycount": 50000,
+    "prompt": "A 1972 wood-paneled station wagon entirely plastered in layered, taped, peeling paper maps both real and impossible, a compass and sextant on the dash, weathered and obsessive, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "lien_repo_truck",
+    "polycount": 50000,
+    "prompt": "A heavy black repossession tow truck with a hydraulic boom and large hook, draped with grandfather clocks, a child's bicycle, wedding rings on a chain and a wheelchair on the roof, grimy and oppressive, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "hemlock_tanker",
+    "polycount": 50000,
+    "prompt": "A municipal water tanker truck choked in creeping kudzu and pale sickly growth, rusted white-and-green paint, the tank weeping black-green toxic slurry from every seam, eerie and overgrown, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "shepherd_bus",
+    "polycount": 50000,
+    "prompt": "A short rusty county church bus, faded hand-painted scripture, windows fogged from inside with faint handprints, a rooftop bell and a welded guardrail-steel cross, a water-stained lower body, ominous, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "specter_comms_truck",
+    "polycount": 50000,
+    "prompt": "A desert-tan armored communications box truck bristling with roof antenna arrays, a satellite dome and a tall Ku-band mast, its windows replaced by dark camera screens, utilitarian and weathered, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "refuse_garbage_truck",
+    "polycount": 50000,
+    "prompt": "A municipal rear-loader garbage truck, filthy gray-green grimy paint, a dented rear compactor hopper leaking ooze, the city seal scrubbed half off, an amber beacon, rust and industrial wear, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "bride_limo",
+    "polycount": 50000,
+    "prompt": "A decayed 1990s white stretch limousine gone gray, dragging tin cans and a single white shoe, a faded just-married placard, a dead bouquet wired to the rear, rice on the seats, eerie and melancholic, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "hunter_pickup",
+    "polycount": 50000,
+    "prompt": "A mud-caked 1980s off-road pickup truck with a front winch, antlers wired to the grille, a tarp-covered shape strapped to the hood, a single rifle in the rear rack, rugged and rural, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "photographer_sedan",
+    "polycount": 50000,
+    "prompt": "A boat-like 1961 black sedan studded with a homemade rig of large flashbulbs strung like teeth, cameras heaped in the back, the windows papered with one repeated photograph, a red darkroom glow inside, noir and unsettling, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "vault_armored_car",
+    "polycount": 50000,
+    "prompt": "A jet-black armored cash-transport truck, no markings, windows blacked out from outside, a heavy reinforced front ram, sinister and imposing, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "foundryman_cupola",
+    "polycount": 80000,
+    "prompt": "A self-propelled torpedo ladle car, a cigar-shaped molten-metal rail vessel glowing orange through cracks in its refractory shell, on heavy crawler tracks, a caged man-shape inside, monstrous, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "curfew_riot_truck",
+    "polycount": 80000,
+    "prompt": "An armored riot-control BearCat-type truck with a roof water cannon, riot shields welded across the front, a PA tower and a red-and-blue light bar, menacing, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "condemned_crane",
+    "polycount": 80000,
+    "prompt": "A demolition crane truck with a lattice-boom crane, a heavy wrecking ball and a clamshell grapple, draped in caution tape and dust-caked, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "jackknife_semi",
+    "polycount": 80000,
+    "prompt": "A black cab-over semi truck hauling a battered tanker trailer, a chrome bull-bar grille and aggressive red headlights, soot-streaked and demonic, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "sexton_hearse",
+    "polycount": 80000,
+    "prompt": "A funeral hearse fused with a stone mausoleum crypt, grave-dirt spilling from the seams, a small bell on top, gothic and eerie, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "undertow_dredge",
+    "polycount": 80000,
+    "prompt": "A barnacle-encrusted amphibious salvage truck on pontoon tracks, with a grapple dredge arm and a streaming diver's-bell cab, dripping and corroded, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "lodestone_magnet",
+    "polycount": 80000,
+    "prompt": "A mobile scrapyard crane on heavy tracks with a giant electromagnet and a baler-crusher maw, hung with crushed car cubes, rusted industrial, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "headliner_float",
+    "polycount": 80000,
+    "prompt": "A carnival parade-float rig, a rolling funhouse of cracked mirrors and fairy lights with a calliope and uncanny animatronic clowns, a spotlight on top, sinister carnival, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "alienist_ect",
+    "polycount": 80000,
+    "prompt": "A converted hospital ECT cart truck, a gurney rig trailing electrical cables and restraint straps, a single caged reflector headlight, clinical and menacing, realistic game-ready PBR vehicle."
+  },
+  {
+    "name": "auditor_car",
+    "polycount": 80000,
+    "prompt": "A featureless jet-black 1950s town car, glossy void-black paintwork, no markings, uncanny and pristine, a charcoal-suited figure at the wheel, realistic game-ready PBR vehicle."
+  }
+]

@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" font-family="Arial, sans-serif">
+<rect x="0" y="0" width="960" height="680" rx="0" fill="#121117" stroke="none" stroke-width="0" fill-opacity="1"/>
+<rect x="0" y="0" width="960" height="680" fill="none" stroke="#000000" stroke-width="12" stroke-opacity="0.09"/>
+<rect x="12" y="12" width="936" height="656" fill="none" stroke="#000000" stroke-width="12" stroke-opacity="0.09"/>
+<rect x="24" y="24" width="912" height="632" fill="none" stroke="#000000" stroke-width="12" stroke-opacity="0.09"/>
+<rect x="36" y="36" width="888" height="608" fill="none" stroke="#000000" stroke-width="12" stroke-opacity="0.09"/>
+<rect x="48" y="48" width="864" height="584" fill="none" stroke="#000000" stroke-width="12" stroke-opacity="0.09"/>
+<line x1="373" y1="0" x2="512" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<line x1="558" y1="0" x2="655" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<line x1="751" y1="0" x2="666" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<line x1="658" y1="0" x2="463" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<line x1="356" y1="0" x2="600" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<line x1="35" y1="0" x2="254" y2="680" stroke="#cdc6ba" stroke-width="1" stroke-opacity="0.04"/>
+<circle cx="544" cy="494" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.10427558478142808"/>
+<circle cx="517" cy="190" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.12355165649230035"/>
+<circle cx="353" cy="376" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1400793330257469"/>
+<circle cx="253" cy="635" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2185435501194068"/>
+<circle cx="666" cy="472" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.11683336803517808"/>
+<circle cx="600" cy="356" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.22295015053920858"/>
+<circle cx="146" cy="320" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2323209859209745"/>
+<circle cx="391" cy="98" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.22019247657679017"/>
+<circle cx="454" cy="604" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.10966143773493262"/>
+<circle cx="597" cy="310" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.12967533580812315"/>
+<circle cx="817" cy="405" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.15829788332565253"/>
+<circle cx="233" cy="172" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1036126516146931"/>
+<circle cx="770" cy="410" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.25022588297949905"/>
+<circle cx="412" cy="231" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1955501252517024"/>
+<circle cx="18" cy="93" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.22931049136413695"/>
+<circle cx="412" cy="491" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.07934051986847607"/>
+<circle cx="433" cy="316" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.25822950826134783"/>
+<circle cx="899" cy="187" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.16506686458468456"/>
+<circle cx="524" cy="223" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.12450078852005561"/>
+<circle cx="710" cy="507" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.0967997525901647"/>
+<circle cx="530" cy="621" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.19860171729245538"/>
+<circle cx="62" cy="88" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2047233352785908"/>
+<circle cx="452" cy="535" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.08247698545369062"/>
+<circle cx="501" cy="371" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.09569950119716694"/>
+<circle cx="833" cy="474" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2497316410260822"/>
+<circle cx="533" cy="360" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.1015876629101867"/>
+<circle cx="644" cy="97" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.26160449565012056"/>
+<circle cx="103" cy="397" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.1115565677270706"/>
+<circle cx="550" cy="119" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.19091816087841895"/>
+<circle cx="76" cy="360" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.23623355366122087"/>
+<circle cx="7" cy="239" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.14247912554406514"/>
+<circle cx="683" cy="52" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.15808430848089516"/>
+<circle cx="724" cy="411" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.07264988092494128"/>
+<circle cx="7" cy="657" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.17063619636776914"/>
+<circle cx="23" cy="573" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.2341644724762355"/>
+<circle cx="630" cy="224" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.11557531904752513"/>
+<circle cx="797" cy="24" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.12623371906165326"/>
+<circle cx="810" cy="617" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.20155643983571542"/>
+<circle cx="495" cy="509" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.1722943100373701"/>
+<circle cx="567" cy="20" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.21995147144018068"/>
+<circle cx="780" cy="598" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.14342586886935413"/>
+<circle cx="203" cy="596" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.11053774330418144"/>
+<circle cx="658" cy="590" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.10071150713364693"/>
+<circle cx="853" cy="33" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.10975624762459824"/>
+<circle cx="306" cy="402" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.10711793087260982"/>
+<circle cx="98" cy="218" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.22089204316968247"/>
+<circle cx="789" cy="7" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.23746842411712094"/>
+<circle cx="388" cy="455" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.24168767463407823"/>
+<circle cx="921" cy="124" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1594950897812068"/>
+<circle cx="319" cy="674" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.09935717333641084"/>
+<circle cx="31" cy="405" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.12409985634598054"/>
+<circle cx="815" cy="73" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.23045471251130847"/>
+<circle cx="936" cy="563" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1899483472186022"/>
+<circle cx="331" cy="391" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.2023918932811515"/>
+<circle cx="879" cy="254" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.2019383314994684"/>
+<circle cx="68" cy="470" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.07964943428752168"/>
+<circle cx="175" cy="608" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.21775487894951145"/>
+<circle cx="749" cy="215" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1325288004823279"/>
+<circle cx="587" cy="75" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2631269196954198"/>
+<circle cx="657" cy="661" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2605375287803645"/>
+<circle cx="145" cy="493" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.17331773661402128"/>
+<circle cx="909" cy="373" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1431230962506382"/>
+<circle cx="836" cy="374" r="2" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.12221642388907064"/>
+<circle cx="172" cy="279" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1002719795631411"/>
+<circle cx="247" cy="665" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.26003848719753575"/>
+<circle cx="837" cy="217" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1536130830591279"/>
+<circle cx="15" cy="134" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1937167225678047"/>
+<circle cx="893" cy="350" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.21320307405203398"/>
+<circle cx="528" cy="538" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.2525166583699346"/>
+<circle cx="238" cy="89" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.11868326280869335"/>
+<circle cx="327" cy="100" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.1138006972481426"/>
+<circle cx="539" cy="24" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.18328586062534377"/>
+<circle cx="677" cy="615" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.22846074581656348"/>
+<circle cx="935" cy="248" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.16252164864868734"/>
+<circle cx="315" cy="481" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.20273401674353334"/>
+<circle cx="525" cy="151" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.20752872516173235"/>
+<circle cx="729" cy="639" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.15258628526085544"/>
+<circle cx="201" cy="194" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.09210554091993804"/>
+<circle cx="597" cy="384" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.23970052162103875"/>
+<circle cx="736" cy="469" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.23726824234012805"/>
+<circle cx="940" cy="616" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.19216381738077934"/>
+<circle cx="598" cy="652" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.18221454150421354"/>
+<circle cx="671" cy="264" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.17272505718678216"/>
+<circle cx="805" cy="168" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.23687479601356853"/>
+<circle cx="226" cy="112" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.24483630946492618"/>
+<circle cx="144" cy="69" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.13518557015192645"/>
+<circle cx="838" cy="133" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.23123444704598178"/>
+<circle cx="574" cy="266" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.11180988799989879"/>
+<circle cx="707" cy="457" r="2" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.253721374650632"/>
+<circle cx="662" cy="94" r="3" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.12570271426513746"/>
+<circle cx="72" cy="178" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.2628475666988613"/>
+<circle cx="225" cy="210" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.10433637515540392"/>
+<circle cx="716" cy="458" r="1" fill="#000" stroke="none" stroke-width="0" fill-opacity="0.09954334817606979"/>
+<circle cx="134" cy="91" r="3" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.184850730036765"/>
+<circle cx="854" cy="398" r="1" fill="#5a3a1a" stroke="none" stroke-width="0" fill-opacity="0.15583191005998087"/>
+<rect x="712" y="359" width="2" height="20" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.07166577273489146"/>
+<rect x="770" y="338" width="2" height="55" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.14291196418409258"/>
+<rect x="516" y="348" width="2" height="63" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.07573425133143097"/>
+<rect x="172" y="468" width="2" height="49" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.09139926040579059"/>
+<rect x="603" y="546" width="2" height="78" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.13385702496793372"/>
+<rect x="911" y="518" width="2" height="30" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.09657238041739173"/>
+<rect x="522" y="298" width="2" height="42" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.13116791842719283"/>
+<rect x="504" y="165" width="2" height="38" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.06548388011056479"/>
+<rect x="913" y="302" width="2" height="80" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.10814207577919024"/>
+<rect x="598" y="229" width="2" height="32" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.1474500567378303"/>
+<rect x="135" y="528" width="2" height="24" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.07212919703549926"/>
+<rect x="78" y="337" width="2" height="54" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.14304427429226801"/>
+<rect x="891" y="315" width="2" height="45" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.09679269670190187"/>
+<rect x="581" y="538" width="2" height="40" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.1095012646889913"/>
+<rect x="486" y="350" width="2" height="36" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.09091402686346035"/>
+<rect x="474" y="337" width="2" height="56" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.12188288925536464"/>
+<text x="30" y="30" font-size="10" fill="#9b2a2a" text-anchor="start" font-weight="bold" letter-spacing="3" fill-opacity="1">THE BLACK LEDGER</text>
+<text x="30" y="56" font-size="21" fill="#d8d2c6" text-anchor="start" font-weight="bold" fill-opacity="1">HOMING MISSILE</text>
+<text x="30" y="74" font-size="11" fill="#8f887d" text-anchor="start" font-weight="normal" font-style="italic" fill-opacity="1">Pickup weapon · tracking   —   Black Ledger armory</text>
+<line x1="30" y1="84" x2="600" y2="84" stroke="#463c37" stroke-width="1.5" stroke-opacity="1"/>
+<g transform="rotate(-9 855 50)"><circle cx="855" cy="50" r="34" fill="none" stroke="#9b2a2a" stroke-width="2" fill-opacity="1"/><circle cx="855" cy="50" r="28" fill="none" stroke="#9b2a2a" stroke-width="1" fill-opacity="1"/><text x="855" y="42" font-size="7.5" fill="#9b2a2a" text-anchor="middle" font-weight="bold" fill-opacity="1">THE AUDITOR</text><line x1="836" y1="50" x2="874" y2="50" stroke="#9b2a2a" stroke-width="2" stroke-opacity="1"/><text x="855" y="62" font-size="7" fill="#9b2a2a" text-anchor="middle" font-weight="bold" fill-opacity="1">UNSETTLED</text></g>
+<text x="660" y="92" font-size="9" fill="#c9a06a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">FILE No. PICKUP 01 / 14</text>
+<text x="760" y="92" font-size="8" fill="#8f887d" text-anchor="start" font-weight="normal" fill-opacity="1">OWNER:</text>
+<rect x="796" y="84" width="70" height="11" rx="0" fill="#000" stroke="#000" stroke-width="0" fill-opacity="1"/>
+<text x="831" y="92" font-size="6.5" fill="#5a3a3a" text-anchor="middle" font-weight="bold" fill-opacity="1">REDACTED</text>
+<text x="480.0" y="666" font-size="10" fill="#7a6a5a" text-anchor="middle" font-weight="normal" font-style="italic" fill-opacity="1">“The bread-and-butter. It always finds someone.”</text>
+<rect x="30" y="104" width="560" height="300" rx="4" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<rect x="38" y="97" width="44" height="14" rx="2" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<text x="45" y="108" font-size="9.5" fill="#c9a06a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">HERO</text>
+<rect x="610" y="104" width="320" height="300" rx="4" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<rect x="618" y="97" width="107" height="14" rx="2" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<text x="625" y="108" font-size="9.5" fill="#c9a06a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">END / PROFILE</text>
+<rect x="30" y="420" width="560" height="210" rx="4" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<rect x="38" y="413" width="121" height="14" rx="2" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<text x="45" y="424" font-size="9.5" fill="#c9a06a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">IN-WORLD PICKUP</text>
+<rect x="610" y="420" width="320" height="210" rx="4" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<rect x="618" y="413" width="93" height="14" rx="2" fill="#1c1b23" stroke="#463c37" stroke-width="1.5" fill-opacity="1"/>
+<text x="625" y="424" font-size="9.5" fill="#c9a06a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">MESHY INPUT</text>
+<rect x="165" y="242" width="250" height="28" rx="14" fill="#5e6a52" stroke="#2a2e22" stroke-width="2" fill-opacity="1"/>
+<polygon points="410,242 492,256 410,270" fill="#5e6a52" stroke="#2a2e22" stroke-width="2" fill-opacity="1"/>
+<rect x="400" y="242" width="12" height="28" rx="0" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<polygon points="165,242 142,226 172,248" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.5" fill-opacity="1"/>
+<polygon points="165,270 142,286 172,264" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.5" fill-opacity="1"/>
+<polygon points="190,238 188,222 206,240" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.5" fill-opacity="1"/>
+<polygon points="210,262 220,258 226,265 218,271 208,267" fill="#7a4a22" stroke="none" stroke-width="0" fill-opacity="0.45"/>
+<polygon points="330,246 338.0,242.8 342.8,248.4 336.4,253.2 328.4,250.0" fill="#7a4a22" stroke="none" stroke-width="0" fill-opacity="0.45"/>
+<rect x="250" y="244" width="2" height="24" rx="0" fill="#06050a" stroke="none" stroke-width="0" fill-opacity="0.3"/>
+<circle cx="486" cy="256" r="3" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<line x1="486" y1="256" x2="300" y2="150" stroke="#9b2a2a" stroke-width="1.2" stroke-opacity="0.85"/>
+<text x="304" y="153" font-size="9" fill="#d8b48a" text-anchor="start" font-weight="normal" fill-opacity="1">Red sensor tip — locks the nearest enemy in front</text>
+<circle cx="250" cy="262" r="3" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<line x1="250" y1="262" x2="150" y2="150" stroke="#9b2a2a" stroke-width="1.2" stroke-opacity="0.85"/>
+<text x="154" y="153" font-size="9" fill="#d8b48a" text-anchor="start" font-weight="normal" fill-opacity="1">Scuffed military-green metal</text>
+<circle cx="165" cy="248" r="3" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<line x1="165" y1="248" x2="150" y2="300" stroke="#9b2a2a" stroke-width="1.2" stroke-opacity="0.85"/>
+<text x="154" y="303" font-size="9" fill="#d8b48a" text-anchor="start" font-weight="normal" fill-opacity="1">Three tail fins</text>
+<circle cx="770" cy="250" r="30" fill="#5e6a52" stroke="#2a2e22" stroke-width="2" fill-opacity="1"/>
+<circle cx="770" cy="250" r="6" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<polygon points="770,220 762,206 786,222" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.2" fill-opacity="1"/>
+<polygon points="770,280 762,294 786,278" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.2" fill-opacity="1"/>
+<polygon points="740,250 726,242 744,232" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.2" fill-opacity="1"/>
+<polygon points="800,250 814,242 796,232" fill="#5e6a52" stroke="#2a2e22" stroke-width="1.2" fill-opacity="1"/>
+<text x="770" y="316" font-size="8" fill="#8f887d" text-anchor="middle" font-weight="normal" fill-opacity="1">(rear — fin cross-section)</text>
+<circle cx="250" cy="540" r="46" fill="#d8762b" stroke="none" stroke-width="0" fill-opacity="0.1"/>
+<circle cx="250" cy="540" r="32" fill="#d8762b" stroke="none" stroke-width="0" fill-opacity="0.14"/>
+<polygon points="210,540 230,518 270,518 290,540 270,562 230,562" fill="none" stroke="#d8762b" stroke-width="1.5" fill-opacity="0.7"/>
+<line x1="250" y1="518" x2="250" y2="470" stroke="#d8762b" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="2 5"/>
+<rect x="212" y="532" width="76" height="8" rx="4" fill="#5e6a52" stroke="#2a2e22" stroke-width="1" fill-opacity="1"/>
+<polygon points="288,532 300,536 288,540" fill="#5e6a52" stroke="#2a2e22" stroke-width="1" fill-opacity="1"/>
+<circle cx="283" cy="531" r="3" fill="#9b2a2a" stroke="none" stroke-width="0" fill-opacity="1"/>
+<text x="360" y="520" font-size="9" fill="#d8b48a" text-anchor="start" font-weight="normal" fill-opacity="1">Spins + glows on the spawn pad</text>
+<text x="360" y="536" font-size="9" fill="#8f887d" text-anchor="start" font-weight="normal" fill-opacity="1">Scale ≈ 0.4 m</text>
+<text x="360" y="560" font-size="9" fill="#7fa8c0" text-anchor="start" font-weight="bold" fill-opacity="1">COMMON · 3 ammo</text>
+<text x="622" y="446" font-size="9" fill="#9b2a2a" text-anchor="start" font-weight="bold" letter-spacing="1" fill-opacity="1">PROMPT</text>
+<text x="622" y="459" font-size="8.4" fill="#cdc6ba" text-anchor="start" font-weight="normal" fill-opacity="1">A small sleek homing missile with stubby fins and</text>
+<text x="622" y="469.6" font-size="8.4" fill="#cdc6ba" text-anchor="start" font-weight="normal" fill-opacity="1">a red sensor tip, scuffed military-green metal,</text>
+<text x="622" y="480.20000000000005" font-size="8.4" fill="#cdc6ba" text-anchor="start" font-weight="normal" fill-opacity="1">weathered game-ready PBR prop.</text>
+<text x="622" y="496" font-size="8.4" fill="#7fa8c0" text-anchor="start" font-weight="bold" fill-opacity="1">Text-to-3D · Symmetry On · Quad · ~5k tris · PBR 2K</text>
+</svg>
