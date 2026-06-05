@@ -81,7 +81,7 @@ The detailed specs are the source of truth — open them as needed:
 
 **Vehicle pipeline (proven on the Surgeon):**
 - `tools/blender/prep_vehicle.py` (host Blender, headless) — carves fused Meshy wheels, installs cylinder combat wheels, real-world scale, ground/wheelbase pivot, decimate, UE-ready FBX + preview renders. Per-vehicle flags: `--length`, `--flip`, `--wheel-radius`, `--wheel-width`, `--decimate`.
-- `tools/unreal/import_vehicle.py` (headless UE) — imports meshes/textures, builds + assigns materials. Run via `-ExecCmds="py …"` with env vars `BL_VEHICLE_NAME`/`BL_VEHICLE_FOLDER` — **not** `-run=pythonscript` (Slate crash). Cosmetic teardown crash after "save" is known/harmless with `-nullrhi`.
+- `tools/unreal/import_vehicle.py` (headless UE) — wipes the dest folder, imports meshes/textures (importer-agnostic: strips Interchange's `<Name>_UE_` prefix), builds + assigns materials, saves. Run via `-ExecCmds="py …"` with env vars `BL_VEHICLE_NAME`/`BL_VEHICLE_FOLDER` — **not** `-run=pythonscript` (Slate crash). **The post-save teardown "Fatal error" under `-nullrhi` is known/harmless — check the log for `IMPORT OK` and the Content folder on disk for truth.**
 
 *(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded in; 16 Meshy models committed via LFS; UE project created and relocated to repo root with hand-added C++ module.)*
 

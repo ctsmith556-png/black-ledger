@@ -12,6 +12,7 @@
    "y": 1.091,
    "r": 0.408,
    "w": 0.4,
+   "cz": 0.42,
    "fit_ok": true,
    "zone_pts": 2841
   },
@@ -20,6 +21,7 @@
    "y": -1.091,
    "r": 0.408,
    "w": 0.4,
+   "cz": 0.42,
    "fit_ok": false,
    "zone_pts": 3023
   },
@@ -28,6 +30,7 @@
    "y": 1.091,
    "r": 0.374,
    "w": 0.4,
+   "cz": 0.374,
    "fit_ok": false,
    "zone_pts": 3003
   },
@@ -36,17 +39,29 @@
    "y": -1.091,
    "r": 0.374,
    "w": 0.4,
+   "cz": 0.374,
    "fit_ok": false,
    "zone_pts": 2651
   }
  },
- "carved_verts": 6514,
- "body_tris_final": 19763,
+ "carve": [
+  "FL: removed 3429 faces",
+  "FR: removed 3587 faces",
+  "RL: removed 3647 faces",
+  "RR: removed 3847 faces",
+  "FL: liner trimmed at z<0.333",
+  "FR: liner trimmed at z<0.333",
+  "RL: liner trimmed at z<0.295",
+  "RR: liner trimmed at z<0.295"
+ ],
+ "shard_verts_removed": 423,
+ "liners": 4,
+ "body_tris_final": 19170,
  "wheel_tris": 1136,
  "final_extents_m": [
   6.502,
   2.535,
-  2.658
+  2.681
  ],
  "wheelbase_m": 3.744,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\01_Surgeon\\Surgeon_UE.fbx",
@@ -54,6 +69,10 @@
   "front",
   "side",
   "three_quarter",
-  "low_rear"
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
  ]
 }

@@ -128,16 +128,17 @@ for xs, ys, tag in ((1, 1, "FL"), (1, -1, "FR"), (-1, 1, "RL"), (-1, -1, "RR")):
         cx, cz, r = sum(xsel) / len(xsel), fallback_r, fallback_r
     ys_sel = [abs(v.y) for v in zone] or [half_w * 0.85]
     w = max(0.18, min(0.40, (max(ys_sel) - min(ys_sel)) * 1.15)) if len(ys_sel) > 5 else 0.26
-    wheels[tag] = {"x": cx, "y": ys * (half_w * 0.86), "r": r, "w": w, "fit_ok": ok,
-                   "zone_pts": len(zone)}
+    wheels[tag] = {"x": cx, "y": ys * (half_w * 0.86), "r": r, "w": w, "cz": max(cz, 0.02),
+                   "fit_ok": ok, "zone_pts": len(zone)}
 
 # enforce left/right symmetry per axle (average the pair)
 for fa, fb in (("FL", "FR"), ("RL", "RR")):
     ax = (wheels[fa]["x"] + wheels[fb]["x"]) / 2
     ar = (wheels[fa]["r"] + wheels[fb]["r"]) / 2
     aw = (wheels[fa]["w"] + wheels[fb]["w"]) / 2
+    acz = (wheels[fa]["cz"] + wheels[fb]["cz"]) / 2
     for f in (fa, fb):
-        wheels[f]["x"], wheels[f]["r"], wheels[f]["w"] = ax, ar, aw
+        wheels[f]["x"], wheels[f]["r"], wheels[f]["w"], wheels[f]["cz"] = ax, ar, aw, acz
 if args.wheel_radius > 0:
     for f in wheels: wheels[f]["r"] = args.wheel_radius
 if args.wheel_width > 0:
@@ -145,47 +146,116 @@ if args.wheel_width > 0:
 report["wheels"] = {k: {kk: (round(vv, 3) if isinstance(vv, float) else vv)
                         for kk, vv in d.items()} for k, d in wheels.items()}
 
-# ---------- carve wheel zones out of body ----------
+# ---------- carve wheel openings (no boolean: delete faces fully inside each cylinder) ----------
+carve_log = []
+bm = bmesh.new()
+bm.from_mesh(body.data)
+for tag, wd in wheels.items():
+    r_cut = wd["r"] * 1.05
+    cz = wd["cz"]
+    side = 1 if wd["y"] > 0 else -1
+    y_in = max(abs(wd["y"]) - wd["w"] * 1.6, 0.12)  # deep enough to take the inner barrel
+    doomed = [f for f in bm.faces if all(
+        side * v.co.y > y_in and math.hypot(v.co.x - wd["x"], v.co.z - cz) < r_cut
+        for v in f.verts)]
+    bmesh.ops.delete(bm, geom=doomed, context="FACES")
+    carve_log.append(f"{tag}: removed {len(doomed)} faces")
+loose = [v for v in bm.verts if not v.link_faces]
+if loose:
+    bmesh.ops.delete(bm, geom=loose, context="VERTS")
+bm.to_mesh(body.data)
+bm.free()
+
+# clean stray shards: drop disconnected islands left inside the wells
 bm = bmesh.new()
 bm.from_mesh(body.data)
 bm.verts.ensure_lookup_table()
-doomed = set()
-for tag, wd in wheels.items():
-    cx, cy, r, w = wd["x"], wd["y"], wd["r"], wd["w"]
-    cz = r if not wd["fit_ok"] else max(r * 0.95, 0.01)
-    side = 1 if cy > 0 else -1
-    y_in = abs(cy) - w * 0.75
-    for v in bm.verts:
-        if side * v.co.y > y_in and math.hypot(v.co.x - cx, v.co.z - cz) < r * 1.10:
-            doomed.add(v)
-faces = set()
-for v in doomed:
-    faces.update(v.link_faces)
-bmesh.ops.delete(bm, geom=list(faces), context="FACES")
-# drop stranded verts/edges
-loose_v = [v for v in bm.verts if not v.link_faces]
-bmesh.ops.delete(bm, geom=loose_v, context="VERTS")
-# cap the arch holes (fill boundary loops near each carve zone)
-boundary = [e for e in bm.edges if e.is_boundary]
-near = []
-for e in boundary:
-    mid = (e.verts[0].co + e.verts[1].co) / 2
+parent = list(range(len(bm.verts)))
+def _find(a):
+    while parent[a] != a:
+        parent[a] = parent[parent[a]]; a = parent[a]
+    return a
+for e in bm.edges:
+    ra, rb = _find(e.verts[0].index), _find(e.verts[1].index)
+    if ra != rb:
+        parent[ra] = rb
+groups = {}
+for v in bm.verts:
+    groups.setdefault(_find(v.index), []).append(v)
+main_size = max(len(g) for g in groups.values())
+def in_well(centroid):
     for wd in wheels.values():
-        if (abs(mid.y) > abs(wd["y"]) - wd["w"] * 1.5 and
-                math.hypot(mid.x - wd["x"], mid.z - max(wd["r"], 0.01)) < wd["r"] * 1.6):
-            near.append(e); break
-if near:
-    bmesh.ops.holes_fill(bm, edges=near, sides=0)
+        if (math.hypot(centroid.x - wd["x"], centroid.z - wd["cz"]) < wd["r"] * 1.35 and
+                abs(centroid.y) > max(abs(wd["y"]) - wd["w"] * 1.8, 0.1)):
+            return True
+    return False
+shard_verts = []
+for g in groups.values():
+    if len(g) == main_size:
+        continue
+    centroid = sum((v.co for v in g), Vector()) / len(g)
+    if len(g) < max(40, main_size * 0.002) or in_well(centroid):
+        shard_verts.extend(g)
+if shard_verts:
+    bmesh.ops.delete(bm, geom=shard_verts, context="VERTS")
 bm.to_mesh(body.data)
 bm.free()
-report["carved_verts"] = len(doomed)
+report["carve"] = carve_log
+report["shard_verts_removed"] = len(shard_verts)
 
-# ---------- decimate body ----------
+# ---------- decimate body (before liners join, so liners stay clean) ----------
 if 0 < args.decimate < 1.0:
     mod = body.modifiers.new("Decimate", "DECIMATE")
     mod.ratio = args.decimate
     bpy.context.view_layer.objects.active = body
     bpy.ops.object.modifier_apply(modifier=mod.name)
+
+# ---------- wheel-well liners (dark tubs that hide the cut edges) ----------
+well_mat = bpy.data.materials.new("M_Well")
+well_mat.use_nodes = True
+well_mat.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (0.015, 0.015, 0.016, 1)
+well_mat.node_tree.nodes["Principled BSDF"].inputs["Roughness"].default_value = 0.95
+
+body_verts = [v.co.copy() for v in body.data.vertices]
+liners = []
+for tag, wd in wheels.items():
+    r_l = wd["r"] * 1.06          # just behind the carve edge (cut radius is r*1.05)
+    side = 1 if wd["y"] > 0 else -1
+    d = wd["w"] * 1.6
+    y_outer = abs(wd["y"]) + wd["w"] * 0.30   # tucked INSIDE the arch panel, never proud of it
+    # the tire occupies the opening below axle height - the liner only needs the upper arch
+    local_floor = wd["cz"] - wd["r"] * 0.25
+    bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=r_l, depth=d,
+                                        location=(wd["x"], side * (y_outer - d / 2), wd["cz"]))
+    ln = bpy.context.view_layer.objects.active
+    ln.rotation_euler = (math.radians(90), 0, 0)  # axis along Y
+    bpy.ops.object.transform_apply(rotation=True)
+    lbm = bmesh.new()
+    lbm.from_mesh(ln.data)
+    outer_caps = [f for f in lbm.faces if f.normal.y * side > 0.9]  # open the outboard end
+    bmesh.ops.delete(lbm, geom=outer_caps, context="FACES")
+    # trim everything hanging below the local bodywork (front valance sits high!)
+    low = [f for f in lbm.faces
+           if sum(v.co.z for v in f.verts) / len(f.verts) < local_floor + 0.015]
+    if low:
+        bmesh.ops.delete(lbm, geom=low, context="FACES")
+    stray = [v for v in lbm.verts if not v.link_faces]
+    if stray:
+        bmesh.ops.delete(lbm, geom=stray, context="VERTS")
+    bmesh.ops.reverse_faces(lbm, faces=list(lbm.faces))  # visible from outside, through the arch
+    lbm.to_mesh(ln.data)
+    lbm.free()
+    ln.data.materials.append(well_mat)
+    liners.append(ln)
+    carve_log.append(f"{tag}: liner trimmed at z<{local_floor + 0.015:.3f}")
+for o in bpy.context.scene.objects:
+    o.select_set(False)
+for ln in liners:
+    ln.select_set(True)
+body.select_set(True)
+bpy.context.view_layer.objects.active = body
+bpy.ops.object.join()  # liners become body slot 1 (M_Well)
+report["liners"] = len(liners)
 report["body_tris_final"] = sum(len(p.vertices) - 2 for p in body.data.polygons)
 
 # ---------- build replacement wheels ----------
@@ -271,11 +341,19 @@ scene.collection.objects.link(cam); scene.camera = cam
 mn, mx = bbox(body)
 ctr = (mn + mx) / 2
 size = max((mx - mn).length, 1)
-views = {"front": (size*1.6, 0, ctr.z + size*0.15), "side": (0, -size*1.6, ctr.z + size*0.15),
-         "three_quarter": (size*1.2, -size*1.2, size*0.55), "low_rear": (-size*1.2, -size*0.9, size*0.25)}
-for vname, pos in views.items():
+views = {"front": ((size*1.6, 0, ctr.z + size*0.15), ctr),
+         "side": ((0, -size*1.6, ctr.z + size*0.15), ctr),
+         "three_quarter": ((size*1.2, -size*1.2, size*0.55), ctr),
+         "low_rear": ((-size*1.2, -size*0.9, size*0.25), ctr)}
+for wo in wheel_objs:
+    tag = wo.name.split("_")[-1]
+    wl = wo.location
+    side = 1 if wl.y > 0 else -1
+    views[f"arch_{tag}"] = ((wl.x + (0.9 if wl.x >= 0 else -0.9), wl.y + side * 1.7, wl.z + 0.55),
+                            Vector((wl.x, wl.y, wl.z)))
+for vname, (pos, target) in views.items():
     cam.location = pos
-    d = Vector(ctr) - cam.location
+    d = Vector(target) - cam.location
     cam.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
     scene.render.filepath = out(f"{NAME}_preview_{vname}.png")
     bpy.ops.render.render(write_still=True)

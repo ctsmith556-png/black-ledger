@@ -44,8 +44,25 @@ def import_fbx():
     task.save = True
     task.replace_existing = True
     task.options = ui
+    task.factory = unreal.FbxFactory()  # pin the classic importer explicitly
     tools.import_asset_tasks([task])
     log.append(f"FBX imported from {task.filename}")
+    normalize_mesh_names()
+
+
+def normalize_mesh_names():
+    """Interchange prefixes assets with the source filename (Surgeon_UE_SM_...).
+    Strip that prefix so downstream steps find clean SM_<Name>_* names."""
+    prefix = f"{NAME}_UE_"
+    for a in eal.list_assets(dest, recursive=False, include_folder=False):
+        pkg = a.split(".")[0]
+        base = pkg.rsplit("/", 1)[-1]
+        if base.startswith(prefix):
+            clean = base[len(prefix):]
+            if eal.does_asset_exist(f"{dest}/{clean}"):
+                eal.delete_asset(f"{dest}/{clean}")
+            eal.rename_asset(pkg, f"{dest}/{clean}")
+            log.append(f"renamed {base} -> {clean}")
 
 
 def import_textures():
@@ -86,6 +103,8 @@ def build_body_material(textures):
     if eal.does_asset_exist(mat_path):
         eal.delete_asset(mat_path)
     mat = tools.create_asset(f"M_{NAME}_Body", dest, unreal.Material, unreal.MaterialFactoryNew())
+    if not mat:
+        raise RuntimeError("create_asset failed - assets are locked. CLOSE the Unreal editor and re-run.")
 
     def wire(code, prop, y, sampler=None):
         if code not in textures:
@@ -107,11 +126,13 @@ def build_body_material(textures):
     return mat
 
 
-def const_material(name, base, metallic, roughness):
+def const_material(name, base, metallic, roughness, specular=None):
     p = f"{dest}/{name}"
     if eal.does_asset_exist(p):
         eal.delete_asset(p)
     m = tools.create_asset(name, dest, unreal.Material, unreal.MaterialFactoryNew())
+    if not m:
+        raise RuntimeError(f"create_asset failed for {name} - CLOSE the Unreal editor and re-run.")
     c = mel.create_material_expression(m, unreal.MaterialExpressionConstant3Vector, -380, -200)
     c.constant = unreal.LinearColor(*base, 1.0)
     mel.connect_material_property(c, "", unreal.MaterialProperty.MP_BASE_COLOR)
@@ -121,6 +142,10 @@ def const_material(name, base, metallic, roughness):
     r = mel.create_material_expression(m, unreal.MaterialExpressionConstant, -380, 120)
     r.r = roughness
     mel.connect_material_property(r, "", unreal.MaterialProperty.MP_ROUGHNESS)
+    if specular is not None:
+        s = mel.create_material_expression(m, unreal.MaterialExpressionConstant, -380, 240)
+        s.r = specular
+        mel.connect_material_property(s, "", unreal.MaterialProperty.MP_SPECULAR)
     mel.recompile_material(m)
     eal.save_asset(p)
     log.append(f"material {p}")
@@ -141,12 +166,20 @@ def assign(mesh_path, mats):
 
 
 def main():
+    # force the classic FBX importer (Interchange reimports are async + ignore FbxImportUI)
+    unreal.SystemLibrary.execute_console_command(None, "Interchange.FeatureFlags.Import.FBX 0")
+    # idempotent: wipe the destination so every run is a clean first-time import
+    if eal.does_directory_exist(dest):
+        eal.delete_directory(dest)
+        log.append(f"cleared {dest}")
     import_fbx()
     textures = import_textures()
     body_mat = build_body_material(textures)
-    tire = const_material(f"M_{NAME}_Tire", (0.02, 0.02, 0.022), 0.0, 0.92)
+    tire = const_material(f"M_{NAME}_Tire", (0.02, 0.02, 0.022), 0.0, 0.92, specular=0.1)
     hub = const_material(f"M_{NAME}_Hub", (0.08, 0.08, 0.09), 1.0, 0.45)
-    assign(f"{dest}/SM_{NAME}_Body", [body_mat])
+    well = const_material(f"M_{NAME}_Well", (0.008, 0.008, 0.009), 0.0, 0.97, specular=0.0)
+    # slot 0 = painted body, slot 1 = wheel-well liner (reads as pure shadow)
+    assign(f"{dest}/SM_{NAME}_Body", [body_mat, well])
     for tag in ("FL", "FR", "RL", "RR"):
         assign(f"{dest}/SM_{NAME}_Wheel_{tag}", [tire, hub])
     eal.save_directory(dest)
