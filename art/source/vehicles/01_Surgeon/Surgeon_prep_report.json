@@ -1,0 +1,59 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\01_Surgeon\\Surgeon.fbx",
+ "name": "Surgeon",
+ "scaled_extents_m": [
+  6.5,
+  2.536,
+  2.658
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.011,
+   "y": 1.091,
+   "r": 0.408,
+   "w": 0.4,
+   "fit_ok": true,
+   "zone_pts": 2841
+  },
+  "FR": {
+   "x": 2.011,
+   "y": -1.091,
+   "r": 0.408,
+   "w": 0.4,
+   "fit_ok": false,
+   "zone_pts": 3023
+  },
+  "RL": {
+   "x": -1.733,
+   "y": 1.091,
+   "r": 0.374,
+   "w": 0.4,
+   "fit_ok": false,
+   "zone_pts": 3003
+  },
+  "RR": {
+   "x": -1.733,
+   "y": -1.091,
+   "r": 0.374,
+   "w": 0.4,
+   "fit_ok": false,
+   "zone_pts": 2651
+  }
+ },
+ "carved_verts": 6514,
+ "body_tris_final": 19763,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  6.502,
+  2.535,
+  2.658
+ ],
+ "wheelbase_m": 3.744,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\01_Surgeon\\Surgeon_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear"
+ ]
+}

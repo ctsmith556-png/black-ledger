@@ -76,8 +76,12 @@ The detailed specs are the source of truth — open them as needed:
 
 ## Immediate next steps
 
-1. **Import the Surgeon** as the first round-trip: Blender prep (separate wheels, pivot/scale) per `MESHY_PLAYBOOK.md`, then import to `Content/BlackLedger/Characters/Surgeon/`.
-2. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md`.
+1. **Verify the Surgeon in-editor** (imported June 5 — meshes/textures/materials at `Content/BlackLedger/Characters/Surgeon/`), then **batch-prep the other 15 vehicles** with `tools/blender/prep_vehicle.py` + `tools/unreal/import_vehicle.py`.
+2. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md` — next big step: `ABLCombatVehicle` pawn + drivable Surgeon.
+
+**Vehicle pipeline (proven on the Surgeon):**
+- `tools/blender/prep_vehicle.py` (host Blender, headless) — carves fused Meshy wheels, installs cylinder combat wheels, real-world scale, ground/wheelbase pivot, decimate, UE-ready FBX + preview renders. Per-vehicle flags: `--length`, `--flip`, `--wheel-radius`, `--wheel-width`, `--decimate`.
+- `tools/unreal/import_vehicle.py` (headless UE) — imports meshes/textures, builds + assigns materials. Run via `-ExecCmds="py …"` with env vars `BL_VEHICLE_NAME`/`BL_VEHICLE_FOLDER` — **not** `-run=pythonscript` (Slate crash). Cosmetic teardown crash after "save" is known/harmless with `-nullrhi`.
 
 *(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded in; 16 Meshy models committed via LFS; UE project created and relocated to repo root with hand-added C++ module.)*
 

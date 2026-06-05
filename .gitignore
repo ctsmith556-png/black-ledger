@@ -39,6 +39,9 @@ Plugins/**/Intermediate/
 # --- Office lock files ---
 ~$*
 
+# --- Blender auto-backups ---
+*.blend[0-9]
+
 # --- OS clutter ---
 .DS_Store
 ._*
