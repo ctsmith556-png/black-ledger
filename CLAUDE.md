@@ -11,7 +11,7 @@
 
 Framing: contestants with dark pasts are pulled into a deadly competition run by **"The Auditor."** Each vehicle is documented as an Auditor **case-file dossier** — that grim dossier look is the project's signature art style.
 
-**Status (June 2026):** Pre-production complete. Dev laptop is set up (Git+LFS, VS 2022 v143 toolset, UE 5.7, Blender); repo cloned to `C:\Users\csmit\black-ledger` and connected in Cowork. **16 vehicle models generated in Meshy** — not yet downloaded into the repo. No Unreal project exists yet.
+**Status (June 2026):** Pre-production complete; laptop set up; repo at `C:\Users\csmit\black-ledger` connected in Cowork. **All 16 Meshy vehicle models are committed** at `art/source/vehicles/` (FBX + PBR, ~1.7 GB LFS). **UE 5.7 project exists at the repo root** (`BlackLedger.uproject` + `Config/` + `Source/` + `Content/`, per `PROJECT_STRUCTURE.md`). The wizard produced a Blueprint project, so the C++ game module was added by hand — **first compile succeeded June 4, 2026; editor opens.** Note: UBA is disabled on this laptop (`Saved/UnrealBuildTool/BuildConfiguration.xml`, machine-local) because its memory kill-threshold loops on a ~25 GB RAM machine.
 
 ---
 
@@ -76,11 +76,10 @@ The detailed specs are the source of truth — open them as needed:
 
 ## Immediate next steps
 
-1. **Bring in the 16 Meshy models** — download FBX + PBR textures from Meshy into `art/source/vehicles/<NN_Name>/` (folders + README ready) → commit via LFS.
-2. **Create the UE 5.7 C++ project** "BlackLedger" inside the repo (root `.gitignore`/`.gitattributes` already in place); compile; **import the Surgeon** as the first round-trip.
-3. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md`.
+1. **Import the Surgeon** as the first round-trip: Blender prep (separate wheels, pivot/scale) per `MESHY_PLAYBOOK.md`, then import to `Content/BlackLedger/Characters/Surgeon/`.
+2. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md`.
 
-*(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded into the main tree.)*
+*(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded in; 16 Meshy models committed via LFS; UE project created and relocated to repo root with hand-added C++ module.)*
 
 ---
 
