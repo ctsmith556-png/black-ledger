@@ -14,22 +14,23 @@ $blender = (Get-ChildItem "C:\Program Files\Blender Foundation" -Recurse -Filter
 if (-not $blender) { Write-Error "blender.exe not found under C:\Program Files\Blender Foundation"; exit 1 }
 
 # Name | Folder | Length(m) | Flip
+# Flip=$true: Meshy modeled the whole roster facing -X (same as the Surgeon); UE wants front=+X.
 $vehicles = @(
-  @{ Name="Antoinette";   Folder="02_Antoinette";   Length=5.6;  Flip=$false },  # '57 Cadillac
-  @{ Name="Hollow";       Folder="03_Hollow";        Length=9.0;  Flip=$false },  # pumper fire engine
-  @{ Name="Warden";       Folder="04_Warden";        Length=6.5;  Flip=$false },  # prison van
-  @{ Name="Pup";          Folder="05_Pup";           Length=5.8;  Flip=$false },  # ice-cream step van
-  @{ Name="Crucible";     Folder="06_Crucible";      Length=8.5;  Flip=$false },  # 6-wheel slag hauler
-  @{ Name="Cartographer"; Folder="07_Cartographer";  Length=5.6;  Flip=$false },  # Plymouth wagon
-  @{ Name="Lien";         Folder="08_Lien";          Length=7.5;  Flip=$false },  # repo tow truck
-  @{ Name="Hemlock";      Folder="09_Hemlock";       Length=8.5;  Flip=$false },  # tanker truck
-  @{ Name="Shepherd";     Folder="10_Shepherd";      Length=11.0; Flip=$false },  # congregation bus
-  @{ Name="Specter";      Folder="11_Specter";       Length=7.0;  Flip=$false },  # surveillance box truck
-  @{ Name="Refuse";       Folder="12_Refuse";        Length=9.0;  Flip=$false },  # garbage truck
-  @{ Name="Bride";        Folder="13_Bride";         Length=9.0;  Flip=$false },  # 3-axle stretch limo
-  @{ Name="Hunter";       Folder="14_Hunter";        Length=5.8;  Flip=$false },  # square-body pickup
-  @{ Name="Photographer"; Folder="15_Photographer";  Length=5.4;  Flip=$false },  # '60s press sedan
-  @{ Name="Vault";        Folder="16_Vault";         Length=6.8;  Flip=$false }   # armored cash truck
+  @{ Name="Antoinette";   Folder="02_Antoinette";   Length=5.6;  Flip=$true },  # '57 Cadillac
+  @{ Name="Hollow";       Folder="03_Hollow";        Length=9.0;  Flip=$true },  # pumper fire engine
+  @{ Name="Warden";       Folder="04_Warden";        Length=6.5;  Flip=$true },  # prison van
+  @{ Name="Pup";          Folder="05_Pup";           Length=5.8;  Flip=$true },  # ice-cream step van
+  @{ Name="Crucible";     Folder="06_Crucible";      Length=8.5;  Flip=$true },  # 6-wheel slag hauler
+  @{ Name="Cartographer"; Folder="07_Cartographer";  Length=5.6;  Flip=$true },  # Plymouth wagon
+  @{ Name="Lien";         Folder="08_Lien";          Length=7.5;  Flip=$true },  # repo tow truck
+  @{ Name="Hemlock";      Folder="09_Hemlock";       Length=8.5;  Flip=$true },  # tanker truck
+  @{ Name="Shepherd";     Folder="10_Shepherd";      Length=11.0; Flip=$true },  # congregation bus
+  @{ Name="Specter";      Folder="11_Specter";       Length=7.0;  Flip=$true },  # surveillance box truck
+  @{ Name="Refuse";       Folder="12_Refuse";        Length=9.0;  Flip=$true },  # garbage truck
+  @{ Name="Bride";        Folder="13_Bride";         Length=9.0;  Flip=$true },  # 3-axle stretch limo
+  @{ Name="Hunter";       Folder="14_Hunter";        Length=5.8;  Flip=$true },  # square-body pickup
+  @{ Name="Photographer"; Folder="15_Photographer";  Length=5.4;  Flip=$true },  # '60s press sedan
+  @{ Name="Vault";        Folder="16_Vault";         Length=6.8;  Flip=$true }   # armored cash truck
 )
 
 $ran = 0

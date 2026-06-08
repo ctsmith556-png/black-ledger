@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\08_Lien\\Lien.fbx",
+ "name": "Lien",
+ "scaled_extents_m": [
+  7.5,
+  2.832,
+  2.994
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.133,
+   "y": 1.218,
+   "r": 0.431,
+   "w": 0.4,
+   "cz": 0.431,
+   "fit_ok": false,
+   "zone_pts": 1278
+  },
+  "FR": {
+   "x": 2.133,
+   "y": -1.218,
+   "r": 0.431,
+   "w": 0.4,
+   "cz": 0.431,
+   "fit_ok": false,
+   "zone_pts": 1235
+  },
+  "RL": {
+   "x": -1.821,
+   "y": 1.218,
+   "r": 0.431,
+   "w": 0.4,
+   "cz": 0.431,
+   "fit_ok": false,
+   "zone_pts": 2105
+  },
+  "RR": {
+   "x": -1.821,
+   "y": -1.218,
+   "r": 0.431,
+   "w": 0.4,
+   "cz": 0.431,
+   "fit_ok": false,
+   "zone_pts": 2139
+  }
+ },
+ "carve": [
+  "FL: removed 1272 faces",
+  "FR: removed 1210 faces",
+  "RL: removed 1096 faces",
+  "RR: removed 1000 faces",
+  "FL: liner trimmed at z<0.338",
+  "FR: liner trimmed at z<0.338",
+  "RL: liner trimmed at z<0.338",
+  "RR: liner trimmed at z<0.338"
+ ],
+ "shard_verts_removed": 414,
+ "liners": 4,
+ "body_tris_final": 27134,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  7.5,
+  2.829,
+  3.022
+ ],
+ "wheelbase_m": 3.954,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\08_Lien\\Lien_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

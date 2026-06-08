@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\04_Warden\\Warden.fbx",
+ "name": "Warden",
+ "scaled_extents_m": [
+  6.5,
+  2.97,
+  2.855
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.178,
+   "y": 1.277,
+   "r": 0.374,
+   "w": 0.4,
+   "cz": 0.374,
+   "fit_ok": false,
+   "zone_pts": 1947
+  },
+  "FR": {
+   "x": 2.178,
+   "y": -1.277,
+   "r": 0.374,
+   "w": 0.4,
+   "cz": 0.374,
+   "fit_ok": false,
+   "zone_pts": 1863
+  },
+  "RL": {
+   "x": -1.904,
+   "y": 1.277,
+   "r": 0.374,
+   "w": 0.4,
+   "cz": 0.374,
+   "fit_ok": false,
+   "zone_pts": 2248
+  },
+  "RR": {
+   "x": -1.904,
+   "y": -1.277,
+   "r": 0.374,
+   "w": 0.4,
+   "cz": 0.374,
+   "fit_ok": false,
+   "zone_pts": 2141
+  }
+ },
+ "carve": [
+  "FL: removed 1286 faces",
+  "FR: removed 1166 faces",
+  "RL: removed 1167 faces",
+  "RR: removed 1102 faces",
+  "FL: liner trimmed at z<0.295",
+  "FR: liner trimmed at z<0.295",
+  "RL: liner trimmed at z<0.295",
+  "RR: liner trimmed at z<0.295"
+ ],
+ "shard_verts_removed": 1649,
+ "liners": 4,
+ "body_tris_final": 26754,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  6.5,
+  2.971,
+  2.878
+ ],
+ "wheelbase_m": 4.082,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\04_Warden\\Warden_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

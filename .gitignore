@@ -42,6 +42,12 @@ Plugins/**/Intermediate/
 # --- Blender auto-backups ---
 *.blend[0-9]
 
+# --- Derived vehicle-prep scratch (regenerate via tools/blender/prep_vehicle.py) ---
+# Keep the raw Meshy source (Name.fbx + textures), the import-ready Name_UE.fbx,
+# and the prep report; drop the heavy Blender working file and preview renders.
+art/source/vehicles/**/*_prep.blend
+art/source/vehicles/**/*_preview_*.png
+
 # --- OS clutter ---
 .DS_Store
 ._*

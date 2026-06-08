@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\09_Hemlock\\Hemlock.fbx",
+ "name": "Hemlock",
+ "scaled_extents_m": [
+  8.5,
+  3.089,
+  2.886
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.059,
+   "y": 1.328,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 892
+  },
+  "FR": {
+   "x": 2.059,
+   "y": -1.328,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 963
+  },
+  "RL": {
+   "x": -2.045,
+   "y": 1.328,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 1154
+  },
+  "RR": {
+   "x": -2.045,
+   "y": -1.328,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 1126
+  }
+ },
+ "carve": [
+  "FL: removed 623 faces",
+  "FR: removed 419 faces",
+  "RL: removed 544 faces",
+  "RR: removed 495 faces",
+  "FL: liner trimmed at z<0.382",
+  "FR: liner trimmed at z<0.382",
+  "RL: liner trimmed at z<0.382",
+  "RR: liner trimmed at z<0.382"
+ ],
+ "shard_verts_removed": 8,
+ "liners": 4,
+ "body_tris_final": 29000,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  8.485,
+  3.086,
+  2.914
+ ],
+ "wheelbase_m": 4.104,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\09_Hemlock\\Hemlock_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\02_Antoinette\\Antoinette.fbx",
+ "name": "Antoinette",
+ "scaled_extents_m": [
+  5.6,
+  2.155,
+  1.357
+ ],
+ "wheels": {
+  "FL": {
+   "x": 1.653,
+   "y": 0.927,
+   "r": 0.322,
+   "w": 0.4,
+   "cz": 0.322,
+   "fit_ok": false,
+   "zone_pts": 1479
+  },
+  "FR": {
+   "x": 1.653,
+   "y": -0.927,
+   "r": 0.322,
+   "w": 0.4,
+   "cz": 0.322,
+   "fit_ok": false,
+   "zone_pts": 1448
+  },
+  "RL": {
+   "x": -1.426,
+   "y": 0.927,
+   "r": 0.322,
+   "w": 0.4,
+   "cz": 0.322,
+   "fit_ok": false,
+   "zone_pts": 2064
+  },
+  "RR": {
+   "x": -1.426,
+   "y": -0.927,
+   "r": 0.322,
+   "w": 0.4,
+   "cz": 0.322,
+   "fit_ok": false,
+   "zone_pts": 1500
+  }
+ },
+ "carve": [
+  "FL: removed 2384 faces",
+  "FR: removed 2374 faces",
+  "RL: removed 4363 faces",
+  "RR: removed 3071 faces",
+  "FL: liner trimmed at z<0.257",
+  "FR: liner trimmed at z<0.257",
+  "RL: liner trimmed at z<0.257",
+  "RR: liner trimmed at z<0.257"
+ ],
+ "shard_verts_removed": 317,
+ "liners": 4,
+ "body_tris_final": 22893,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  5.601,
+  2.154,
+  1.378
+ ],
+ "wheelbase_m": 3.079,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\02_Antoinette\\Antoinette_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

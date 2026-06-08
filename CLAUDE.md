@@ -11,7 +11,7 @@
 
 Framing: contestants with dark pasts are pulled into a deadly competition run by **"The Auditor."** Each vehicle is documented as an Auditor **case-file dossier** — that grim dossier look is the project's signature art style.
 
-**Status (June 2026):** Pre-production complete; laptop set up; repo at `C:\Users\csmit\black-ledger` connected in Cowork. **All 16 Meshy vehicle models are committed** at `art/source/vehicles/` (FBX + PBR, ~1.7 GB LFS). **UE 5.7 project exists at the repo root** (`BlackLedger.uproject` + `Config/` + `Source/` + `Content/`, per `PROJECT_STRUCTURE.md`). The wizard produced a Blueprint project, so the C++ game module was added by hand. **Phase 1 complete (June 5, 2026): the Surgeon is drivable** — `ABLCombatVehicle` arcade pawn (raycast suspension, direct-yaw steering, handbrake drift, airborne auto-level), `UBLHealthComponent`, `ABLGameMode`, classic input bindings, and a scripted gym map `L_Gym`. Note: UBA is disabled on this laptop (`Saved/UnrealBuildTool/BuildConfiguration.xml`, machine-local) because its memory kill-threshold loops on a ~25 GB RAM machine.
+**Status (June 2026):** Pre-production complete; laptop set up; repo at `C:\Users\csmit\black-ledger` connected in Cowork. **All 16 Meshy vehicle models are committed** at `art/source/vehicles/` (FBX + PBR, ~1.7 GB LFS). **UE 5.7 project exists at the repo root** (`BlackLedger.uproject` + `Config/` + `Source/` + `Content/`, per `PROJECT_STRUCTURE.md`). The wizard produced a Blueprint project, so the C++ game module was added by hand. **Phase 1 complete (June 5, 2026): the Surgeon is drivable** — `ABLCombatVehicle` arcade pawn (raycast suspension, direct-yaw steering, handbrake drift, airborne auto-level), `UBLHealthComponent`, `ABLGameMode`, classic input bindings, and a scripted gym map `L_Gym`. **All 16 vehicles imported in-engine (June 8, 2026)** at `Content/BlackLedger/Characters/<Name>/` (body + 4 wheels + textures + materials) via the batch pipeline. Note: UBA is disabled on this laptop (`Saved/UnrealBuildTool/BuildConfiguration.xml`, machine-local) because its memory kill-threshold loops on a ~25 GB RAM machine.
 
 ---
 
@@ -36,7 +36,7 @@ Framing: contestants with dark pasts are pulled into a deadly competition run by
 ## Tech & architecture
 
 - **Engine:** Unreal Engine **5.7**. **C++ core + Blueprints.**
-- **Toolchain:** Visual Studio **Community** with the **v143 (VS 2022) build tools** — UE 5.7 does *not* support VS 2026's default v144 compiler yet. "Game development with C++" workload required.
+- **Toolchain:** Visual Studio **2026** (v14.44 toolset) is installed and **compiles UE 5.7 fine** — the earlier v143-only worry proved moot on this machine. "Game development with C++" workload required. VS 2026 also owns the `.uproject` double-click association (opens it as JSON); open the project via the UE Project Browser → Browse instead.
 - **Vehicle pawn:** `ABLCombatVehicle` + components; data-driven via **Data Assets**.
 - **Movement:** **arcade**, not sim. Preferred rig = body mesh + **4 wheel meshes as Blueprint components** (lighter than a full Chaos skeletal vehicle).
 - **Destructibles:** runtime navmesh rebuild for collapsing geometry.
@@ -76,15 +76,18 @@ The detailed specs are the source of truth — open them as needed:
 
 ## Immediate next steps
 
-1. **Phase 2 — combat core** (`DAY_ONE_CHECKLIST.md` Week 2): `ABLProjectile` + machine-gun primary via `UBLWeaponComponent`; one Homing Missile pickup + `ABLPickupActor`; `UBLImpactFXSubsystem` (hit-stop + shake + audio); one AI opponent. Exit = a 2-min 1v1 is fun.
-2. **Batch-prep the other 15 vehicles** with the proven `tools/blender/prep_vehicle.py` + `tools/unreal/import_vehicle.py` pipeline (needs a per-vehicle `--length` table from the design bible).
+1. **Verify vehicle facing in-editor** (carried over): all 16 were auto-flipped to front=+X, but the in-editor textured check wasn't finished. Open a few bodies in `Content/BlackLedger/Characters/`; re-flip any straggler with `batch_prep.ps1 -Only <Name>` then `batch_import.ps1 -Only <Name>`.
+2. **Phase 2 — combat core** (`DAY_ONE_CHECKLIST.md` Week 2): `ABLProjectile` + machine-gun primary via `UBLWeaponComponent`; one Homing Missile pickup + `ABLPickupActor`; `UBLImpactFXSubsystem` (hit-stop + shake + audio); one AI opponent. Exit = a 2-min 1v1 is fun.
 3. **Vertical slice** (Phase 3) per the vertical-slice packet — The Mill + furnace hazard + catwalk-collapse destructible + Surgeon special + Foundryman boss.
 
-**Vehicle pipeline (proven on the Surgeon):**
-- `tools/blender/prep_vehicle.py` (host Blender, headless) — carves fused Meshy wheels, installs cylinder combat wheels, real-world scale, ground/wheelbase pivot, decimate, UE-ready FBX + preview renders. Per-vehicle flags: `--length`, `--flip`, `--wheel-radius`, `--wheel-width`, `--decimate`.
-- `tools/unreal/import_vehicle.py` (headless UE) — wipes the dest folder, imports meshes/textures (importer-agnostic: strips Interchange's `<Name>_UE_` prefix), builds + assigns materials, saves. Run via `-ExecCmds="py …"` with env vars `BL_VEHICLE_NAME`/`BL_VEHICLE_FOLDER` — **not** `-run=pythonscript` (Slate crash). **The post-save teardown "Fatal error" under `-nullrhi` is known/harmless — check the log for `IMPORT OK` and the Content folder on disk for truth.**
+**Known refinements deferred:** the three six-wheelers (Crucible, Bride, Shepherd) only got 4 wheels (prep installs front+rear pairs — middle axle bare); the vehicle pawn still hardcodes Surgeon meshes (others become selectable via Data Assets later).
 
-*(Done June 4, 2026: docs pushed; laptop tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded in; 16 Meshy models committed via LFS; UE project created and relocated to repo root with hand-added C++ module.)*
+**Vehicle pipeline (proven, all 16 done):**
+- `tools/blender/prep_vehicle.py` (host Blender, headless) — carves fused Meshy wheels, installs cylinder combat wheels + dark wheel-well liners, real-world scale, ground/wheelbase pivot, decimate, UE-ready FBX + preview renders. Per-vehicle flags: `--length`, `--flip`, `--wheel-radius`, `--wheel-width`, `--decimate`.
+- `tools/unreal/import_vehicle.py` (headless UE) — wipes the dest folder, imports meshes/textures (importer-agnostic: strips Interchange's `<Name>_UE_` prefix), builds + assigns materials, saves. Run via `-ExecCmds="py …"` with env vars `BL_VEHICLE_NAME`/`BL_VEHICLE_FOLDER` — **not** `-run=pythonscript` (Slate crash). **The post-save teardown "Fatal error" under `-nullrhi` is known/harmless — check the log for `IMPORT OK` and the Content folder on disk for truth.**
+- **Batch runners:** `tools/blender/batch_prep.ps1` + `tools/unreal/batch_import.ps1` (data-driven roster table: name/folder/length/flip; `-Only <Name>,<Name>` runs a subset). Run with `powershell -ExecutionPolicy Bypass -File <script>`. **Editor must be CLOSED for any UE import** (asset locks); Blender prep is fine with it open.
+
+*(Done June 4: docs pushed; tools installed; repo cloned + Cowork connected; `vehicle-refs updated/` folded in; 16 Meshy models committed via LFS; UE project at repo root with hand-added C++ module. Done June 5: Phase 1 drivable Surgeon. Done June 8: all 15 remaining vehicles batch-prepped + imported in-engine.)*
 
 ---
 

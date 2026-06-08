@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\11_Specter\\Specter.fbx",
+ "name": "Specter",
+ "scaled_extents_m": [
+  7.0,
+  2.657,
+  3.071
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.227,
+   "y": 1.142,
+   "r": 0.403,
+   "w": 0.4,
+   "cz": 0.403,
+   "fit_ok": false,
+   "zone_pts": 2230
+  },
+  "FR": {
+   "x": 2.227,
+   "y": -1.142,
+   "r": 0.403,
+   "w": 0.4,
+   "cz": 0.403,
+   "fit_ok": false,
+   "zone_pts": 2117
+  },
+  "RL": {
+   "x": -2.056,
+   "y": 1.142,
+   "r": 0.403,
+   "w": 0.4,
+   "cz": 0.403,
+   "fit_ok": false,
+   "zone_pts": 2298
+  },
+  "RR": {
+   "x": -2.056,
+   "y": -1.142,
+   "r": 0.403,
+   "w": 0.4,
+   "cz": 0.403,
+   "fit_ok": false,
+   "zone_pts": 2205
+  }
+ },
+ "carve": [
+  "FL: removed 2432 faces",
+  "FR: removed 2361 faces",
+  "RL: removed 2599 faces",
+  "RR: removed 2488 faces",
+  "FL: liner trimmed at z<0.317",
+  "FR: liner trimmed at z<0.317",
+  "RL: liner trimmed at z<0.317",
+  "RR: liner trimmed at z<0.317"
+ ],
+ "shard_verts_removed": 1231,
+ "liners": 4,
+ "body_tris_final": 24333,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  7.001,
+  2.657,
+  3.093
+ ],
+ "wheelbase_m": 4.283,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\11_Specter\\Specter_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

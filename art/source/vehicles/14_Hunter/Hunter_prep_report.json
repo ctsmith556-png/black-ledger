@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\14_Hunter\\Hunter.fbx",
+ "name": "Hunter",
+ "scaled_extents_m": [
+  5.8,
+  2.529,
+  2.165
+ ],
+ "wheels": {
+  "FL": {
+   "x": 1.743,
+   "y": 1.087,
+   "r": 0.334,
+   "w": 0.4,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 1466
+  },
+  "FR": {
+   "x": 1.743,
+   "y": -1.087,
+   "r": 0.334,
+   "w": 0.4,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 1471
+  },
+  "RL": {
+   "x": -1.549,
+   "y": 1.087,
+   "r": 0.334,
+   "w": 0.4,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 1491
+  },
+  "RR": {
+   "x": -1.549,
+   "y": -1.087,
+   "r": 0.334,
+   "w": 0.4,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 1556
+  }
+ },
+ "carve": [
+  "FL: removed 2200 faces",
+  "FR: removed 2175 faces",
+  "RL: removed 2041 faces",
+  "RR: removed 2142 faces",
+  "FL: liner trimmed at z<0.265",
+  "FR: liner trimmed at z<0.265",
+  "RL: liner trimmed at z<0.265",
+  "RR: liner trimmed at z<0.265"
+ ],
+ "shard_verts_removed": 2725,
+ "liners": 4,
+ "body_tris_final": 23457,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  5.801,
+  2.533,
+  2.184
+ ],
+ "wheelbase_m": 3.292,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\14_Hunter\\Hunter_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

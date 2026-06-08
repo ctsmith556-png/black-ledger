@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\12_Refuse\\Refuse.fbx",
+ "name": "Refuse",
+ "scaled_extents_m": [
+  9.0,
+  3.164,
+  3.558
+ ],
+ "wheels": {
+  "FL": {
+   "x": 2.747,
+   "y": 1.361,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 940
+  },
+  "FR": {
+   "x": 2.747,
+   "y": -1.361,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 949
+  },
+  "RL": {
+   "x": -2.425,
+   "y": 1.361,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 1413
+  },
+  "RR": {
+   "x": -2.425,
+   "y": -1.361,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 1379
+  }
+ },
+ "carve": [
+  "FL: removed 425 faces",
+  "FR: removed 491 faces",
+  "RL: removed 1310 faces",
+  "RR: removed 1334 faces",
+  "FL: liner trimmed at z<0.403",
+  "FR: liner trimmed at z<0.403",
+  "RL: liner trimmed at z<0.403",
+  "RR: liner trimmed at z<0.403"
+ ],
+ "shard_verts_removed": 294,
+ "liners": 4,
+ "body_tris_final": 28135,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  9.0,
+  3.162,
+  3.589
+ ],
+ "wheelbase_m": 5.173,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\12_Refuse\\Refuse_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

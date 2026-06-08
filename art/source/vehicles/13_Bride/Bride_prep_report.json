@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\13_Bride\\Bride.fbx",
+ "name": "Bride",
+ "scaled_extents_m": [
+  9.0,
+  4.158,
+  1.962
+ ],
+ "wheels": {
+  "FL": {
+   "x": 3.146,
+   "y": 1.788,
+   "r": 0.518,
+   "w": 0.22,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 136
+  },
+  "FR": {
+   "x": 3.146,
+   "y": -1.788,
+   "r": 0.518,
+   "w": 0.22,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 0
+  },
+  "RL": {
+   "x": -3.755,
+   "y": 1.788,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 1650
+  },
+  "RR": {
+   "x": -3.755,
+   "y": -1.788,
+   "r": 0.518,
+   "w": 0.4,
+   "cz": 0.518,
+   "fit_ok": false,
+   "zone_pts": 1237
+  }
+ },
+ "carve": [
+  "FL: removed 0 faces",
+  "FR: removed 0 faces",
+  "RL: removed 2115 faces",
+  "RR: removed 1470 faces",
+  "FL: liner trimmed at z<0.403",
+  "FR: liner trimmed at z<0.403",
+  "RL: liner trimmed at z<0.403",
+  "RR: liner trimmed at z<0.403"
+ ],
+ "shard_verts_removed": 1186,
+ "liners": 4,
+ "body_tris_final": 28327,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  8.881,
+  3.816,
+  1.993
+ ],
+ "wheelbase_m": 6.9,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\13_Bride\\Bride_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

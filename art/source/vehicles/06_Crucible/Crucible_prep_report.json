@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\06_Crucible\\Crucible.fbx",
+ "name": "Crucible",
+ "scaled_extents_m": [
+  8.5,
+  2.879,
+  3.073
+ ],
+ "wheels": {
+  "FL": {
+   "x": 1.952,
+   "y": 1.238,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 1780
+  },
+  "FR": {
+   "x": 1.952,
+   "y": -1.238,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 1315
+  },
+  "RL": {
+   "x": -1.866,
+   "y": 1.238,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 2227
+  },
+  "RR": {
+   "x": -1.866,
+   "y": -1.238,
+   "r": 0.489,
+   "w": 0.4,
+   "cz": 0.489,
+   "fit_ok": false,
+   "zone_pts": 2091
+  }
+ },
+ "carve": [
+  "FL: removed 1183 faces",
+  "FR: removed 748 faces",
+  "RL: removed 1193 faces",
+  "RR: removed 1121 faces",
+  "FL: liner trimmed at z<0.382",
+  "FR: liner trimmed at z<0.382",
+  "RL: liner trimmed at z<0.382",
+  "RR: liner trimmed at z<0.382"
+ ],
+ "shard_verts_removed": 76,
+ "liners": 4,
+ "body_tris_final": 28501,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  8.5,
+  2.878,
+  3.102
+ ],
+ "wheelbase_m": 3.818,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\06_Crucible\\Crucible_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\05_Pup\\Pup.fbx",
+ "name": "Pup",
+ "scaled_extents_m": [
+  5.8,
+  2.786,
+  2.653
+ ],
+ "wheels": {
+  "FL": {
+   "x": 1.792,
+   "y": 1.198,
+   "r": 0.334,
+   "w": 0.29,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 3149
+  },
+  "FR": {
+   "x": 1.792,
+   "y": -1.198,
+   "r": 0.334,
+   "w": 0.29,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 330
+  },
+  "RL": {
+   "x": -1.94,
+   "y": 1.198,
+   "r": 0.334,
+   "w": 0.29,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 2641
+  },
+  "RR": {
+   "x": -1.94,
+   "y": -1.198,
+   "r": 0.334,
+   "w": 0.29,
+   "cz": 0.334,
+   "fit_ok": false,
+   "zone_pts": 459
+  }
+ },
+ "carve": [
+  "FL: removed 2203 faces",
+  "FR: removed 835 faces",
+  "RL: removed 1446 faces",
+  "RR: removed 631 faces",
+  "FL: liner trimmed at z<0.265",
+  "FR: liner trimmed at z<0.265",
+  "RL: liner trimmed at z<0.265",
+  "RR: liner trimmed at z<0.265"
+ ],
+ "shard_verts_removed": 0,
+ "liners": 4,
+ "body_tris_final": 27883,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  5.798,
+  2.785,
+  2.672
+ ],
+ "wheelbase_m": 3.732,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\05_Pup\\Pup_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}

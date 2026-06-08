@@ -1,0 +1,78 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\10_Shepherd\\Shepherd.fbx",
+ "name": "Shepherd",
+ "scaled_extents_m": [
+  11.0,
+  3.878,
+  4.102
+ ],
+ "wheels": {
+  "FL": {
+   "x": 3.888,
+   "y": 1.667,
+   "r": 0.633,
+   "w": 0.4,
+   "cz": 0.633,
+   "fit_ok": false,
+   "zone_pts": 929
+  },
+  "FR": {
+   "x": 3.888,
+   "y": -1.667,
+   "r": 0.633,
+   "w": 0.4,
+   "cz": 0.633,
+   "fit_ok": false,
+   "zone_pts": 954
+  },
+  "RL": {
+   "x": -3.41,
+   "y": 1.667,
+   "r": 0.633,
+   "w": 0.4,
+   "cz": 0.633,
+   "fit_ok": false,
+   "zone_pts": 1423
+  },
+  "RR": {
+   "x": -3.41,
+   "y": -1.667,
+   "r": 0.633,
+   "w": 0.4,
+   "cz": 0.633,
+   "fit_ok": false,
+   "zone_pts": 1413
+  }
+ },
+ "carve": [
+  "FL: removed 375 faces",
+  "FR: removed 386 faces",
+  "RL: removed 497 faces",
+  "RR: removed 544 faces",
+  "FL: liner trimmed at z<0.489",
+  "FR: liner trimmed at z<0.489",
+  "RL: liner trimmed at z<0.489",
+  "RR: liner trimmed at z<0.489"
+ ],
+ "shard_verts_removed": 16,
+ "liners": 4,
+ "body_tris_final": 29336,
+ "wheel_tris": 1136,
+ "final_extents_m": [
+  10.997,
+  3.87,
+  4.134
+ ],
+ "wheelbase_m": 7.297,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\10_Shepherd\\Shepherd_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear",
+  "arch_FL",
+  "arch_FR",
+  "arch_RL",
+  "arch_RR"
+ ]
+}
