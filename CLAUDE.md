@@ -11,7 +11,7 @@
 
 Framing: contestants with dark pasts are pulled into a deadly competition run by **"The Auditor."** Each vehicle is documented as an Auditor **case-file dossier** — that grim dossier look is the project's signature art style.
 
-**Status (June 2026):** Pre-production complete; laptop set up; repo at `C:\Users\csmit\black-ledger` connected in Cowork. **All 16 Meshy vehicle models are committed** at `art/source/vehicles/` (FBX + PBR, ~1.7 GB LFS). **UE 5.7 project exists at the repo root** (`BlackLedger.uproject` + `Config/` + `Source/` + `Content/`, per `PROJECT_STRUCTURE.md`). The wizard produced a Blueprint project, so the C++ game module was added by hand — **first compile succeeded June 4, 2026; editor opens.** Note: UBA is disabled on this laptop (`Saved/UnrealBuildTool/BuildConfiguration.xml`, machine-local) because its memory kill-threshold loops on a ~25 GB RAM machine.
+**Status (June 2026):** Pre-production complete; laptop set up; repo at `C:\Users\csmit\black-ledger` connected in Cowork. **All 16 Meshy vehicle models are committed** at `art/source/vehicles/` (FBX + PBR, ~1.7 GB LFS). **UE 5.7 project exists at the repo root** (`BlackLedger.uproject` + `Config/` + `Source/` + `Content/`, per `PROJECT_STRUCTURE.md`). The wizard produced a Blueprint project, so the C++ game module was added by hand. **Phase 1 complete (June 5, 2026): the Surgeon is drivable** — `ABLCombatVehicle` arcade pawn (raycast suspension, direct-yaw steering, handbrake drift, airborne auto-level), `UBLHealthComponent`, `ABLGameMode`, classic input bindings, and a scripted gym map `L_Gym`. Note: UBA is disabled on this laptop (`Saved/UnrealBuildTool/BuildConfiguration.xml`, machine-local) because its memory kill-threshold loops on a ~25 GB RAM machine.
 
 ---
 
@@ -76,8 +76,9 @@ The detailed specs are the source of truth — open them as needed:
 
 ## Immediate next steps
 
-1. **Verify the Surgeon in-editor** (imported June 5 — meshes/textures/materials at `Content/BlackLedger/Characters/Surgeon/`), then **batch-prep the other 15 vehicles** with `tools/blender/prep_vehicle.py` + `tools/unreal/import_vehicle.py`.
-2. **Build the vertical slice** per the vertical-slice packet + `DAY_ONE_CHECKLIST.md` — next big step: `ABLCombatVehicle` pawn + drivable Surgeon.
+1. **Phase 2 — combat core** (`DAY_ONE_CHECKLIST.md` Week 2): `ABLProjectile` + machine-gun primary via `UBLWeaponComponent`; one Homing Missile pickup + `ABLPickupActor`; `UBLImpactFXSubsystem` (hit-stop + shake + audio); one AI opponent. Exit = a 2-min 1v1 is fun.
+2. **Batch-prep the other 15 vehicles** with the proven `tools/blender/prep_vehicle.py` + `tools/unreal/import_vehicle.py` pipeline (needs a per-vehicle `--length` table from the design bible).
+3. **Vertical slice** (Phase 3) per the vertical-slice packet — The Mill + furnace hazard + catwalk-collapse destructible + Surgeon special + Foundryman boss.
 
 **Vehicle pipeline (proven on the Surgeon):**
 - `tools/blender/prep_vehicle.py` (host Blender, headless) — carves fused Meshy wheels, installs cylinder combat wheels, real-world scale, ground/wheelbase pivot, decimate, UE-ready FBX + preview renders. Per-vehicle flags: `--length`, `--flip`, `--wheel-radius`, `--wheel-width`, `--decimate`.

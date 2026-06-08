@@ -8,6 +8,9 @@ public class BlackLedger : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
+		// flat layout (Core/, Vehicles/, ...) - make module-root-relative includes work
+		PublicIncludePaths.Add(ModuleDirectory);
+
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core",
