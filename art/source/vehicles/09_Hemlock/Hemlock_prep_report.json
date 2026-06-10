@@ -6,64 +6,70 @@
   3.089,
   2.886
  ],
+ "scale_factors": [
+  4.4414,
+  4.4414,
+  4.4414
+ ],
  "wheels": {
   "FL": {
-   "x": 2.059,
-   "y": 1.328,
-   "r": 0.489,
+   "x": 3.307,
+   "y": 1.176,
+   "r": 0.467,
    "w": 0.4,
-   "cz": 0.489,
-   "fit_ok": false,
-   "zone_pts": 892
+   "cz": 0.467,
+   "fit_ok": true,
+   "zone_pts": 808
   },
   "FR": {
-   "x": 2.059,
-   "y": -1.328,
-   "r": 0.489,
+   "x": 3.307,
+   "y": -1.176,
+   "r": 0.467,
    "w": 0.4,
-   "cz": 0.489,
-   "fit_ok": false,
-   "zone_pts": 963
+   "cz": 0.467,
+   "fit_ok": true,
+   "zone_pts": 808
   },
   "RL": {
-   "x": -2.045,
-   "y": 1.328,
-   "r": 0.489,
+   "x": -2.108,
+   "y": 1.176,
+   "r": 0.467,
    "w": 0.4,
-   "cz": 0.489,
-   "fit_ok": false,
-   "zone_pts": 1154
+   "cz": 0.467,
+   "fit_ok": true,
+   "zone_pts": 1081
   },
   "RR": {
-   "x": -2.045,
-   "y": -1.328,
-   "r": 0.489,
+   "x": -2.108,
+   "y": -1.176,
+   "r": 0.467,
    "w": 0.4,
-   "cz": 0.489,
-   "fit_ok": false,
-   "zone_pts": 1126
+   "cz": 0.467,
+   "fit_ok": true,
+   "zone_pts": 1081
   }
  },
  "carve": [
-  "FL: removed 623 faces",
-  "FR: removed 419 faces",
-  "RL: removed 544 faces",
-  "RR: removed 495 faces",
-  "FL: liner trimmed at z<0.382",
-  "FR: liner trimmed at z<0.382",
-  "RL: liner trimmed at z<0.382",
-  "RR: liner trimmed at z<0.382"
+  "FL: removed 822 faces",
+  "FR: removed 829 faces",
+  "RL: removed 866 faces",
+  "RR: removed 710 faces",
+  "FL: liner trimmed at z<0.365",
+  "FR: liner trimmed at z<0.365",
+  "RL: liner trimmed at z<0.365",
+  "RR: liner trimmed at z<0.365"
  ],
- "shard_verts_removed": 8,
+ "shard_verts_removed": 123,
  "liners": 4,
- "body_tris_final": 29000,
+ "body_tris_final": 28134,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   8.485,
   3.086,
-  2.914
+  2.915
  ],
- "wheelbase_m": 4.104,
+ "wheelbase_m": 5.415,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\09_Hemlock\\Hemlock_UE.fbx",
  "previews": [
   "front",

@@ -6,64 +6,70 @@
   3.164,
   3.558
  ],
+ "scale_factors": [
+  4.7086,
+  4.7086,
+  4.7086
+ ],
  "wheels": {
   "FL": {
-   "x": 2.747,
-   "y": 1.361,
-   "r": 0.518,
+   "x": 2.961,
+   "y": 1.142,
+   "r": 0.609,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 940
+   "cz": 0.609,
+   "fit_ok": true,
+   "zone_pts": 872
   },
   "FR": {
-   "x": 2.747,
-   "y": -1.361,
-   "r": 0.518,
+   "x": 2.961,
+   "y": -1.142,
+   "r": 0.609,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 949
+   "cz": 0.609,
+   "fit_ok": true,
+   "zone_pts": 872
   },
   "RL": {
-   "x": -2.425,
-   "y": 1.361,
-   "r": 0.518,
+   "x": -1.728,
+   "y": 1.142,
+   "r": 0.609,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 1413
+   "cz": 0.609,
+   "fit_ok": true,
+   "zone_pts": 1334
   },
   "RR": {
-   "x": -2.425,
-   "y": -1.361,
-   "r": 0.518,
+   "x": -1.728,
+   "y": -1.142,
+   "r": 0.609,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 1379
+   "cz": 0.609,
+   "fit_ok": true,
+   "zone_pts": 1334
   }
  },
  "carve": [
-  "FL: removed 425 faces",
-  "FR: removed 491 faces",
-  "RL: removed 1310 faces",
-  "RR: removed 1334 faces",
-  "FL: liner trimmed at z<0.403",
-  "FR: liner trimmed at z<0.403",
-  "RL: liner trimmed at z<0.403",
-  "RR: liner trimmed at z<0.403"
+  "FL: removed 1194 faces",
+  "FR: removed 1213 faces",
+  "RL: removed 2120 faces",
+  "RR: removed 2225 faces",
+  "FL: liner trimmed at z<0.472",
+  "FR: liner trimmed at z<0.472",
+  "RL: liner trimmed at z<0.472",
+  "RR: liner trimmed at z<0.472"
  ],
- "shard_verts_removed": 294,
+ "shard_verts_removed": 105,
  "liners": 4,
- "body_tris_final": 28135,
+ "body_tris_final": 26714,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   9.0,
   3.162,
-  3.589
+  3.595
  ],
- "wheelbase_m": 5.173,
+ "wheelbase_m": 4.689,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\12_Refuse\\Refuse_UE.fbx",
  "previews": [
   "front",

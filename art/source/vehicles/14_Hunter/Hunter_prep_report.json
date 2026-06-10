@@ -6,64 +6,70 @@
   2.529,
   2.165
  ],
+ "scale_factors": [
+  3.0369,
+  3.0369,
+  3.0369
+ ],
  "wheels": {
   "FL": {
-   "x": 1.743,
-   "y": 1.087,
-   "r": 0.334,
+   "x": 1.688,
+   "y": 0.974,
+   "r": 0.441,
    "w": 0.4,
-   "cz": 0.334,
-   "fit_ok": false,
-   "zone_pts": 1466
+   "cz": 0.441,
+   "fit_ok": true,
+   "zone_pts": 2982
   },
   "FR": {
-   "x": 1.743,
-   "y": -1.087,
-   "r": 0.334,
+   "x": 1.688,
+   "y": -0.974,
+   "r": 0.441,
    "w": 0.4,
-   "cz": 0.334,
-   "fit_ok": false,
-   "zone_pts": 1471
+   "cz": 0.441,
+   "fit_ok": true,
+   "zone_pts": 2982
   },
   "RL": {
-   "x": -1.549,
-   "y": 1.087,
-   "r": 0.334,
+   "x": -1.525,
+   "y": 0.974,
+   "r": 0.441,
    "w": 0.4,
-   "cz": 0.334,
-   "fit_ok": false,
-   "zone_pts": 1491
+   "cz": 0.441,
+   "fit_ok": true,
+   "zone_pts": 3076
   },
   "RR": {
-   "x": -1.549,
-   "y": -1.087,
-   "r": 0.334,
+   "x": -1.525,
+   "y": -0.974,
+   "r": 0.441,
    "w": 0.4,
-   "cz": 0.334,
-   "fit_ok": false,
-   "zone_pts": 1556
+   "cz": 0.441,
+   "fit_ok": true,
+   "zone_pts": 3076
   }
  },
  "carve": [
-  "FL: removed 2200 faces",
-  "FR: removed 2175 faces",
-  "RL: removed 2041 faces",
-  "RR: removed 2142 faces",
-  "FL: liner trimmed at z<0.265",
-  "FR: liner trimmed at z<0.265",
-  "RL: liner trimmed at z<0.265",
-  "RR: liner trimmed at z<0.265"
+  "FL: removed 3527 faces",
+  "FR: removed 3545 faces",
+  "RL: removed 3372 faces",
+  "RR: removed 3432 faces",
+  "FL: liner trimmed at z<0.345",
+  "FR: liner trimmed at z<0.345",
+  "RL: liner trimmed at z<0.345",
+  "RR: liner trimmed at z<0.345"
  ],
- "shard_verts_removed": 2725,
+ "shard_verts_removed": 1138,
  "liners": 4,
- "body_tris_final": 23457,
+ "body_tris_final": 22512,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   5.801,
   2.533,
-  2.184
+  2.19
  ],
- "wheelbase_m": 3.292,
+ "wheelbase_m": 3.213,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\14_Hunter\\Hunter_UE.fbx",
  "previews": [
   "front",

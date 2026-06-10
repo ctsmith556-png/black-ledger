@@ -6,64 +6,90 @@
   2.832,
   2.994
  ],
+ "scale_factors": [
+  3.9355,
+  3.9355,
+  3.9355
+ ],
  "wheels": {
   "FL": {
-   "x": 2.133,
-   "y": 1.218,
-   "r": 0.431,
+   "x": 2.385,
+   "y": 1.075,
+   "r": 0.468,
    "w": 0.4,
-   "cz": 0.431,
-   "fit_ok": false,
-   "zone_pts": 1278
+   "cz": 0.468,
+   "fit_ok": true,
+   "zone_pts": 1488
   },
   "FR": {
-   "x": 2.133,
-   "y": -1.218,
-   "r": 0.431,
+   "x": 2.385,
+   "y": -1.075,
+   "r": 0.468,
    "w": 0.4,
-   "cz": 0.431,
-   "fit_ok": false,
-   "zone_pts": 1235
+   "cz": 0.468,
+   "fit_ok": true,
+   "zone_pts": 1488
   },
   "RL": {
-   "x": -1.821,
-   "y": 1.218,
-   "r": 0.431,
+   "x": -3.12,
+   "y": 1.075,
+   "r": 0.468,
    "w": 0.4,
-   "cz": 0.431,
-   "fit_ok": false,
-   "zone_pts": 2105
+   "cz": 0.468,
+   "fit_ok": true,
+   "zone_pts": 1259
   },
   "RR": {
-   "x": -1.821,
-   "y": -1.218,
-   "r": 0.431,
+   "x": -3.12,
+   "y": -1.075,
+   "r": 0.468,
    "w": 0.4,
-   "cz": 0.431,
-   "fit_ok": false,
-   "zone_pts": 2139
+   "cz": 0.468,
+   "fit_ok": true,
+   "zone_pts": 1259
+  }
+ },
+ "extra_axles": {
+  "M0L": {
+   "x": -2.033,
+   "y": 1.075,
+   "r": 0.468,
+   "w": 0.4,
+   "cz": 0.468
+  },
+  "M0R": {
+   "x": -2.033,
+   "y": -1.075,
+   "r": 0.468,
+   "w": 0.4,
+   "cz": 0.468
   }
  },
  "carve": [
-  "FL: removed 1272 faces",
-  "FR: removed 1210 faces",
-  "RL: removed 1096 faces",
-  "RR: removed 1000 faces",
-  "FL: liner trimmed at z<0.338",
-  "FR: liner trimmed at z<0.338",
-  "RL: liner trimmed at z<0.338",
-  "RR: liner trimmed at z<0.338"
+  "FL: removed 1644 faces",
+  "FR: removed 1574 faces",
+  "RL: removed 1681 faces",
+  "RR: removed 1666 faces",
+  "M0L: removed 1810 faces",
+  "M0R: removed 1785 faces",
+  "FL: liner trimmed at z<0.366",
+  "FR: liner trimmed at z<0.366",
+  "RL: liner trimmed at z<0.366",
+  "RR: liner trimmed at z<0.366",
+  "M0L: liner trimmed at z<0.366",
+  "M0R: liner trimmed at z<0.366"
  ],
- "shard_verts_removed": 414,
- "liners": 4,
- "body_tris_final": 27134,
+ "shard_verts_removed": 271,
+ "liners": 6,
+ "body_tris_final": 24606,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 2,
  "final_extents_m": [
   7.5,
-  2.829,
-  3.022
+  2.828,
+  3.024
  ],
- "wheelbase_m": 3.954,
+ "wheelbase_m": 5.505,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\08_Lien\\Lien_UE.fbx",
  "previews": [
   "front",

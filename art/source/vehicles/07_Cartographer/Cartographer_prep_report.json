@@ -6,49 +6,54 @@
   2.067,
   1.673
  ],
+ "scale_factors": [
+  2.9319,
+  2.9319,
+  2.9319
+ ],
  "wheels": {
   "FL": {
-   "x": 1.617,
-   "y": 0.889,
+   "x": 1.63,
+   "y": 0.741,
    "r": 0.322,
    "w": 0.4,
    "cz": 0.322,
-   "fit_ok": false,
-   "zone_pts": 1977
+   "fit_ok": true,
+   "zone_pts": 3721
   },
   "FR": {
-   "x": 1.617,
-   "y": -0.889,
+   "x": 1.63,
+   "y": -0.741,
    "r": 0.322,
    "w": 0.4,
    "cz": 0.322,
-   "fit_ok": false,
-   "zone_pts": 1999
+   "fit_ok": true,
+   "zone_pts": 3721
   },
   "RL": {
-   "x": -1.482,
-   "y": 0.889,
+   "x": -1.366,
+   "y": 0.741,
    "r": 0.322,
    "w": 0.4,
    "cz": 0.322,
-   "fit_ok": false,
-   "zone_pts": 1827
+   "fit_ok": true,
+   "zone_pts": 3725
   },
   "RR": {
-   "x": -1.482,
-   "y": -0.889,
+   "x": -1.366,
+   "y": -0.741,
    "r": 0.322,
    "w": 0.4,
    "cz": 0.322,
-   "fit_ok": false,
-   "zone_pts": 1770
+   "fit_ok": true,
+   "zone_pts": 3725
   }
  },
  "carve": [
-  "FL: removed 1907 faces",
-  "FR: removed 2394 faces",
-  "RL: removed 3428 faces",
-  "RR: removed 3536 faces",
+  "FL: removed 2037 faces",
+  "FR: removed 2433 faces",
+  "RL: removed 3418 faces",
+  "RR: removed 3566 faces",
   "FL: liner trimmed at z<0.257",
   "FR: liner trimmed at z<0.257",
   "RL: liner trimmed at z<0.257",
@@ -56,14 +61,15 @@
  ],
  "shard_verts_removed": 13,
  "liners": 4,
- "body_tris_final": 24419,
+ "body_tris_final": 24325,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   5.601,
   2.07,
   1.691
  ],
- "wheelbase_m": 3.099,
+ "wheelbase_m": 2.996,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\07_Cartographer\\Cartographer_UE.fbx",
  "previews": [
   "front",

@@ -6,64 +6,70 @@
   3.271,
   3.101
  ],
+ "scale_factors": [
+  3.5582,
+  3.5582,
+  3.5582
+ ],
  "wheels": {
   "FL": {
-   "x": 1.218,
-   "y": 1.406,
-   "r": 0.391,
+   "x": 0.891,
+   "y": 1.3,
+   "r": 0.53,
    "w": 0.4,
-   "cz": 0.391,
-   "fit_ok": false,
-   "zone_pts": 2412
+   "cz": 0.53,
+   "fit_ok": true,
+   "zone_pts": 3850
   },
   "FR": {
-   "x": 1.218,
-   "y": -1.406,
-   "r": 0.391,
+   "x": 0.891,
+   "y": -1.3,
+   "r": 0.53,
    "w": 0.4,
-   "cz": 0.391,
-   "fit_ok": false,
-   "zone_pts": 2354
+   "cz": 0.53,
+   "fit_ok": true,
+   "zone_pts": 3850
   },
   "RL": {
-   "x": -2.036,
-   "y": 1.406,
-   "r": 0.391,
+   "x": -2.026,
+   "y": 1.3,
+   "r": 0.53,
    "w": 0.4,
-   "cz": 0.391,
-   "fit_ok": false,
-   "zone_pts": 2639
+   "cz": 0.53,
+   "fit_ok": true,
+   "zone_pts": 3715
   },
   "RR": {
-   "x": -2.036,
-   "y": -1.406,
-   "r": 0.391,
+   "x": -2.026,
+   "y": -1.3,
+   "r": 0.53,
    "w": 0.4,
-   "cz": 0.391,
-   "fit_ok": false,
-   "zone_pts": 2547
+   "cz": 0.53,
+   "fit_ok": true,
+   "zone_pts": 3715
   }
  },
  "carve": [
-  "FL: removed 1463 faces",
-  "FR: removed 1405 faces",
-  "RL: removed 1925 faces",
-  "RR: removed 1914 faces",
-  "FL: liner trimmed at z<0.308",
-  "FR: liner trimmed at z<0.308",
-  "RL: liner trimmed at z<0.308",
-  "RR: liner trimmed at z<0.308"
+  "FL: removed 3951 faces",
+  "FR: removed 3951 faces",
+  "RL: removed 3996 faces",
+  "RR: removed 3886 faces",
+  "FL: liner trimmed at z<0.413",
+  "FR: liner trimmed at z<0.413",
+  "RL: liner trimmed at z<0.413",
+  "RR: liner trimmed at z<0.413"
  ],
- "shard_verts_removed": 0,
+ "shard_verts_removed": 308,
  "liners": 4,
- "body_tris_final": 26908,
+ "body_tris_final": 22124,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   6.801,
-  3.271,
-  3.124
+  3.114,
+  3.132
  ],
- "wheelbase_m": 3.254,
+ "wheelbase_m": 2.917,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\16_Vault\\Vault_UE.fbx",
  "previews": [
   "front",

@@ -9,12 +9,17 @@
 
 param([string[]]$Only = @())
 
+# Robust -Only: `powershell -File ... -Only A,B,C` can arrive as ONE comma-joined
+# string (never matching a single name); split it back into individual names.
+if ($Only.Count -eq 1) { $Only = $Only[0] -split ',' | ForEach-Object { $_.Trim() } }
+
 $repo = "C:\Users\csmit\black-ledger"
 $editor = "C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
 $uproject = "$repo\BlackLedger.uproject"
 $script = "C:/Users/csmit/black-ledger/tools/unreal/import_vehicle.py"
 
 $vehicles = @(
+  @{ Name="Surgeon";      Folder="01_Surgeon" },
   @{ Name="Antoinette";   Folder="02_Antoinette" },
   @{ Name="Hollow";       Folder="03_Hollow" },
   @{ Name="Warden";       Folder="04_Warden" },

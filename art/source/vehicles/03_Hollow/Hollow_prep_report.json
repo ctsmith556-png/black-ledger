@@ -6,64 +6,70 @@
   3.433,
   3.285
  ],
+ "scale_factors": [
+  4.7142,
+  4.7142,
+  4.7142
+ ],
  "wheels": {
   "FL": {
-   "x": 2.655,
-   "y": 1.476,
-   "r": 0.518,
+   "x": 2.871,
+   "y": 1.292,
+   "r": 0.578,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 1557
+   "cz": 0.578,
+   "fit_ok": true,
+   "zone_pts": 2050
   },
   "FR": {
-   "x": 2.655,
-   "y": -1.476,
-   "r": 0.518,
+   "x": 2.871,
+   "y": -1.292,
+   "r": 0.578,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 1526
+   "cz": 0.578,
+   "fit_ok": true,
+   "zone_pts": 2050
   },
   "RL": {
-   "x": -2.298,
-   "y": 1.476,
-   "r": 0.518,
+   "x": -2.277,
+   "y": 1.292,
+   "r": 0.578,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 2130
+   "cz": 0.578,
+   "fit_ok": true,
+   "zone_pts": 2679
   },
   "RR": {
-   "x": -2.298,
-   "y": -1.476,
-   "r": 0.518,
+   "x": -2.277,
+   "y": -1.292,
+   "r": 0.578,
    "w": 0.4,
-   "cz": 0.518,
-   "fit_ok": false,
-   "zone_pts": 2082
+   "cz": 0.578,
+   "fit_ok": true,
+   "zone_pts": 2679
   }
  },
  "carve": [
-  "FL: removed 1318 faces",
-  "FR: removed 1199 faces",
-  "RL: removed 805 faces",
-  "RR: removed 805 faces",
-  "FL: liner trimmed at z<0.403",
-  "FR: liner trimmed at z<0.403",
-  "RL: liner trimmed at z<0.403",
-  "RR: liner trimmed at z<0.403"
+  "FL: removed 2868 faces",
+  "FR: removed 2750 faces",
+  "RL: removed 2855 faces",
+  "RR: removed 2740 faces",
+  "FL: liner trimmed at z<0.449",
+  "FR: liner trimmed at z<0.449",
+  "RL: liner trimmed at z<0.449",
+  "RR: liner trimmed at z<0.449"
  ],
  "shard_verts_removed": 11,
  "liners": 4,
- "body_tris_final": 28725,
+ "body_tris_final": 25181,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   8.999,
   3.431,
-  3.313
+  3.316
  ],
- "wheelbase_m": 4.953,
+ "wheelbase_m": 5.148,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\03_Hollow\\Hollow_UE.fbx",
  "previews": [
   "front",

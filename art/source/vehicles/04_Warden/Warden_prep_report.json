@@ -6,64 +6,70 @@
   2.97,
   2.855
  ],
+ "scale_factors": [
+  3.4004,
+  3.4004,
+  3.4004
+ ],
  "wheels": {
   "FL": {
-   "x": 2.178,
-   "y": 1.277,
-   "r": 0.374,
+   "x": 2.171,
+   "y": 1.135,
+   "r": 0.543,
    "w": 0.4,
-   "cz": 0.374,
-   "fit_ok": false,
-   "zone_pts": 1947
+   "cz": 0.543,
+   "fit_ok": true,
+   "zone_pts": 2679
   },
   "FR": {
-   "x": 2.178,
-   "y": -1.277,
-   "r": 0.374,
+   "x": 2.171,
+   "y": -1.135,
+   "r": 0.543,
    "w": 0.4,
-   "cz": 0.374,
-   "fit_ok": false,
-   "zone_pts": 1863
+   "cz": 0.543,
+   "fit_ok": true,
+   "zone_pts": 2679
   },
   "RL": {
-   "x": -1.904,
-   "y": 1.277,
-   "r": 0.374,
+   "x": -1.605,
+   "y": 1.135,
+   "r": 0.543,
    "w": 0.4,
-   "cz": 0.374,
-   "fit_ok": false,
-   "zone_pts": 2248
+   "cz": 0.543,
+   "fit_ok": true,
+   "zone_pts": 2406
   },
   "RR": {
-   "x": -1.904,
-   "y": -1.277,
-   "r": 0.374,
+   "x": -1.605,
+   "y": -1.135,
+   "r": 0.543,
    "w": 0.4,
-   "cz": 0.374,
-   "fit_ok": false,
-   "zone_pts": 2141
+   "cz": 0.543,
+   "fit_ok": true,
+   "zone_pts": 2406
   }
  },
  "carve": [
-  "FL: removed 1286 faces",
-  "FR: removed 1166 faces",
-  "RL: removed 1167 faces",
-  "RR: removed 1102 faces",
-  "FL: liner trimmed at z<0.295",
-  "FR: liner trimmed at z<0.295",
-  "RL: liner trimmed at z<0.295",
-  "RR: liner trimmed at z<0.295"
+  "FL: removed 2596 faces",
+  "FR: removed 2402 faces",
+  "RL: removed 2651 faces",
+  "RR: removed 2484 faces",
+  "FL: liner trimmed at z<0.422",
+  "FR: liner trimmed at z<0.422",
+  "RL: liner trimmed at z<0.422",
+  "RR: liner trimmed at z<0.422"
  ],
- "shard_verts_removed": 1649,
+ "shard_verts_removed": 265,
  "liners": 4,
- "body_tris_final": 26754,
+ "body_tris_final": 25381,
  "wheel_tris": 1136,
+ "extra_axle_wheels": 0,
  "final_extents_m": [
   6.5,
   2.971,
-  2.878
+  2.888
  ],
- "wheelbase_m": 4.082,
+ "wheelbase_m": 3.776,
  "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\04_Warden\\Warden_UE.fbx",
  "previews": [
   "front",
