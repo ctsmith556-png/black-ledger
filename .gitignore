@@ -42,6 +42,10 @@ Plugins/**/Intermediate/
 # --- Blender auto-backups ---
 *.blend[0-9]
 
+# --- Python tooling cache (tools/blender/*.py byte-compile) ---
+__pycache__/
+*.py[cod]
+
 # --- Derived vehicle-prep scratch (regenerate via tools/blender/prep_vehicle.py) ---
 # Keep the raw Meshy source (Name.fbx + textures), the import-ready Name_UE.fbx,
 # and the prep report; drop the heavy Blender working file and preview renders.
