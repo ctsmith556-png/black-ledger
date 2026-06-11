@@ -26,6 +26,14 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
+	/** Same pawn, two input sources (TDD section 1): the AI controller drives through this. */
+	void SetDriveInput(float InThrottle, float InSteer, bool bInHandbrake = false)
+	{
+		ThrottleInput = FMath::Clamp(InThrottle, -1.f, 1.f);
+		SteerInput = FMath::Clamp(InSteer, -1.f, 1.f);
+		bHandbrake = bInHandbrake;
+	}
+
 	// ---- components ----
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
 	TObjectPtr<UBoxComponent> CollisionBox;
@@ -139,6 +147,19 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Drive")
 	float SelfRightDelay = 2.f;        // s upside-down before auto-recover
 
+	// ---- ramming (vehicle-vs-vehicle collision damage) ----
+	UPROPERTY(EditAnywhere, Category = "BL|Ram")
+	float RamMinKph = 12.f;            // closing speed below this is free (no parking-lot damage)
+
+	UPROPERTY(EditAnywhere, Category = "BL|Ram")
+	float RamDamagePerKph = 0.9f;      // damage per kph of closing speed over the minimum
+
+	UPROPERTY(EditAnywhere, Category = "BL|Ram")
+	float RamMaxDamage = 70.f;         // head-on cap (missile direct = 80 stays king)
+
+	UPROPERTY(EditAnywhere, Category = "BL|Ram")
+	float RamCooldownSeconds = 0.4f;   // one damage event per grind, not per physics contact
+
 	UPROPERTY(EditAnywhere, Category = "BL|Debug")
 	bool bDrawSuspensionDebug = true;   // Phase-1 default ON; flip off when tuned
 
@@ -153,6 +174,13 @@ protected:
 	void InputFirePressed();
 	void InputFireReleased();
 	void InputFirePickup();
+
+	UFUNCTION()
+	void OnVehicleDeath();
+
+	UFUNCTION()
+	void OnChassisHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 private:
 	struct FBLWheel
@@ -175,4 +203,5 @@ private:
 	bool bHandbrake = false;
 	float UpsideDownTime = 0.f;
 	int32 GroundedCount = 0;
+	double LastRamDamageTime = -10.0;
 };

@@ -20,6 +20,9 @@ public class BlackLedger : ModuleRules
 			"EnhancedInput"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		// EngineCameras: UE 5.7 keeps the camera-shake patterns (PerlinNoise etc.)
+		// in this engine plugin, not the Engine module.
+		// AIModule + GameplayTasks: AAIController.
+		PrivateDependencyModuleNames.AddRange(new string[] { "EngineCameras", "AIModule", "GameplayTasks" });
 	}
 }

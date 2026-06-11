@@ -40,6 +40,17 @@ void UBLHealthComponent::ApplyDamage(float Amount)
 	}
 }
 
+void UBLHealthComponent::ScaleMaxHealth(float Scale)
+{
+	if (Scale <= 0.f || IsDead())
+	{
+		return;
+	}
+	const float Fraction = (MaxHealth > 0.f) ? Health / MaxHealth : 1.f;
+	MaxHealth *= Scale;
+	Health = MaxHealth * Fraction;
+}
+
 void UBLHealthComponent::Heal(float Amount)
 {
 	if (Amount <= 0.f || IsDead())

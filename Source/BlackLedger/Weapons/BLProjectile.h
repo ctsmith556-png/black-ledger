@@ -6,6 +6,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FX/BLImpactFXSubsystem.h"
 #include "GameFramework/Actor.h"
 #include "BLProjectile.generated.h"
 
@@ -40,6 +41,13 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
 	float LifeSeconds = 1.0f;          // ~90 m max range at MuzzleSpeed; trims tracer linger
+
+	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
+	EBLImpactWeight ImpactWeight = EBLImpactWeight::Light;
+
+	/** Knockback as velocity change (cm/s) along the flight direction - mass independent. */
+	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
+	float HitImpulse = 25.f;
 
 	/** Fire: aims along Dir and adds the shooter's forward speed so the
 	 *  shooter can't outrun its own rounds. Call right after spawning. */

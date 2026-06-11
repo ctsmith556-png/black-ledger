@@ -1,7 +1,9 @@
 // Black Ledger - combat vehicle pawn, arcade movement (Phase 1)
 
 #include "BLCombatVehicle.h"
+#include "AI/BLAIController.h"
 #include "BLHealthComponent.h"
+#include "FX/BLImpactFXSubsystem.h"
 #include "Weapons/BLWeaponComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
@@ -9,6 +11,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "UObject/ConstructorHelpers.h"
 
@@ -30,6 +33,7 @@ ABLCombatVehicle::ABLCombatVehicle()
 	CollisionBox->SetEnableGravity(true);
 	CollisionBox->SetLinearDamping(0.05f);
 	CollisionBox->SetAngularDamping(2.0f);
+	CollisionBox->SetNotifyRigidBodyCollision(true); // ram-damage hit events
 	CollisionBox->BodyInstance.COMNudge = FVector(0.f, 0.f, -45.f); // keep it planted
 
 	BodyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
@@ -90,6 +94,10 @@ ABLCombatVehicle::ABLCombatVehicle()
 
 	Health = CreateDefaultSubobject<UBLHealthComponent>(TEXT("Health"));
 	Weapon = CreateDefaultSubobject<UBLWeaponComponent>(TEXT("Weapon"));
+
+	// any vehicle placed in a level (or spawned unpossessed) fights as AI
+	AIControllerClass = ABLAIController::StaticClass();
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 
 void ABLCombatVehicle::InputFirePressed()
@@ -116,12 +124,81 @@ void ABLCombatVehicle::InputFirePickup()
 	}
 }
 
+void ABLCombatVehicle::OnChassisHit(UPrimitiveComponent* /*HitComp*/, AActor* OtherActor,
+	UPrimitiveComponent* /*OtherComp*/, FVector /*NormalImpulse*/, const FHitResult& Hit)
+{
+	// each vehicle applies its OWN ram damage in its own callback: heavier opponent
+	// (mass ratio) and faster closing speed hurt more; the other side runs the same
+	// math from its perspective, so a heavy truck shrugs off what flattens a coupe
+	ABLCombatVehicle* Other = Cast<ABLCombatVehicle>(OtherActor);
+	if (!Other || Health->IsDead())
+	{
+		return;
+	}
+	const double Now = GetWorld()->GetTimeSeconds();
+	if (Now - LastRamDamageTime < RamCooldownSeconds)
+	{
+		return;
+	}
+
+	const FVector RelVel = Other->GetVelocity() - GetVelocity();
+	const float ClosingKph = FMath::Abs(FVector::DotProduct(RelVel, Hit.ImpactNormal)) * 0.036f;
+	if (ClosingKph < RamMinKph)
+	{
+		return; // rubbing / parking contact
+	}
+	LastRamDamageTime = Now;
+
+	const float MassRatio = FMath::Clamp(Other->MassKg / FMath::Max(MassKg, 1.f), 0.5f, 2.f);
+	const float Dmg = FMath::Min((ClosingKph - RamMinKph) * RamDamagePerKph * MassRatio, RamMaxDamage);
+	if (Dmg < 1.f)
+	{
+		return;
+	}
+	Health->ApplyDamage(Dmg);
+
+	if (UBLImpactFXSubsystem* FX = GetWorld()->GetSubsystem<UBLImpactFXSubsystem>())
+	{
+		FX->PlayImpact(FVector(Hit.ImpactPoint),
+			Dmg < 20.f ? EBLImpactWeight::Light : EBLImpactWeight::Medium);
+	}
+}
+
+void ABLCombatVehicle::OnVehicleDeath()
+{
+	// with a 14-car field, AI-vs-AI kills happen constantly - only sell the death
+	// moment when it involves the player or dies on their doorstep
+	bool bPlayerRelevant = IsPlayerControlled();
+	if (!bPlayerRelevant)
+	{
+		if (const APlayerController* PC = GetWorld()->GetFirstPlayerController())
+		{
+			if (const APawn* PlayerPawn = PC->GetPawn())
+			{
+				bPlayerRelevant =
+					FVector::DistSquared(PlayerPawn->GetActorLocation(), GetActorLocation())
+					< FMath::Square(4000.f);
+			}
+		}
+	}
+	if (bPlayerRelevant)
+	{
+		if (UBLImpactFXSubsystem* FX = GetWorld()->GetSubsystem<UBLImpactFXSubsystem>())
+		{
+			FX->PlayDeathMoment();
+		}
+	}
+}
+
 void ABLCombatVehicle::BeginPlay()
 {
 	Super::BeginPlay();
 
 	CollisionBox->SetMassOverrideInKg(NAME_None, MassKg);
 	BodyMesh->SetRelativeLocation(FVector(0.f, 0.f, BodyMeshZOffset));
+
+	Health->OnDeath.AddDynamic(this, &ABLCombatVehicle::OnVehicleDeath);
+	CollisionBox->OnComponentHit.AddDynamic(this, &ABLCombatVehicle::OnChassisHit);
 
 	Wheels.Reset();
 	Wheels.Add({ WheelFL, FVector(AxleFrontX,  TrackHalfY, AnchorZ), FrontWheelRadius, true });
@@ -139,6 +216,18 @@ void ABLCombatVehicle::Tick(float DeltaTime)
 	if (!CollisionBox->RigidBodyIsAwake())
 	{
 		CollisionBox->WakeAllRigidBodies();
+	}
+
+	// a dead vehicle is a wreck: no drive, no fire (proper death sequence later)
+	if (Health->IsDead())
+	{
+		ThrottleInput = 0.f;
+		SteerInput = 0.f;
+		bHandbrake = false;
+		if (Weapon)
+		{
+			Weapon->StopFirePrimary();
+		}
 	}
 
 	StepSuspensionAndDrive(DeltaTime);

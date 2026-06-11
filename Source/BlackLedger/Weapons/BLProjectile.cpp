@@ -22,9 +22,9 @@ ABLProjectile::ABLProjectile()
 	TracerMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TracerMesh"));
 	TracerMesh->SetupAttachment(Collision);
 	TracerMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	// 55x16 cm: from the chase cam you mostly see the round's tail cross-section,
-	// so the thickness is what makes it readable (6 cm proved invisible in play)
-	TracerMesh->SetRelativeScale3D(FVector(0.55f, 0.16f, 0.16f));
+	// 45x12 cm: from the chase cam you mostly see the round's tail cross-section,
+	// so thickness drives readability (6 cm proved invisible; 16 read too chunky)
+	TracerMesh->SetRelativeScale3D(FVector(0.45f, 0.12f, 0.12f));
 	TracerMesh->SetCastShadow(false);
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereFinder(
 		TEXT("/Engine/BasicShapes/Sphere.Sphere"));
@@ -76,7 +76,10 @@ void ABLProjectile::OnHit(UPrimitiveComponent* /*HitComp*/, AActor* OtherActor,
 	if (OtherActor && OtherActor != this && OtherActor != GetInstigator())
 	{
 		ApplyImpactDamage(OtherActor, Hit);
-		// TODO(Phase 2 piece 3): build FBLDamageEvent + route through UBLImpactFXSubsystem
+	}
+	if (UBLImpactFXSubsystem* FX = GetWorld()->GetSubsystem<UBLImpactFXSubsystem>())
+	{
+		FX->PlayImpact(Hit.bBlockingHit ? FVector(Hit.ImpactPoint) : GetActorLocation(), ImpactWeight);
 	}
 	Destroy();
 }
@@ -86,5 +89,15 @@ void ABLProjectile::ApplyImpactDamage(AActor* OtherActor, const FHitResult& /*Hi
 	if (UBLHealthComponent* Victim = OtherActor->FindComponentByClass<UBLHealthComponent>())
 	{
 		Victim->ApplyDamage(Damage);
+	}
+	if (HitImpulse > 0.f)
+	{
+		if (UPrimitiveComponent* Prim = Cast<UPrimitiveComponent>(OtherActor->GetRootComponent()))
+		{
+			if (Prim->IsSimulatingPhysics())
+			{
+				Prim->AddImpulse(GetVelocity().GetSafeNormal() * HitImpulse, NAME_None, /*bVelChange*/ true);
+			}
+		}
 	}
 }

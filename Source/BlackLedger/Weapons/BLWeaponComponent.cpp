@@ -1,6 +1,7 @@
 // Black Ledger - weapon component, machine-gun primary
 
 #include "BLWeaponComponent.h"
+#include "Components/PointLightComponent.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/Actor.h"
@@ -19,6 +20,19 @@ UBLWeaponComponent::UBLWeaponComponent()
 void UBLWeaponComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// placeholder muzzle flash: one reusable point light parked at the active muzzle
+	AActor* Owner = GetOwner();
+	if (Owner && Owner->GetRootComponent())
+	{
+		MuzzleLight = NewObject<UPointLightComponent>(Owner, TEXT("BLMuzzleLight"));
+		MuzzleLight->SetupAttachment(Owner->GetRootComponent());
+		MuzzleLight->SetIntensity(0.f);
+		MuzzleLight->SetLightColor(FColor(255, 186, 110)); // hot orange-white
+		MuzzleLight->SetAttenuationRadius(700.f);
+		MuzzleLight->SetCastShadows(false);
+		MuzzleLight->RegisterComponent();
+	}
 }
 
 void UBLWeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -71,13 +85,14 @@ void UBLWeaponComponent::FirePrimaryShot()
 		Dir = FMath::VRandCone(Dir, FMath::DegreesToRadians(PrimarySpreadDeg));
 	}
 
-	ABLProjectile* Shot = SpawnProjectile(
-		PrimaryProjectileClass, MuzzleOffsets[MuzzleIndex % MuzzleOffsets.Num()], Dir);
+	const FVector MuzzleLocal = MuzzleOffsets[MuzzleIndex % MuzzleOffsets.Num()];
+	ABLProjectile* Shot = SpawnProjectile(PrimaryProjectileClass, MuzzleLocal, Dir);
 	MuzzleIndex++;
 	if (Shot)
 	{
 		Shot->Damage = PrimaryDamage;
 	}
+	FlashMuzzle(MuzzleLocal);
 
 	LastPrimaryShotTime = GetWorld()->GetTimeSeconds();
 }
@@ -125,6 +140,7 @@ void UBLWeaponComponent::FirePickup()
 	{
 		Missile->SetHomingTarget(FindHomingTarget());
 	}
+	FlashMuzzle(PickupMuzzleOffset);
 
 	LastPickupShotTime = Now;
 	PickupAmmo--;
@@ -153,6 +169,26 @@ ABLProjectile* UBLWeaponComponent::SpawnProjectile(
 		Shot->Launch(Dir, Owner->GetVelocity());
 	}
 	return Shot;
+}
+
+void UBLWeaponComponent::FlashMuzzle(const FVector& MuzzleLocal)
+{
+	if (!MuzzleLight)
+	{
+		return;
+	}
+	MuzzleLight->SetRelativeLocation(MuzzleLocal);
+	MuzzleLight->SetIntensity(MuzzleFlashIntensity);
+	GetWorld()->GetTimerManager().SetTimer(
+		MuzzleFlashTimer, this, &UBLWeaponComponent::EndMuzzleFlash, MuzzleFlashSeconds, false);
+}
+
+void UBLWeaponComponent::EndMuzzleFlash()
+{
+	if (MuzzleLight)
+	{
+		MuzzleLight->SetIntensity(0.f);
+	}
 }
 
 USceneComponent* UBLWeaponComponent::FindHomingTarget() const

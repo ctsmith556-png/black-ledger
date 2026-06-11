@@ -9,6 +9,7 @@
 #include "BLWeaponComponent.generated.h"
 
 class ABLProjectile;
+class UPointLightComponent;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBLOnPickupChanged, FName, WeaponName, int32, Ammo);
 
@@ -34,6 +35,13 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
 	float PrimarySpreadDeg = 1.2f;     // random cone half-angle
+
+	// ---- muzzle flash (placeholder point light; Niagara flash later) ----
+	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
+	float MuzzleFlashIntensity = 9000.f;
+
+	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
+	float MuzzleFlashSeconds = 0.05f;
 
 	/** Muzzles in owner space; shots alternate between them (twin guns). */
 	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
@@ -88,6 +96,12 @@ private:
 	void FirePrimaryShot();
 	ABLProjectile* SpawnProjectile(TSubclassOf<ABLProjectile> Class, const FVector& MuzzleLocal, const FVector& Dir);
 	USceneComponent* FindHomingTarget() const;
+	void FlashMuzzle(const FVector& MuzzleLocal);
+	void EndMuzzleFlash();
+
+	UPROPERTY()
+	TObjectPtr<UPointLightComponent> MuzzleLight;
+	FTimerHandle MuzzleFlashTimer;
 
 	FTimerHandle PrimaryTimer;
 	bool bFiringPrimary = false;

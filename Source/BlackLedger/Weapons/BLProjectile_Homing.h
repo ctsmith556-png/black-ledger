@@ -24,6 +24,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
 	float HomingAcceleration = 25000.f; // cm/s^2; turn radius = speed^2 / this (~10 m at 5000)
 
+	/** Explosion knockback as velocity change (cm/s) at the blast center, falling off with range. */
+	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
+	float SplashImpulse = 280.f;
+
 	/** Lock onto a target's root; pass null for a dumb-fire missile. */
 	UFUNCTION(BlueprintCallable, Category = "BL|Projectile")
 	void SetHomingTarget(USceneComponent* TargetComponent);

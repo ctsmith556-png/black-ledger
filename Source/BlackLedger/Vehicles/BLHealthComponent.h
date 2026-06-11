@@ -17,13 +17,13 @@ class BLACKLEDGER_API UBLHealthComponent : public UActorComponent
 public:
 	UBLHealthComponent();
 
-	/** Tuning-sheet formula: HP = BaseHP * (0.7 + (Armor-1) * 0.0889) */
+	/** Tuning-sheet formula: HP = BaseHP * (0.7 + (Armor-1) * 0.0889). Sheet base = 1000. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Health")
-	float BaseHP = 100.f;
+	float BaseHP = 1000.f;
 
-	/** 1-10 stat from the character sheet (Surgeon = 6 placeholder until data assets). */
+	/** 1-10 stat from the character sheet (Surgeon = 7 -> 1233 eff HP, per BALANCE_SIM). */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Health", meta = (ClampMin = 1, ClampMax = 10))
-	float ArmorStat = 6.f;
+	float ArmorStat = 7.f;
 
 	UPROPERTY(BlueprintAssignable, Category = "BL|Health")
 	FBLOnDamaged OnDamaged;
@@ -36,6 +36,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "BL|Health")
 	void Heal(float Amount);
+
+	/** Difficulty HP scaling (Bible 4.6: scale HP, never remove tells). Keeps current HP fraction. */
+	UFUNCTION(BlueprintCallable, Category = "BL|Health")
+	void ScaleMaxHealth(float Scale);
 
 	UFUNCTION(BlueprintPure, Category = "BL|Health")
 	float GetHealth() const { return Health; }
