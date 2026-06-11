@@ -65,3 +65,4 @@ desktop.ini
 *.bak
 *.orig
 crashes/
+build_log.txt

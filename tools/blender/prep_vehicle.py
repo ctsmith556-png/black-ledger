@@ -428,6 +428,11 @@ for wo in wheel_objs:
     bpy.context.view_layer.objects.active = wo
     wo.select_set(True)
     bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
+    # park the wheel AT the world origin: UE's FBX import bakes node transforms
+    # into the verts (transform_vertex_to_absolute), so a wheel left at its axle
+    # position imports with a ~2 m pivot offset and orbits the vehicle in-game.
+    # Axle positions live in the prep report / pawn chassis numbers, not the FBX.
+    wo.location = (0.0, 0.0, 0.0)
     wo.select_set(False)
 mn, mx = bbox(body)
 report["final_extents_m"] = [round(v, 3) for v in (mx - mn)]

@@ -2,6 +2,7 @@
 
 #include "BLCombatVehicle.h"
 #include "BLHealthComponent.h"
+#include "Weapons/BLWeaponComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/InputComponent.h"
@@ -88,6 +89,31 @@ ABLCombatVehicle::ABLCombatVehicle()
 	ChaseCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 
 	Health = CreateDefaultSubobject<UBLHealthComponent>(TEXT("Health"));
+	Weapon = CreateDefaultSubobject<UBLWeaponComponent>(TEXT("Weapon"));
+}
+
+void ABLCombatVehicle::InputFirePressed()
+{
+	if (Weapon)
+	{
+		Weapon->StartFirePrimary();
+	}
+}
+
+void ABLCombatVehicle::InputFireReleased()
+{
+	if (Weapon)
+	{
+		Weapon->StopFirePrimary();
+	}
+}
+
+void ABLCombatVehicle::InputFirePickup()
+{
+	if (Weapon)
+	{
+		Weapon->FirePickup();
+	}
 }
 
 void ABLCombatVehicle::BeginPlay()
@@ -299,4 +325,7 @@ void ABLCombatVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis(TEXT("BL_Steer"), this, &ABLCombatVehicle::InputSteer);
 	PlayerInputComponent->BindAction(TEXT("BL_Handbrake"), IE_Pressed, this, &ABLCombatVehicle::InputHandbrakePressed);
 	PlayerInputComponent->BindAction(TEXT("BL_Handbrake"), IE_Released, this, &ABLCombatVehicle::InputHandbrakeReleased);
+	PlayerInputComponent->BindAction(TEXT("BL_Fire"), IE_Pressed, this, &ABLCombatVehicle::InputFirePressed);
+	PlayerInputComponent->BindAction(TEXT("BL_Fire"), IE_Released, this, &ABLCombatVehicle::InputFireReleased);
+	PlayerInputComponent->BindAction(TEXT("BL_FirePickup"), IE_Pressed, this, &ABLCombatVehicle::InputFirePickup);
 }

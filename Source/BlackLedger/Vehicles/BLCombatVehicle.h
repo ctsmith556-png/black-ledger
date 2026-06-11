@@ -13,6 +13,7 @@ class UStaticMeshComponent;
 class USpringArmComponent;
 class UCameraComponent;
 class UBLHealthComponent;
+class UBLWeaponComponent;
 
 UCLASS()
 class BLACKLEDGER_API ABLCombatVehicle : public APawn
@@ -50,21 +51,24 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
 	TObjectPtr<UBLHealthComponent> Health;
 
-	// ---- chassis geometry (Surgeon defaults from the prep report; data assets later) ----
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
+	TObjectPtr<UBLWeaponComponent> Weapon;
+
+	// ---- chassis geometry (Surgeon, June 10 re-prep report; data assets later) ----
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
-	float AxleFrontX = 187.f;          // wheelbase center -> front axle (cm)
+	float AxleFrontX = 177.78f;        // pivot is wheelbase CENTER (from Surgeon_UE.fbx nodes)
 
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
-	float AxleRearX = -187.f;          // wheelbase center -> rear axle (cm)
+	float AxleRearX = -177.78f;        // symmetric around the wheelbase-center pivot
 
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
-	float TrackHalfY = 109.f;          // center -> wheel lateral (cm)
+	float TrackHalfY = 100.78f;        // center -> wheel lateral (cm)
 
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
-	float FrontWheelRadius = 41.f;     // cm
+	float FrontWheelRadius = 39.2f;    // cm
 
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
-	float RearWheelRadius = 37.5f;     // cm
+	float RearWheelRadius = 39.2f;     // cm
 
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
 	float AnchorZ = -55.f;             // suspension anchor height in box space (cm)
@@ -146,6 +150,9 @@ protected:
 	void InputSteer(float Value) { SteerInput = Value; }
 	void InputHandbrakePressed() { bHandbrake = true; }
 	void InputHandbrakeReleased() { bHandbrake = false; }
+	void InputFirePressed();
+	void InputFireReleased();
+	void InputFirePickup();
 
 private:
 	struct FBLWheel

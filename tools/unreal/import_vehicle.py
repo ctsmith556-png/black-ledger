@@ -36,6 +36,12 @@ def import_fbx():
     smd.combine_meshes = False
     smd.auto_generate_collision = True
     smd.normal_import_method = unreal.FBXNormalImportMethod.FBXNIM_IMPORT_NORMALS
+    # NOTE: transform_vertex_to_absolute stays at its default (True). It bakes each
+    # node's scene transform into the verts - so the PREP script must export wheels
+    # with geometry centered at the world origin (zeroed node translation), or the
+    # baked offset makes spinning wheels orbit the vehicle. Setting it to False is
+    # NOT the fix: that also skips the FBX Y-up -> UE Z-up conversion and every
+    # mesh imports lying on its side.
 
     task = unreal.AssetImportTask()
     task.filename = os.path.join(src_dir, f"{NAME}_UE.fbx")
