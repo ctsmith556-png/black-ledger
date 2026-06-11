@@ -48,10 +48,11 @@ def spawn_cube(loc, scale, rot=(0, 0, 0), label=None):
 def furnace(x, y, name):
     # raised pit lip (cylinder), orange glow above it; pour hazard actor comes next
     spawn_shape("Cylinder", (x, y, 75), (18, 18, 1.5), label=f"Furnace_{name}")
+    # modest ambient ember - must NOT compete with the pour hazard's warning light
     glow = spawn(unreal.PointLight, (x, y, 900), label=f"FurnaceGlow_{name}")
     lc = glow.light_component
-    lc.set_editor_property("intensity", 28000.0)
-    lc.set_editor_property("attenuation_radius", 4500.0)
+    lc.set_editor_property("intensity", 8000.0)
+    lc.set_editor_property("attenuation_radius", 3000.0)
     lc.set_editor_property("light_color", unreal.Color(255, 96, 18, 255))
     lc.set_editor_property("cast_shadows", False)
 
@@ -93,6 +94,13 @@ def main():
     spawn_cube((7700, 2000, 200), (15, 1, 4), label="SealedBay_North")
     spawn_cube((7700, 400, 200), (15, 1, 4), label="SealedBay_South")
 
+    # ---- furnace-pour hazards on F1/F2 (F3 belongs to the boss), staggered:
+    # F1 telegraphs ~20s into a session, F2 ~65s ----
+    unreal.log_warning("MILL: hazards")
+    for (x, y, offset, name) in [(-4200, 3300, 70.0, "F1"), (4200, 3300, 25.0, "F2")]:
+        h = spawn(unreal.BLHazard_FurnacePour, (x, y, 150), label=f"Pour_{name}")
+        h.set_editor_property("start_offset_seconds", offset)
+
     # ---- the catwalk (destructible #2 - the collapse prototype) ----
     unreal.log_warning("MILL: catwalk")
     catwalk = spawn(unreal.BLDestructible_Catwalk, (0, 800, 0), label="Catwalk")
@@ -112,9 +120,10 @@ def main():
     # ---- lighting: dim interior, furnace glow does the storytelling ----
     unreal.log_warning("MILL: lights")
     sun = spawn(unreal.DirectionalLight, (0, 0, 1200), (0, -55, 20), "Sun")
-    sun.light_component.set_editor_property("intensity", 2.5)
+    sun.light_component.set_editor_property("intensity", 2.0)
+    sun.light_component.set_editor_property("light_color", unreal.Color(255, 234, 204, 255))
     sky = spawn(unreal.SkyLight, (0, 0, 1200), label="SkyLight")
-    sky.light_component.set_editor_property("intensity", 0.8)
+    sky.light_component.set_editor_property("intensity", 0.45)
     spawn(unreal.SkyAtmosphere, (0, 0, 0), label="Atmosphere")
     fog = spawn(unreal.ExponentialHeightFog, (0, 0, 0), label="Fog")
     fog.component.set_editor_property("fog_density", 0.06)
