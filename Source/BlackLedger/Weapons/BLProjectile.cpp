@@ -17,6 +17,7 @@ ABLProjectile::ABLProjectile()
 	Collision->InitSphereRadius(8.f);
 	Collision->SetCollisionProfileName(TEXT("BlockAllDynamic"));
 	Collision->SetNotifyRigidBodyCollision(true); // generate hit events on blocking sweep
+	Collision->SetCanEverAffectNavigation(false); // projectiles must not dirty navmesh tiles
 
 	// placeholder tracer so rounds are visible in the gym; real FX later
 	TracerMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TracerMesh"));

@@ -14,6 +14,7 @@ ABLImpactBurst::ABLImpactBurst()
 	SetRootComponent(Fireball);
 	Fireball->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Fireball->SetCastShadow(false);
+	Fireball->SetCanEverAffectNavigation(false);
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereFinder(
 		TEXT("/Engine/BasicShapes/Sphere.Sphere"));
 	if (SphereFinder.Succeeded())

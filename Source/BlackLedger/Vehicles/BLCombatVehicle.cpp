@@ -34,11 +34,13 @@ ABLCombatVehicle::ABLCombatVehicle()
 	CollisionBox->SetLinearDamping(0.05f);
 	CollisionBox->SetAngularDamping(2.0f);
 	CollisionBox->SetNotifyRigidBodyCollision(true); // ram-damage hit events
+	CollisionBox->SetCanEverAffectNavigation(false); // vehicles must not churn navmesh tiles
 	CollisionBox->BodyInstance.COMNudge = FVector(0.f, 0.f, -45.f); // keep it planted
 
 	BodyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BodyMesh->SetupAttachment(CollisionBox);
 	BodyMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	BodyMesh->SetCanEverAffectNavigation(false);
 	BodyMesh->SetRelativeLocation(FVector(0.f, 0.f, BodyMeshZOffset));
 
 	auto MakeWheel = [this](const TCHAR* Name) -> UStaticMeshComponent*
@@ -46,6 +48,7 @@ ABLCombatVehicle::ABLCombatVehicle()
 		UStaticMeshComponent* W = CreateDefaultSubobject<UStaticMeshComponent>(Name);
 		W->SetupAttachment(CollisionBox);
 		W->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		W->SetCanEverAffectNavigation(false);
 		return W;
 	};
 	WheelFL = MakeWheel(TEXT("WheelFL"));

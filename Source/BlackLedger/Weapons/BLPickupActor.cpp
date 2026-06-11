@@ -17,6 +17,7 @@ ABLPickupActor::ABLPickupActor()
 	TouchSphere->InitSphereRadius(150.f);
 	TouchSphere->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 	TouchSphere->SetGenerateOverlapEvents(true);
+	TouchSphere->SetCanEverAffectNavigation(false);
 
 	// placeholder: dark floating crate; dossier-styled mesh later
 	Visual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Visual"));
