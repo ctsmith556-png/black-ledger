@@ -4,6 +4,7 @@
 #include "AI/BLAIController.h"
 #include "BLHealthComponent.h"
 #include "FX/BLImpactFXSubsystem.h"
+#include "Specials/BLSpecialComponent.h"
 #include "Weapons/BLWeaponComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
@@ -97,6 +98,7 @@ ABLCombatVehicle::ABLCombatVehicle()
 
 	Health = CreateDefaultSubobject<UBLHealthComponent>(TEXT("Health"));
 	Weapon = CreateDefaultSubobject<UBLWeaponComponent>(TEXT("Weapon"));
+	Special = CreateDefaultSubobject<UBLSpecialComponent>(TEXT("Special"));
 
 	// any vehicle placed in a level (or spawned unpossessed) fights as AI
 	AIControllerClass = ABLAIController::StaticClass();
@@ -124,6 +126,14 @@ void ABLCombatVehicle::InputFirePickup()
 	if (Weapon)
 	{
 		Weapon->FirePickup();
+	}
+}
+
+void ABLCombatVehicle::InputSpecial()
+{
+	if (Special && Health && !Health->IsDead())
+	{
+		Special->TryActivate();
 	}
 }
 
@@ -420,4 +430,5 @@ void ABLCombatVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction(TEXT("BL_Fire"), IE_Pressed, this, &ABLCombatVehicle::InputFirePressed);
 	PlayerInputComponent->BindAction(TEXT("BL_Fire"), IE_Released, this, &ABLCombatVehicle::InputFireReleased);
 	PlayerInputComponent->BindAction(TEXT("BL_FirePickup"), IE_Pressed, this, &ABLCombatVehicle::InputFirePickup);
+	PlayerInputComponent->BindAction(TEXT("BL_Special"), IE_Pressed, this, &ABLCombatVehicle::InputSpecial);
 }

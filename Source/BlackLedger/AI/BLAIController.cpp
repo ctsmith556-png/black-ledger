@@ -5,6 +5,7 @@
 #include "DrawDebugHelpers.h"
 #include "EngineUtils.h"
 #include "HAL/IConsoleManager.h"
+#include "Specials/BLSpecialComponent.h"
 #include "Vehicles/BLCombatVehicle.h"
 #include "Vehicles/BLHealthComponent.h"
 #include "Weapons/BLPickupActor.h"
@@ -33,13 +34,15 @@ ABLAIController::ABLAIController()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Easy: drives softer, sprays early (wide cone), long rests, rare missiles, less HP
+	// Easy: drives softer, sprays early (wide cone), long rests, rare missiles,
+	// less HP, notices less of the map
 	EasyParams.ThrottleScale = 0.8f;
 	EasyParams.FireBurstSeconds = 0.7f;
 	EasyParams.FireRestSeconds = 1.2f;
 	EasyParams.FireConeDeg = 14.f;
 	EasyParams.MissileIntervalSeconds = 8.f;
 	EasyParams.HealthScale = 0.8f;
+	EasyParams.EngagementScale = 0.75f;
 
 	// Medium: the baseline the tuning sheet balances around
 	MediumParams.ThrottleScale = 0.9f;
@@ -48,14 +51,17 @@ ABLAIController::ABLAIController()
 	MediumParams.FireConeDeg = 9.f;
 	MediumParams.MissileIntervalSeconds = 5.f;
 	MediumParams.HealthScale = 1.f;
+	MediumParams.EngagementScale = 1.f;
 
-	// Hard: relentless - near-continuous fire, tight aim, frequent missiles, more HP
+	// Hard: relentless - near-continuous fire, tight aim, frequent missiles,
+	// more HP, wider awareness
 	HardParams.ThrottleScale = 1.f;
 	HardParams.FireBurstSeconds = 2.5f;
 	HardParams.FireRestSeconds = 0.15f;
 	HardParams.FireConeDeg = 6.f;
 	HardParams.MissileIntervalSeconds = 2.5f;
 	HardParams.HealthScale = 1.2f;
+	HardParams.EngagementScale = 1.25f;
 }
 
 void ABLAIController::OnPossess(APawn* InPawn)
@@ -68,6 +74,13 @@ void ABLAIController::OnPossess(APawn* InPawn)
 			V->Health->ScaleMaxHealth(GetParams().HealthScale);
 		}
 	}
+	// desync the wanderlust clocks so the field doesn't detour in unison
+	WanderClock = FMath::FRandRange(0.f, DisengageCheckSeconds);
+}
+
+ABLCombatVehicle* ABLAIController::GetVehicle() const
+{
+	return Cast<ABLCombatVehicle>(GetPawn());
 }
 
 const FBLAIDifficultyParams& ABLAIController::GetParams() const
@@ -81,11 +94,6 @@ const FBLAIDifficultyParams& ABLAIController::GetParams() const
 	}
 }
 
-ABLCombatVehicle* ABLAIController::GetVehicle() const
-{
-	return Cast<ABLCombatVehicle>(GetPawn());
-}
-
 void ABLAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -96,67 +104,129 @@ void ABLAIController::Tick(float DeltaTime)
 		return; // the pawn zeroes its own inputs when dead
 	}
 
-	APawn* Target = FindTarget();
-	if (!Target)
-	{
-		V->SetDriveInput(0.f, 0.f);
-		V->Weapon->StopFirePrimary();
-		return;
-	}
-
+	const FBLAIDifficultyParams& Params = GetParams();
 	const FVector MyLoc = V->GetActorLocation();
 	const FVector Fwd = V->GetActorForwardVector();
-	const FVector ToTarget = Target->GetActorLocation() - MyLoc;
-	const float Dist = ToTarget.Size2D();
-	const float AngleToTarget = SignedYawTo(Fwd, ToTarget);
 
-	const FBLAIDifficultyParams& Params = GetParams();
+	// ---- wanderlust: sometimes break off and go live a little ----
+	if (DisengageTime > 0.f)
+	{
+		DisengageTime -= DeltaTime;
+	}
+	else
+	{
+		WanderClock += DeltaTime;
+		if (WanderClock >= DisengageCheckSeconds)
+		{
+			WanderClock = 0.f;
+			if (FMath::FRand() < DisengageChance)
+			{
+				DisengageTime = FMath::FRandRange(8.f, 14.f);
+				CurrentTarget.Reset();
+				bHasRoamTarget = false; // pick a fresh detour destination
+			}
+		}
+	}
 
-	// ---- pick where to drive ----
-	FVector DriveTo = ToTarget;
+	APawn* Target = AcquireTarget(Params.EngagementScale);
+
+	// ---- decide where to drive ----
+	FVector DriveTo;
 	float Throttle = 1.f;
+	float AbsAngleToTarget = 180.f;
+	ABLPickupActor* Pickup = nullptr;
 
-	ABLPickupActor* Pickup = (V->Weapon->GetPickupAmmo() == 0) ? FindPickup() : nullptr;
-	if (Pickup)
+	if (Target)
 	{
-		DriveTo = Pickup->GetActorLocation() - MyLoc; // GrabPickup
-	}
-	else if (Dist < MinFightRange)
-	{
-		// too close: peel away past the tangent to re-open distance - never park
-		// nose-first grinding into the target
-		DriveTo = ToTarget.RotateAngleAxis(OrbitSign * PeelAngleDeg, FVector::UpVector);
-		Throttle = 0.9f;
-	}
-	else if (Dist < PursueRange)
-	{
-		// StrafeTarget: orbit by aiming off to one side of the target
-		DriveTo = ToTarget.RotateAngleAxis(OrbitSign * OrbitAngleDeg, FVector::UpVector);
-		Throttle = 0.75f;
-	}
+		const FVector ToTarget = Target->GetActorLocation() - MyLoc;
+		const float Dist = ToTarget.Size2D();
+		AbsAngleToTarget = FMath::Abs(SignedYawTo(Fwd, ToTarget));
 
-	float Steer = FMath::Clamp(SignedYawTo(Fwd, DriveTo) / SteerResponseDeg, -1.f, 1.f);
+		Pickup = (V->Weapon->GetPickupAmmo() == 0) ? FindPickup() : nullptr;
+		if (Pickup)
+		{
+			DriveTo = Pickup->GetActorLocation() - MyLoc; // GrabPickup
+		}
+		else if (Dist < MinFightRange)
+		{
+			// too close: peel away past the tangent - never park nose-first
+			DriveTo = ToTarget.RotateAngleAxis(OrbitSign * PeelAngleDeg, FVector::UpVector);
+			Throttle = 0.9f;
+		}
+		else if (Dist < PursueRange)
+		{
+			// StrafeTarget: orbit by aiming off to one side of the target
+			DriveTo = ToTarget.RotateAngleAxis(OrbitSign * OrbitAngleDeg, FVector::UpVector);
+			Throttle = 0.75f;
+		}
+		else
+		{
+			DriveTo = ToTarget; // pursue
+		}
+
+		// ---- weapons: burst/rest duty cycle (difficulty = attack frequency) ----
+		FireCycleTime += DeltaTime;
+		const float CycleLen = Params.FireBurstSeconds + Params.FireRestSeconds;
+		const bool bInBurstWindow = FMath::Fmod(FireCycleTime, CycleLen) < Params.FireBurstSeconds;
+		if (bInBurstWindow && AbsAngleToTarget < Params.FireConeDeg && Dist < FireRange)
+		{
+			V->Weapon->StartFirePrimary();
+		}
+		else
+		{
+			V->Weapon->StopFirePrimary();
+		}
+		const double Now = GetWorld()->GetTimeSeconds();
+		if (V->Weapon->GetPickupAmmo() > 0 && AbsAngleToTarget < MissileConeDeg
+			&& Dist > MissileMinRange && Now - LastMissileTime >= Params.MissileIntervalSeconds)
+		{
+			V->Weapon->FirePickup();
+			LastMissileTime = Now;
+		}
+		// UseSpecialWhenReady (TDD section 8): pop the field in a committed close fight
+		if (V->Special && Dist < 1400.f)
+		{
+			V->Special->TryActivate();
+		}
+	}
+	else
+	{
+		// ---- ROAM: nobody in range (or detouring) - wander the arena.
+		// Destinations favor pickups, pulling traffic through conflict lanes. ----
+		V->Weapon->StopFirePrimary();
+		RoamTime += DeltaTime;
+		if (!bHasRoamTarget || RoamTime > 12.f
+			|| FVector::DistSquared2D(MyLoc, RoamTarget) < FMath::Square(1800.f))
+		{
+			RoamTarget = PickRoamPoint();
+			bHasRoamTarget = true;
+			RoamTime = 0.f;
+		}
+		DriveTo = RoamTarget - MyLoc;
+		Throttle = RoamThrottle;
+	}
 
 	// ---- debug overlay (bl.AIDebug 1) ----
 	if (CVarBLAIDebug.GetValueOnGameThread() != 0)
 	{
-		const TCHAR* State = Pickup ? TEXT("PICKUP")
-			: (ReverseTime > 0.f) ? TEXT("UNSTUCK")
-			: (Dist < MinFightRange) ? TEXT("PEEL")
-			: (Dist < PursueRange) ? TEXT("STRAFE") : TEXT("PURSUE");
-		const FColor StateColor = Pickup ? FColor::Yellow
-			: (ReverseTime > 0.f) ? FColor::Red
-			: (Dist < MinFightRange) ? FColor::Magenta
-			: (Dist < PursueRange) ? FColor::Orange : FColor::Cyan;
+		const TCHAR* State = !Target
+			? ((DisengageTime > 0.f) ? TEXT("DETOUR") : TEXT("ROAM"))
+			: Pickup ? TEXT("PICKUP")
+			: (ReverseTime > 0.f) ? TEXT("UNSTUCK") : TEXT("ENGAGE");
+		const FColor StateColor = !Target
+			? ((DisengageTime > 0.f) ? FColor::White : FColor::Green)
+			: Pickup ? FColor::Yellow
+			: (ReverseTime > 0.f) ? FColor::Red : FColor::Orange;
+		const FVector LineEnd = Target ? Target->GetActorLocation() : RoamTarget;
 		DrawDebugLine(GetWorld(), MyLoc + FVector(0, 0, 120),
-			Target->GetActorLocation() + FVector(0, 0, 120), StateColor, false, -1.f, 0, 4.f);
+			LineEnd + FVector(0, 0, 120), StateColor, false, -1.f, 0, 4.f);
 		DrawDebugString(GetWorld(), MyLoc + FVector(0, 0, 320),
 			FString::Printf(TEXT("%s  hp %.0f  ammo %d"), State,
 				V->Health->GetHealth(), V->Weapon->GetPickupAmmo()),
 			nullptr, StateColor, 0.f, true);
 	}
 
-	// ---- unstuck: full throttle but not moving -> back out the other way ----
+	// ---- shared: unstuck recovery, then drive ----
 	const float Speed = V->GetVelocity().Size2D();
 	if (ReverseTime > 0.f)
 	{
@@ -173,6 +243,7 @@ void ABLAIController::Tick(float DeltaTime)
 			StuckTime = 0.f;
 			ReverseTime = 1.2f;
 			OrbitSign = -OrbitSign;
+			bHasRoamTarget = false; // a stuck roamer needs a new destination too
 		}
 	}
 	else
@@ -180,38 +251,31 @@ void ABLAIController::Tick(float DeltaTime)
 		StuckTime = 0.f;
 	}
 
+	const float Steer = FMath::Clamp(SignedYawTo(Fwd, DriveTo) / SteerResponseDeg, -1.f, 1.f);
 	LastSteer = Steer;
 	V->SetDriveInput(Throttle * Params.ThrottleScale, Steer);
-
-	// ---- weapons: burst/rest duty cycle (difficulty = attack frequency, Bible 4.6) ----
-	FireCycleTime += DeltaTime;
-	const float CycleLen = Params.FireBurstSeconds + Params.FireRestSeconds;
-	const bool bInBurstWindow = FMath::Fmod(FireCycleTime, CycleLen) < Params.FireBurstSeconds;
-
-	const float AbsAngle = FMath::Abs(AngleToTarget);
-	if (bInBurstWindow && AbsAngle < Params.FireConeDeg && Dist < FireRange)
-	{
-		V->Weapon->StartFirePrimary();
-	}
-	else
-	{
-		V->Weapon->StopFirePrimary();
-	}
-
-	const double Now = GetWorld()->GetTimeSeconds();
-	if (V->Weapon->GetPickupAmmo() > 0 && AbsAngle < MissileConeDeg && Dist > MissileMinRange
-		&& Now - LastMissileTime >= Params.MissileIntervalSeconds)
-	{
-		V->Weapon->FirePickup();
-		LastMissileTime = Now;
-	}
 }
 
-APawn* ABLAIController::FindTarget() const
+APawn* ABLAIController::AcquireTarget(float RangeScale)
 {
 	APawn* Self = GetPawn();
+	// while detouring, only a point-blank brawler can drag us back in
+	const float Range = (DisengageTime > 0.f) ? 2500.f : EngagementRange * RangeScale;
+
+	// sticky current target (with leash hysteresis) - no per-tick flip-flopping
+	if (ABLCombatVehicle* T = Cast<ABLCombatVehicle>(CurrentTarget.Get()))
+	{
+		if (T->Health && !T->Health->IsDead()
+			&& FVector::DistSquared(T->GetActorLocation(), Self->GetActorLocation())
+				< FMath::Square(Range * 1.3f))
+		{
+			return T;
+		}
+		CurrentTarget.Reset();
+	}
+
 	APawn* Best = nullptr;
-	float BestDistSq = TNumericLimits<float>::Max();
+	float BestDistSq = FMath::Square(Range);
 	for (TActorIterator<ABLCombatVehicle> It(GetWorld()); It; ++It)
 	{
 		ABLCombatVehicle* Other = *It;
@@ -226,7 +290,30 @@ APawn* ABLAIController::FindTarget() const
 			Best = Other;
 		}
 	}
+	CurrentTarget = Best;
 	return Best;
+}
+
+FVector ABLAIController::PickRoamPoint() const
+{
+	const FVector MyLoc = GetPawn()->GetActorLocation();
+
+	// 70%: head for a random pickup spawn (conflict lanes); 30%: open wandering
+	if (FMath::FRand() < 0.7f)
+	{
+		TArray<FVector> Spots;
+		for (TActorIterator<ABLPickupActor> It(GetWorld()); It; ++It)
+		{
+			Spots.Add(It->GetActorLocation()); // hidden (collected) spots still pull traffic
+		}
+		if (Spots.Num() > 0)
+		{
+			return Spots[FMath::RandRange(0, Spots.Num() - 1)];
+		}
+	}
+	const float Angle = FMath::FRandRange(0.f, 2.f * PI);
+	const float Dist = FMath::FRandRange(5000.f, 12000.f);
+	return MyLoc + FVector(FMath::Cos(Angle) * Dist, FMath::Sin(Angle) * Dist, 0.f);
 }
 
 ABLPickupActor* ABLAIController::FindPickup() const

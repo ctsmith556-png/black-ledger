@@ -22,6 +22,7 @@ void UBLHealthComponent::ApplyDamage(float Amount)
 	{
 		return;
 	}
+	Amount *= FMath::Max(IncomingDamageMultiplier, 0.f);
 	Health = FMath::Max(Health - Amount, 0.f);
 	OnDamaged.Broadcast(Amount, Health);
 

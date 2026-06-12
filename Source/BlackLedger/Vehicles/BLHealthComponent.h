@@ -25,6 +25,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Health", meta = (ClampMin = 1, ClampMax = 10))
 	float ArmorStat = 7.f;
 
+	/** Status hook (Surgeon's diagnosed mark = 2.0). Replaced by UBLStatusComponent later. */
+	UPROPERTY(BlueprintReadWrite, Category = "BL|Health")
+	float IncomingDamageMultiplier = 1.f;
+
 	UPROPERTY(BlueprintAssignable, Category = "BL|Health")
 	FBLOnDamaged OnDamaged;
 

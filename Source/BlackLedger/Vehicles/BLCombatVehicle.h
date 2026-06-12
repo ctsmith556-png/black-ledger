@@ -14,6 +14,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UBLHealthComponent;
 class UBLWeaponComponent;
+class UBLSpecialComponent;
 
 UCLASS()
 class BLACKLEDGER_API ABLCombatVehicle : public APawn
@@ -61,6 +62,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
 	TObjectPtr<UBLWeaponComponent> Weapon;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
+	TObjectPtr<UBLSpecialComponent> Special;
 
 	// ---- chassis geometry (Surgeon, June 10 re-prep report; data assets later) ----
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
@@ -174,6 +178,7 @@ protected:
 	void InputFirePressed();
 	void InputFireReleased();
 	void InputFirePickup();
+	void InputSpecial();
 
 	UFUNCTION()
 	void OnVehicleDeath();

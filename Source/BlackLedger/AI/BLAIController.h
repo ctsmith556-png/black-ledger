@@ -37,6 +37,9 @@ struct FBLAIDifficultyParams
 
 	UPROPERTY(EditAnywhere, Category = "BL|AI")
 	float HealthScale = 1.f;          // applied to the AI vehicle on possess
+
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	float EngagementScale = 1.f;      // multiplies EngagementRange (hard = more aware)
 };
 
 UCLASS()
@@ -77,6 +80,19 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|AI")
 	float SteerResponseDeg = 35.f;     // full lock at this much heading error
 
+	// ---- free-roam / dispersion (2x arena scale doctrine) ----
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	float EngagementRange = 16000.f;   // cm; vehicles beyond this aren't noticed
+
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	float RoamThrottle = 0.85f;        // cruising speed while wandering
+
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	float DisengageCheckSeconds = 15.f; // how often the AI considers breaking off
+
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	float DisengageChance = 0.3f;      // chance per check to detour for 8-14s
+
 	// ---- difficulty profiles (defaults set in the constructor) ----
 	UPROPERTY(EditAnywhere, Category = "BL|AI")
 	FBLAIDifficultyParams EasyParams;
@@ -92,8 +108,9 @@ protected:
 
 private:
 	ABLCombatVehicle* GetVehicle() const;
-	APawn* FindTarget() const;
+	APawn* AcquireTarget(float RangeScale);
 	ABLPickupActor* FindPickup() const;
+	FVector PickRoamPoint() const;
 	const FBLAIDifficultyParams& GetParams() const;
 
 	float StuckTime = 0.f;
@@ -102,4 +119,11 @@ private:
 	float LastSteer = 0.f;
 	float FireCycleTime = 0.f;         // clock for the burst/rest duty cycle
 	double LastMissileTime = -100.0;
+
+	TWeakObjectPtr<APawn> CurrentTarget; // sticky target (hysteresis, no flip-flop)
+	FVector RoamTarget = FVector::ZeroVector;
+	bool bHasRoamTarget = false;
+	float RoamTime = 0.f;
+	float WanderClock = 0.f;
+	float DisengageTime = 0.f;         // > 0 = voluntarily detouring from combat
 };
