@@ -3,6 +3,7 @@
 #include "BLPickupActor.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "TimerManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Weapons/BLProjectile_Homing.h"
@@ -30,6 +31,12 @@ ABLPickupActor::ABLPickupActor()
 	{
 		Visual->SetStaticMesh(CubeFinder.Object);
 	}
+	static ConstructorHelpers::FObjectFinder<UMaterialInterface> MatFinder(
+		TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+	if (MatFinder.Succeeded())
+	{
+		Visual->SetMaterial(0, MatFinder.Object);
+	}
 
 	ProjectileClass = ABLProjectile_Homing::StaticClass();
 }
@@ -38,6 +45,10 @@ void ABLPickupActor::BeginPlay()
 {
 	Super::BeginPlay();
 	TouchSphere->OnComponentBeginOverlap.AddDynamic(this, &ABLPickupActor::OnTouch);
+	if (UMaterialInstanceDynamic* MID = Visual->CreateDynamicMaterialInstance(0))
+	{
+		MID->SetVectorParameterValue(TEXT("Color"), CrateColor);
+	}
 }
 
 void ABLPickupActor::Tick(float DeltaTime)
@@ -50,20 +61,23 @@ void ABLPickupActor::OnTouch(UPrimitiveComponent* /*OverlappedComp*/, AActor* Ot
 	UPrimitiveComponent* /*OtherComp*/, int32 /*OtherBodyIndex*/,
 	bool /*bFromSweep*/, const FHitResult& /*SweepResult*/)
 {
-	if (!OtherActor)
+	if (!OtherActor || !GrantTo(OtherActor))
 	{
 		return;
 	}
+	SetPickupActive(false);
+	GetWorldTimerManager().SetTimer(RespawnTimer, this, &ABLPickupActor::Respawn, RespawnSeconds, false);
+}
+
+bool ABLPickupActor::GrantTo(AActor* OtherActor)
+{
 	UBLWeaponComponent* Weapon = OtherActor->FindComponentByClass<UBLWeaponComponent>();
 	if (!Weapon)
 	{
-		return;  // not a combat vehicle (e.g. a stray projectile)
+		return false;  // not a combat vehicle (e.g. a stray projectile)
 	}
-
 	Weapon->GrantPickup(ProjectileClass, Ammo, WeaponName);
-
-	SetPickupActive(false);
-	GetWorldTimerManager().SetTimer(RespawnTimer, this, &ABLPickupActor::Respawn, RespawnSeconds, false);
+	return true;
 }
 
 void ABLPickupActor::Respawn()

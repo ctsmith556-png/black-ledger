@@ -25,7 +25,9 @@ The complete pre-production package — design, art reference, and the Meshy 3D 
 - **VERTICAL_SLICE_SCOPE.md** · **CONTROL_SCHEME.md** · **TheMill_Blockout** (svg/png).
 
 ## arenas/
-- **ARENA_REFERENCE.pdf** + **svg/** + **png/** — the 10 arena blockouts.
+- **ARENA_INDEX.md** — START HERE for map work: per-arena quick numbers, scale rulers, build loop.
+- **Arena Build Briefs** (`01_…` – `10_…` .docx, one per arena) — rendering, tone, recommended 14-vehicle footprint, Unreal scale + lane widths, hazard/destructible specs, greybox priorities. Authoritative for arena SCALE and TONE.
+- **ARENA_REFERENCE.pdf** + **svg/** + **png/** — the 10 arena blockouts (authoritative for landmark placement/flow).
 
 ## vo/
 - **THE_SURGEON_SCRIPT.md** · **OPPONENT_BARKS.md** · **BARKS_REMAINING.md** · **CINEMATIC_SHOTLISTS.md**.

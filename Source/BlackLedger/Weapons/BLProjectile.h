@@ -49,6 +49,16 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
 	float HitImpulse = 25.f;
 
+	// ---- splash (0 = none; missiles set these per the tuning sheet) ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Projectile")
+	float SplashDamage = 0.f;
+
+	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
+	float SplashRadius = 0.f;          // cm
+
+	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
+	float SplashImpulse = 0.f;         // velocity change at blast center, falls off with range
+
 	/** Fire: aims along Dir and adds the shooter's forward speed so the
 	 *  shooter can't outrun its own rounds. Call right after spawning. */
 	void Launch(const FVector& Dir, const FVector& ShooterVelocity);

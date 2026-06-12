@@ -45,8 +45,15 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Pickup")
 	float SpinDegPerSec = 90.f;        // idle spin so it reads as a pickup
 
+	/** Crate tint so pickup types read at a glance (weapons grey, health green). */
+	UPROPERTY(EditAnywhere, Category = "BL|Pickup")
+	FLinearColor CrateColor = FLinearColor(0.35f, 0.33f, 0.3f);
+
 protected:
 	virtual void BeginPlay() override;
+
+	/** What touching this grants. Base: weapon ammo. Returns false to stay un-consumed. */
+	virtual bool GrantTo(AActor* OtherActor);
 
 	UFUNCTION()
 	void OnTouch(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,

@@ -3,6 +3,7 @@
 #include "BLProjectile.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "EngineUtils.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
@@ -85,7 +86,7 @@ void ABLProjectile::OnHit(UPrimitiveComponent* /*HitComp*/, AActor* OtherActor,
 	Destroy();
 }
 
-void ABLProjectile::ApplyImpactDamage(AActor* OtherActor, const FHitResult& /*Hit*/)
+void ABLProjectile::ApplyImpactDamage(AActor* OtherActor, const FHitResult& Hit)
 {
 	if (UBLHealthComponent* Victim = OtherActor->FindComponentByClass<UBLHealthComponent>())
 	{
@@ -98,6 +99,44 @@ void ABLProjectile::ApplyImpactDamage(AActor* OtherActor, const FHitResult& /*Hi
 			if (Prim->IsSimulatingPhysics())
 			{
 				Prim->AddImpulse(GetVelocity().GetSafeNormal() * HitImpulse, NAME_None, /*bVelChange*/ true);
+			}
+		}
+	}
+
+	// splash to everyone else nearby (not the direct victim, not the shooter)
+	if (SplashDamage <= 0.f || SplashRadius <= 0.f)
+	{
+		return;
+	}
+	const FVector Center = Hit.bBlockingHit ? FVector(Hit.ImpactPoint) : GetActorLocation();
+	for (TActorIterator<APawn> It(GetWorld()); It; ++It)
+	{
+		APawn* Pawn = *It;
+		if (Pawn == OtherActor || Pawn == GetInstigator())
+		{
+			continue;
+		}
+		const float DistSq = FVector::DistSquared(Pawn->GetActorLocation(), Center);
+		if (DistSq > FMath::Square(SplashRadius))
+		{
+			continue;
+		}
+		if (UBLHealthComponent* Victim = Pawn->FindComponentByClass<UBLHealthComponent>())
+		{
+			Victim->ApplyDamage(SplashDamage);
+		}
+		// explosion knockback: radial shove + a little lift, fading with distance
+		if (SplashImpulse > 0.f)
+		{
+			if (UPrimitiveComponent* Prim = Cast<UPrimitiveComponent>(Pawn->GetRootComponent()))
+			{
+				if (Prim->IsSimulatingPhysics())
+				{
+					const float Falloff = 1.f - 0.7f * (FMath::Sqrt(DistSq) / SplashRadius);
+					FVector Dir = (Pawn->GetActorLocation() - Center).GetSafeNormal();
+					Dir.Z = FMath::Max(Dir.Z, 0.25f); // always some lift - reads as blast
+					Prim->AddImpulse(Dir.GetSafeNormal() * SplashImpulse * Falloff, NAME_None, true);
+				}
 			}
 		}
 	}
