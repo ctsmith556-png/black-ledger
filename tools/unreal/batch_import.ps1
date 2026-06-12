@@ -34,7 +34,9 @@ $vehicles = @(
   @{ Name="Bride";        Folder="13_Bride" },
   @{ Name="Hunter";       Folder="14_Hunter" },
   @{ Name="Photographer"; Folder="15_Photographer" },
-  @{ Name="Vault";        Folder="16_Vault" }
+  @{ Name="Vault";        Folder="16_Vault" },
+  # ---- bosses ----
+  @{ Name="Foundryman";   Folder="B1_Foundryman" }   # treads: body-only import (wheel WARNs in the log are expected)
 )
 
 foreach ($v in $vehicles) {

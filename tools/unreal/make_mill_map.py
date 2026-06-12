@@ -123,8 +123,9 @@ def main():
     # ---- the catwalk (E-W mid-span shortcut; collapse = destructible #2) ----
     unreal.log_warning("MILL: catwalk")
     spawn(unreal.BLDestructible_Catwalk, (0, 1000, 0), label="Catwalk")
-    # suspended slag ladle landmark over the mid-span (destructible #1 later)
-    spawn_cube((0, 1000, 1150), (3.5, 3.5, 3), label="Ladle_Placeholder")
+    # suspended slag ladle landmark over the mid-span (destructible #1 later);
+    # deck top is 8.5 m, ladle hangs clear of deck traffic
+    spawn_cube((0, 1000, 1500), (3.5, 3.5, 3), label="Ladle_Placeholder")
 
     # ---- navigation bounds ----
     unreal.log_warning("MILL: navbounds")
@@ -139,7 +140,7 @@ def main():
     for i, (x, y) in enumerate(homing_pts):
         spawn(unreal.BLPickupActor, (x, y, 120), label=f"Pickup_Homing_{i}")
     power_cls = unreal.BLProjectile_Power.static_class()
-    power_pts = [(0, 1000, 740),       # ON the catwalk deck - speed-skill reward
+    power_pts = [(0, 1000, 970),       # ON the catwalk deck (top z=850) - speed-skill reward
                  (-9800, -4000, 120), (9800, 1000, 120), (0, -2600, 120)]
     for i, (x, y, z) in enumerate(power_pts):
         p = spawn(unreal.BLPickupActor, (x, y, z), label=f"Pickup_Power_{i}")

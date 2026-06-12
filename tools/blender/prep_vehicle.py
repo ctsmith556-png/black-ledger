@@ -34,6 +34,7 @@ ap.add_argument("--wheel-y", type=float, default=0.0, help="pin track half-width
 ap.add_argument("--mid-axle-x", type=str, default="", help="comma-separated X (m) for extra cosmetic axles on 6-wheelers; merged into the body")
 ap.add_argument("--axles", type=int, default=0, help="N>=2 enables multi-axle k-means detection (clusters wheels into N axles; outer 2 spin, inner merge into body). 0 = classic front/rear")
 ap.add_argument("--axle-fracs", type=str, default="", help="explicit axle X as comma-separated fractions of length (1.0=front end, 0.0=rear end), e.g. '0.82,0.20'. Deterministic placement; overrides detection")
+ap.add_argument("--treads", action="store_true", help="tracked vehicle (Foundryman): no wheel detection/carve/wheel meshes; treads stay merged in the body; pawn anchors come from the report extents; tread-scroll material sells motion later")
 args = ap.parse_args(argv)
 
 SRC = os.path.abspath(args.src)
@@ -184,7 +185,11 @@ def detect_axles_kmeans(verts, ext, mn, n_axles):
 verts = [body.matrix_world @ v.co for v in body.data.vertices]
 half_w = ext.y / 2
 zband = mn.z + 0.40 * ext.z
-if args.axle_fracs:
+if args.treads:
+    # tracked vehicle: every wheel stage no-ops (no carve, no liners, no wheel
+    # objects); the body exports whole, treads included
+    wheels, extra_wheels = {}, {}
+elif args.axle_fracs:
     # explicit positions: axles at given fractions of length (1.0 front -> 0.0 rear).
     # Deterministic - carve + wheel land exactly here, no detection guesswork.
     fr = sorted((float(s) for s in args.axle_fracs.split(",") if s.strip()), reverse=True)
@@ -411,7 +416,8 @@ if extra_objs:  # join the cosmetic axles into the body mesh
 report["extra_axle_wheels"] = len(extra_objs)
 
 # ---------- final centering on wheelbase ----------
-cx = sum(w["x"] for w in wheels.values()) / 4
+cx = (sum(w["x"] for w in wheels.values()) / len(wheels)) if wheels \
+    else (bbox(body)[0].x + bbox(body)[1].x) / 2  # treads: center on the body
 for o in [body] + wheel_objs:
     o.location.x -= cx
     bpy.context.view_layer.objects.active = o
@@ -436,7 +442,7 @@ for wo in wheel_objs:
     wo.select_set(False)
 mn, mx = bbox(body)
 report["final_extents_m"] = [round(v, 3) for v in (mx - mn)]
-report["wheelbase_m"] = round(abs(wheels["FL"]["x"] - wheels["RL"]["x"]), 3)
+report["wheelbase_m"] = round(abs(wheels["FL"]["x"] - wheels["RL"]["x"]), 3) if "FL" in wheels else 0.0
 
 # ---------- export ----------
 for o in [body] + wheel_objs:

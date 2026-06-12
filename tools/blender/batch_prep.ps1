@@ -35,7 +35,9 @@ $vehicles = @(
   @{ Name="Bride";        Folder="13_Bride";         Length=9.0;  Flip=$true; Extra=@("--axle-fracs","0.920,0.300,0.196","--wheel-radius","0.40") },  # stretch limo: DONE in-engine. Source reverted to Meshy original after a mix-up; re-clean (blob/spikes) + lengthen hood + re-measure fracs before any re-prep.
   @{ Name="Hunter";       Folder="14_Hunter";        Length=5.8;  Flip=$true; Extra=@("--axle-fracs","0.791,0.237") },  # square-body pickup: measured (cab=low-X)
   @{ Name="Photographer"; Folder="15_Photographer";  Length=5.4;  Flip=$true; Extra=@("--axle-fracs","0.815,0.281","--wheel-radius","0.311","--wheel-y","0.70") },  # '60s press sedan: measured (cab=low-X); track pinned 0.70 (narrow nose splayed the wheels)
-  @{ Name="Vault";        Folder="16_Vault";         Length=6.8;  Flip=$true; Extra=@("--axle-fracs","0.631,0.202","--wheel-y","1.30") }   # armored cash truck: measured (cab=low-X, long ram-hood overhang); track pinned 1.30
+  @{ Name="Vault";        Folder="16_Vault";         Length=6.8;  Flip=$true; Extra=@("--axle-fracs","0.631,0.202","--wheel-y","1.30") },   # armored cash truck: measured (cab=low-X, long ram-hood overhang); track pinned 1.30
+  # ---- bosses ----
+  @{ Name="Foundryman";   Folder="B1_Foundryman";    Length=18.0; Flip=$true; Extra=@("--treads","--decimate","0.7") }   # B1 cupola ladle car: TREADS (no wheel carve); hero density; kaiju-scale 18 m (catwalk raised to clear him)
 )
 
 $ran = 0

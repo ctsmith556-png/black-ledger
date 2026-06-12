@@ -7,6 +7,7 @@
 #include "GameFramework/Pawn.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Vehicles/BLCombatVehicle.h"
 #include "Vehicles/BLHealthComponent.h"
 
 ABLHazardActor::ABLHazardActor()
@@ -106,6 +107,13 @@ void ABLHazardActor::ApplyZoneDamage(float DeltaTime)
 		if (ToPawn.SizeSquared2D() > FMath::Square(ZoneRadius))
 		{
 			continue;
+		}
+		if (const ABLCombatVehicle* V = Cast<ABLCombatVehicle>(Pawn))
+		{
+			if (V->bHazardImmune)
+			{
+				continue; // the Foundryman lives here
+			}
 		}
 		if (UBLHealthComponent* Victim = Pawn->FindComponentByClass<UBLHealthComponent>())
 		{

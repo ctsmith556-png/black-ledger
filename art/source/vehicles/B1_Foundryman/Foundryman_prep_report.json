@@ -1,0 +1,34 @@
+{
+ "src": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\B1_Foundryman\\Foundryman.fbx",
+ "name": "Foundryman",
+ "scaled_extents_m": [
+  18.0,
+  6.646,
+  6.118
+ ],
+ "scale_factors": [
+  9.4177,
+  9.4177,
+  9.4177
+ ],
+ "wheels": {},
+ "carve": [],
+ "shard_verts_removed": 0,
+ "liners": 0,
+ "body_tris_final": 67468,
+ "wheel_tris": 0,
+ "extra_axle_wheels": 0,
+ "final_extents_m": [
+  17.993,
+  6.648,
+  6.114
+ ],
+ "wheelbase_m": 0.0,
+ "fbx": "C:\\Users\\csmit\\black-ledger\\art\\source\\vehicles\\B1_Foundryman\\Foundryman_UE.fbx",
+ "previews": [
+  "front",
+  "side",
+  "three_quarter",
+  "low_rear"
+ ]
+}

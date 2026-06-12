@@ -58,13 +58,19 @@ def import_fbx():
 
 def normalize_mesh_names():
     """Interchange prefixes assets with the source filename (Surgeon_UE_SM_...).
-    Strip that prefix so downstream steps find clean SM_<Name>_* names."""
+    Strip that prefix so downstream steps find clean SM_<Name>_* names.
+    Single-mesh FBX (treaded bosses: body only, no wheels) imports as the FILE
+    name '<Name>_UE' regardless of the node name - rename it to SM_<Name>_Body."""
     prefix = f"{NAME}_UE_"
     for a in eal.list_assets(dest, recursive=False, include_folder=False):
         pkg = a.split(".")[0]
         base = pkg.rsplit("/", 1)[-1]
+        clean = None
         if base.startswith(prefix):
             clean = base[len(prefix):]
+        elif base == f"{NAME}_UE":
+            clean = f"SM_{NAME}_Body"
+        if clean:
             if eal.does_asset_exist(f"{dest}/{clean}"):
                 eal.delete_asset(f"{dest}/{clean}")
             eal.rename_asset(pkg, f"{dest}/{clean}")

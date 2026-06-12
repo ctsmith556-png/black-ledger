@@ -164,6 +164,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Ram")
 	float RamCooldownSeconds = 0.4f;   // one damage event per grind, not per physics contact
 
+	/** Bosses like the Foundryman shrug off arena hazards (sheet: "furnace immunity"). */
+	UPROPERTY(EditAnywhere, Category = "BL|Vehicle")
+	bool bHazardImmune = false;
+
 	UPROPERTY(EditAnywhere, Category = "BL|Debug")
 	bool bDrawSuspensionDebug = true;   // Phase-1 default ON; flip off when tuned
 
