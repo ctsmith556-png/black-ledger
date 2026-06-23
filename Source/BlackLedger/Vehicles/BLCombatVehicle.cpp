@@ -3,15 +3,21 @@
 #include "BLCombatVehicle.h"
 #include "AI/BLAIController.h"
 #include "BLHealthComponent.h"
+#include "Audio/BLAudioSubsystem.h"
+#include "Core/BLGameMode.h"
 #include "FX/BLImpactFXSubsystem.h"
 #include "Specials/BLSpecialComponent.h"
+#include "UI/BLUISubsystem.h"
 #include "Weapons/BLWeaponComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/PointLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "DrawDebugHelpers.h"
+#include "Engine/GameInstance.h"
 #include "Engine/World.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "UObject/ConstructorHelpers.h"
@@ -100,6 +106,32 @@ ABLCombatVehicle::ABLCombatVehicle()
 	Weapon = CreateDefaultSubobject<UBLWeaponComponent>(TEXT("Weapon"));
 	Special = CreateDefaultSubobject<UBLSpecialComponent>(TEXT("Special"));
 
+	// ---- damage-state FX: a translucent smoke plume + a flickering fire light,
+	// both off until the chassis is hurt (driven by UpdateDamageFX) ----
+	DamageSmoke = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DamageSmoke"));
+	DamageSmoke->SetupAttachment(BodyMesh);
+	DamageSmoke->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	DamageSmoke->SetCastShadow(false);
+	DamageSmoke->SetCanEverAffectNavigation(false);
+	DamageSmoke->SetRelativeLocation(FVector(-40.f, 0.f, 150.f));   // over the engine bay
+	DamageSmoke->SetVisibility(false);
+	{
+		static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereFinder(
+			TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+		if (SphereFinder.Succeeded()) { DamageSmoke->SetStaticMesh(SphereFinder.Object); }
+		static ConstructorHelpers::FObjectFinder<UMaterialInterface> SmokeMatFinder(
+			TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
+		if (SmokeMatFinder.Succeeded()) { DamageSmoke->SetMaterial(0, SmokeMatFinder.Object); }
+	}
+
+	DamageFire = CreateDefaultSubobject<UPointLightComponent>(TEXT("DamageFire"));
+	DamageFire->SetupAttachment(BodyMesh);
+	DamageFire->SetRelativeLocation(FVector(-40.f, 0.f, 60.f));
+	DamageFire->SetLightColor(FColor(255, 120, 30));
+	DamageFire->SetAttenuationRadius(900.f);
+	DamageFire->SetCastShadows(false);
+	DamageFire->SetIntensity(0.f);
+
 	// any vehicle placed in a level (or spawned unpossessed) fights as AI
 	AIControllerClass = ABLAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
@@ -126,6 +158,22 @@ void ABLCombatVehicle::InputFirePickup()
 	if (Weapon)
 	{
 		Weapon->FirePickup();
+	}
+}
+
+void ABLCombatVehicle::InputCycleNext()
+{
+	if (Weapon)
+	{
+		Weapon->CycleWeapon(1);
+	}
+}
+
+void ABLCombatVehicle::InputCyclePrev()
+{
+	if (Weapon)
+	{
+		Weapon->CycleWeapon(-1);
 	}
 }
 
@@ -200,6 +248,66 @@ void ABLCombatVehicle::OnVehicleDeath()
 		{
 			FX->PlayDeathMoment();
 		}
+		if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+		{
+			Audio->PostVehicleDeath(GetActorLocation());
+			if (IsPlayerControlled())
+			{
+				Audio->PostBark(CharacterKey, EBLBark::Death, GetActorLocation());
+			}
+		}
+	}
+
+	if (ABLGameMode* GM = GetWorld()->GetAuthGameMode<ABLGameMode>())
+	{
+		GM->NotifyVehicleDeath(this);
+	}
+}
+
+void ABLCombatVehicle::InputRestart()
+{
+	if (ABLGameMode* GM = GetWorld()->GetAuthGameMode<ABLGameMode>())
+	{
+		GM->RequestRestart();
+	}
+}
+
+void ABLCombatVehicle::UpdateDamageFX()
+{
+	if (!Health || !DamageSmoke || !DamageFire)
+	{
+		return;
+	}
+	const float Frac = Health->GetHealth() / FMath::Max(Health->GetMaxHealth(), 1.f);
+	const bool bDead = Health->IsDead();
+	const float T = GetWorld() ? GetWorld()->GetTimeSeconds() : 0.f;
+	const float Offset = static_cast<float>(GetUniqueID() % 997); // desync flicker per car
+
+	// smoke: from 55% HP down (or a burning wreck), growing + darkening with severity
+	const bool bSmoke = bDead || Frac < 0.55f;
+	DamageSmoke->SetVisibility(bSmoke);
+	if (bSmoke)
+	{
+		const float Sev = bDead ? 1.f : FMath::Clamp((0.55f - Frac) / 0.55f, 0.f, 1.f);
+		const float Pulse = 1.f + 0.12f * FMath::Sin(T * 3.5f + Offset);
+		DamageSmoke->SetRelativeScale3D(FVector((0.7f + 1.6f * Sev) * Pulse));
+		if (DamageSmokeMID)
+		{
+			DamageSmokeMID->SetScalarParameterValue(TEXT("Opacity"), 0.12f + 0.40f * Sev);
+		}
+	}
+
+	// fire: from 28% HP down (or wrecked) - a flickering ember glow at the engine
+	const bool bFire = bDead || (Frac > 0.f && Frac < 0.28f);
+	if (bFire)
+	{
+		const float FireSev = bDead ? 1.f : FMath::Clamp((0.28f - Frac) / 0.28f, 0.f, 1.f);
+		const float Flick = 0.55f + 0.45f * FMath::PerlinNoise1D(T * 20.f + Offset);
+		DamageFire->SetIntensity(FMath::Lerp(2500.f, 16000.f, FireSev) * Flick);
+	}
+	else
+	{
+		DamageFire->SetIntensity(0.f);
 	}
 }
 
@@ -218,11 +326,51 @@ void ABLCombatVehicle::BeginPlay()
 	Wheels.Add({ WheelFR, FVector(AxleFrontX, -TrackHalfY, AnchorZ), FrontWheelRadius, true });
 	Wheels.Add({ WheelRL, FVector(AxleRearX,   TrackHalfY, AnchorZ), RearWheelRadius, false });
 	Wheels.Add({ WheelRR, FVector(AxleRearX,  -TrackHalfY, AnchorZ), RearWheelRadius, false });
+
+	// damage smoke uses the scripted translucent material when present
+	if (DamageSmoke)
+	{
+		UMaterialInterface* SmokeMat = LoadObject<UMaterialInterface>(
+			nullptr, TEXT("/Game/BlackLedger/FX/M_BL_Smoke.M_BL_Smoke"));
+		DamageSmokeMID = DamageSmoke->CreateDynamicMaterialInstance(0, SmokeMat);
+		if (DamageSmokeMID)
+		{
+			DamageSmokeMID->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.04f, 0.04f, 0.045f));
+		}
+	}
 }
 
 void ABLCombatVehicle::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	// player-only adaptive audio: engine pitch from speed, heartbeat from low HP
+	if (IsPlayerControlled())
+	{
+		if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+		{
+			const float SpeedKph = CollisionBox->GetPhysicsLinearVelocity().Size() * 0.036f;
+			Audio->NotifyPlayerSpeed(this, SpeedKph);
+			if (Health)
+			{
+				const float Frac = Health->GetHealth() / FMath::Max(Health->GetMaxHealth(), 1.f);
+				Audio->NotifyLowHealth(Frac);
+				// one "I'm in trouble" bark per low spell
+				if (Frac > 0.f && Frac < 0.25f && !bSaidLowHealth)
+				{
+					Audio->PostBark(CharacterKey, EBLBark::LowHealth, GetActorLocation());
+					bSaidLowHealth = true;
+				}
+				else if (Frac > 0.35f)
+				{
+					bSaidLowHealth = false;
+				}
+			}
+		}
+	}
+
+	// damage smoke/fire for every vehicle (player + AI + wrecks)
+	UpdateDamageFX();
 
 	// the player vehicle must never sleep: a sleeping body ignores suspension forces,
 	// settles onto its collision box, and "explodes" off the over-compressed springs on wake
@@ -431,4 +579,39 @@ void ABLCombatVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction(TEXT("BL_Fire"), IE_Released, this, &ABLCombatVehicle::InputFireReleased);
 	PlayerInputComponent->BindAction(TEXT("BL_FirePickup"), IE_Pressed, this, &ABLCombatVehicle::InputFirePickup);
 	PlayerInputComponent->BindAction(TEXT("BL_Special"), IE_Pressed, this, &ABLCombatVehicle::InputSpecial);
+	PlayerInputComponent->BindAction(TEXT("BL_Restart"), IE_Pressed, this, &ABLCombatVehicle::InputRestart);
+	PlayerInputComponent->BindAction(TEXT("BL_CycleNext"), IE_Pressed, this, &ABLCombatVehicle::InputCycleNext);
+	PlayerInputComponent->BindAction(TEXT("BL_CyclePrev"), IE_Pressed, this, &ABLCombatVehicle::InputCyclePrev);
+
+	// The menu + intro cinematic run in UI-only input, which puts the *game
+	// viewport* (which survives OpenLevel into the arena) into ignore-input /
+	// no-mouse-capture. Restore game input now that we're driving, or W/fire are
+	// dead until something else flips it back.
+	if (APlayerController* PC = Cast<APlayerController>(GetController()))
+	{
+		PC->SetInputMode(FInputModeGameOnly());
+		PC->bShowMouseCursor = false;
+	}
+
+	// the contestant's entry line as the player takes the wheel
+	if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+	{
+		Audio->PostBark(CharacterKey, EBLBark::Taunt, GetActorLocation());
+	}
+
+	// Pause must still fire while the game is paused so the same key resumes it.
+	FInputActionBinding& PauseBind = PlayerInputComponent->BindAction(
+		TEXT("BL_Pause"), IE_Pressed, this, &ABLCombatVehicle::InputPause);
+	PauseBind.bExecuteWhenPaused = true;
+}
+
+void ABLCombatVehicle::InputPause()
+{
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UBLUISubsystem* UI = GI->GetSubsystem<UBLUISubsystem>())
+		{
+			UI->TogglePause();
+		}
+	}
 }

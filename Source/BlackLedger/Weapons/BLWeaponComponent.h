@@ -11,6 +11,22 @@
 class ABLProjectile;
 class UPointLightComponent;
 
+/** One held pickup weapon. The full 14-weapon pool stacks through these. */
+USTRUCT(BlueprintType)
+struct FBLWeaponSlot
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, Category = "BL|Weapon")
+	TSubclassOf<ABLProjectile> ProjectileClass;
+
+	UPROPERTY(BlueprintReadOnly, Category = "BL|Weapon")
+	int32 Ammo = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "BL|Weapon")
+	FName Name;
+};
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBLOnPickupChanged, FName, WeaponName, int32, Ammo);
 
 UCLASS(ClassGroup = (BlackLedger), meta = (BlueprintSpawnableComponent))
@@ -38,7 +54,7 @@ public:
 
 	// ---- muzzle flash (placeholder point light; Niagara flash later) ----
 	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
-	float MuzzleFlashIntensity = 9000.f;
+	float MuzzleFlashIntensity = 20000.f;   // reads as a strobe in the dark foundry
 
 	UPROPERTY(EditAnywhere, Category = "BL|Weapon")
 	float MuzzleFlashSeconds = 0.05f;
@@ -75,18 +91,32 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "BL|Weapon")
 	FBLOnPickupChanged OnPickupChanged;
 
-	/** Called by ABLPickupActor. Same weapon stacks ammo; a new one replaces. */
+	/** Called by ABLPickupActor. Same weapon stacks ammo; new weapons add a slot. */
 	UFUNCTION(BlueprintCallable, Category = "BL|Weapon")
 	void GrantPickup(TSubclassOf<ABLProjectile> ProjectileClass, int32 Ammo, FName WeaponName);
 
+	/** Fires the SELECTED slot. */
 	UFUNCTION(BlueprintCallable, Category = "BL|Weapon")
 	void FirePickup();
 
-	UFUNCTION(BlueprintPure, Category = "BL|Weapon")
-	int32 GetPickupAmmo() const { return PickupAmmo; }
+	/** TM-style weapon cycling: +1 next / -1 previous. */
+	UFUNCTION(BlueprintCallable, Category = "BL|Weapon")
+	void CycleWeapon(int32 Direction);
 
 	UFUNCTION(BlueprintPure, Category = "BL|Weapon")
-	FName GetPickupName() const { return PickupName; }
+	int32 GetPickupAmmo() const
+	{
+		return Inventory.IsValidIndex(SelectedIndex) ? Inventory[SelectedIndex].Ammo : 0;
+	}
+
+	UFUNCTION(BlueprintPure, Category = "BL|Weapon")
+	FName GetPickupName() const
+	{
+		return Inventory.IsValidIndex(SelectedIndex) ? Inventory[SelectedIndex].Name : NAME_None;
+	}
+
+	const TArray<FBLWeaponSlot>& GetInventory() const { return Inventory; }
+	int32 GetSelectedIndex() const { return SelectedIndex; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -108,9 +138,10 @@ private:
 	double LastPrimaryShotTime = -1.0; // world seconds; keeps tap-fire inside the fire rate
 	int32 MuzzleIndex = 0;
 
+	void BroadcastSelected();
+
 	UPROPERTY()
-	TSubclassOf<ABLProjectile> PickupProjectileClass;
-	int32 PickupAmmo = 0;
-	FName PickupName = NAME_None;
+	TArray<FBLWeaponSlot> Inventory;
+	int32 SelectedIndex = INDEX_NONE;
 	double LastPickupShotTime = -1.0;
 };

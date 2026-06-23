@@ -1,11 +1,13 @@
 // Black Ledger - projectile base
 
 #include "BLProjectile.h"
+#include "Components/PointLightComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Vehicles/BLHealthComponent.h"
 
@@ -17,6 +19,10 @@ ABLProjectile::ABLProjectile()
 	SetRootComponent(Collision);
 	Collision->InitSphereRadius(8.f);
 	Collision->SetCollisionProfileName(TEXT("BlockAllDynamic"));
+	// QUERY-ONLY: rounds hit via their own movement sweep, but never exist as
+	// physics bodies - so no vehicle (any speed) can ram its own or anyone
+	// else's projectiles and get physically stopped by them
+	Collision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	Collision->SetNotifyRigidBodyCollision(true); // generate hit events on blocking sweep
 	Collision->SetCanEverAffectNavigation(false); // projectiles must not dirty navmesh tiles
 
@@ -35,6 +41,14 @@ ABLProjectile::ABLProjectile()
 		TracerMesh->SetStaticMesh(SphereFinder.Object);
 	}
 
+	// in-flight glow; off by default (MG rounds), enabled bright for heavy ordnance in BeginPlay
+	GlowLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("GlowLight"));
+	GlowLight->SetupAttachment(Collision);
+	GlowLight->SetIntensity(0.f);
+	GlowLight->SetAttenuationRadius(1400.f);
+	GlowLight->SetLightColor(FColor(255, 120, 40));   // ember
+	GlowLight->SetCastShadows(false);
+
 	Movement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Movement"));
 	Movement->UpdatedComponent = Collision;
 	Movement->ProjectileGravityScale = 0.f;    // MG rounds fly flat
@@ -50,6 +64,35 @@ void ABLProjectile::BeginPlay()
 
 	SetLifeSpan(LifeSeconds);
 	Collision->OnComponentHit.AddDynamic(this, &ABLProjectile::OnHit);
+
+	// glowing tracer: swap to the scripted emissive material if it exists (the
+	// ctor leaves the lit basic-shape material as a fallback)
+	if (TracerMesh)
+	{
+		if (UMaterialInterface* Emissive = LoadObject<UMaterialInterface>(
+			nullptr, TEXT("/Game/BlackLedger/FX/M_BL_Emissive.M_BL_Emissive")))
+		{
+			if (UMaterialInstanceDynamic* MID = TracerMesh->CreateDynamicMaterialInstance(0, Emissive))
+			{
+				const FLinearColor C = (ImpactWeight == EBLImpactWeight::Light)
+					? FLinearColor(1.f, 0.85f, 0.45f)   // MG: hot tracer yellow
+					: FLinearColor(1.f, 0.5f, 0.15f);   // heavier ordnance: ember
+				MID->SetVectorParameterValue(TEXT("Color"), C);
+				MID->SetScalarParameterValue(TEXT("Strength"), 6.f);
+			}
+		}
+	}
+
+	// heavy ordnance carries a real moving light so missiles streak through the dark
+	// and splash the walls with ember light; MG rounds stay dark (cost) but bright-emissive.
+	if (GlowLight && ImpactWeight != EBLImpactWeight::Light)
+	{
+		const bool bMassive = (ImpactWeight == EBLImpactWeight::Massive);
+		GlowLight->SetIntensity(bMassive ? 22000.f : 14000.f);
+		GlowLight->SetAttenuationRadius(bMassive ? 1800.f : 1400.f);
+		GlowLight->SetLightColor((ImpactWeight == EBLImpactWeight::Massive)
+			? FColor(255, 150, 70) : FColor(255, 110, 35));
+	}
 
 	// never collide with the vehicle that fired it
 	if (AActor* MyInstigator = GetInstigator())

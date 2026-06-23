@@ -1,6 +1,7 @@
 // Black Ledger - special ability component
 
 #include "BLSpecialComponent.h"
+#include "Audio/BLAudioSubsystem.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
 #include "GameFramework/Pawn.h"
@@ -23,8 +24,25 @@ bool UBLSpecialComponent::TryActivate()
 		return false;
 	}
 
+	// TEMP: every vehicle currently defaults to the Surgeon's Diagnostic Field, so AI
+	// popping it spawns teal fields all over the arena ("green circles over the AI").
+	// Until specials are data-driven per character, only the player fires its special.
+	if (!Vehicle->IsPlayerControlled())
+	{
+		return false;
+	}
+
 	UBLSpecialAbility* Ability = NewObject<UBLSpecialAbility>(this, AbilityClass);
 	Ability->Activate(Vehicle);
+
+	if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+	{
+		Audio->PostSpecial(Vehicle->GetActorLocation());
+		if (Vehicle->IsPlayerControlled())
+		{
+			Audio->PostBark(Vehicle->CharacterKey, EBLBark::Special, Vehicle->GetActorLocation());
+		}
+	}
 
 	bReady = false;
 	OnReadyChanged.Broadcast(false);

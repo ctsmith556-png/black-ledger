@@ -13,6 +13,7 @@
 class USphereComponent;
 class UStaticMeshComponent;
 class UProjectileMovementComponent;
+class UPointLightComponent;
 
 UCLASS()
 class BLACKLEDGER_API ABLProjectile : public AActor
@@ -32,12 +33,17 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Projectile")
 	TObjectPtr<UProjectileMovementComponent> Movement;
 
+	/** In-flight glow so rounds light the dark arena. Bright for heavy ordnance
+	 *  (missiles), kept dark for MG rounds (too many to each carry a light). */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Projectile")
+	TObjectPtr<UPointLightComponent> GlowLight;
+
 	// ---- tuning (weapon component overrides on spawn; data assets later) ----
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Projectile")
 	float Damage = 6.f;
 
 	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
-	float MuzzleSpeed = 9000.f;        // cm/s
+	float MuzzleSpeed = 12000.f;       // cm/s; comfortably outruns the fastest roster car
 
 	UPROPERTY(EditAnywhere, Category = "BL|Projectile")
 	float LifeSeconds = 1.0f;          // ~90 m max range at MuzzleSpeed; trims tracer linger

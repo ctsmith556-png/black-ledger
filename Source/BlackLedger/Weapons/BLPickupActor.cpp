@@ -1,8 +1,10 @@
 // Black Ledger - weapon pickup
 
 #include "BLPickupActor.h"
+#include "Audio/BLAudioSubsystem.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/World.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "TimerManager.h"
 #include "UObject/ConstructorHelpers.h"
@@ -64,6 +66,13 @@ void ABLPickupActor::OnTouch(UPrimitiveComponent* /*OverlappedComp*/, AActor* Ot
 	if (!OtherActor || !GrantTo(OtherActor))
 	{
 		return;
+	}
+	if (UWorld* World = GetWorld())
+	{
+		if (UBLAudioSubsystem* Audio = World->GetSubsystem<UBLAudioSubsystem>())
+		{
+			Audio->PostPickup(GetActorLocation());
+		}
 	}
 	SetPickupActive(false);
 	GetWorldTimerManager().SetTimer(RespawnTimer, this, &ABLPickupActor::Respawn, RespawnSeconds, false);

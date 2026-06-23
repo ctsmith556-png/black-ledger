@@ -24,9 +24,12 @@ public class BlackLedger : ModuleRules
 		// in this engine plugin, not the Engine module.
 		// AIModule + GameplayTasks: AAIController. NavigationSystem: runtime navmesh
 		// for destructible map transformations (TDD section 6).
+		// Slate + SlateCore: the front-end is hand-built in C++ Slate (no UMG/uasset
+		// authoring) so the whole menu layer compiles through Build.bat (TDD section 9).
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"EngineCameras", "AIModule", "GameplayTasks", "NavigationSystem"
+			"EngineCameras", "AIModule", "GameplayTasks", "NavigationSystem",
+			"Slate", "SlateCore"
 		});
 	}
 }

@@ -93,6 +93,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|AI")
 	float DisengageChance = 0.3f;      // chance per check to detour for 8-14s
 
+	UPROPERTY(EditAnywhere, Category = "BL|AI")
+	bool bSeekPickups = true;          // bosses turn this off
+
 	// ---- difficulty profiles (defaults set in the constructor) ----
 	UPROPERTY(EditAnywhere, Category = "BL|AI")
 	FBLAIDifficultyParams EasyParams;

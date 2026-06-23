@@ -142,7 +142,7 @@ void ABLAIController::Tick(float DeltaTime)
 		const float Dist = ToTarget.Size2D();
 		AbsAngleToTarget = FMath::Abs(SignedYawTo(Fwd, ToTarget));
 
-		Pickup = (V->Weapon->GetPickupAmmo() == 0) ? FindPickup() : nullptr;
+		Pickup = (bSeekPickups && V->Weapon->GetPickupAmmo() == 0) ? FindPickup() : nullptr;
 		if (Pickup)
 		{
 			DriveTo = Pickup->GetActorLocation() - MyLoc; // GrabPickup

@@ -1,6 +1,7 @@
 // Black Ledger - weapon component, machine-gun primary
 
 #include "BLWeaponComponent.h"
+#include "Audio/BLAudioSubsystem.h"
 #include "Components/PointLightComponent.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
@@ -29,7 +30,7 @@ void UBLWeaponComponent::BeginPlay()
 		MuzzleLight->SetupAttachment(Owner->GetRootComponent());
 		MuzzleLight->SetIntensity(0.f);
 		MuzzleLight->SetLightColor(FColor(255, 186, 110)); // hot orange-white
-		MuzzleLight->SetAttenuationRadius(700.f);
+		MuzzleLight->SetAttenuationRadius(1300.f);          // wider pool so the flash lights the lane
 		MuzzleLight->SetCastShadows(false);
 		MuzzleLight->RegisterComponent();
 	}
@@ -93,6 +94,10 @@ void UBLWeaponComponent::FirePrimaryShot()
 		Shot->Damage = PrimaryDamage;
 	}
 	FlashMuzzle(MuzzleLocal);
+	if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+	{
+		Audio->PostMGFire(Owner->GetActorTransform().TransformPosition(MuzzleLocal));
+	}
 
 	LastPrimaryShotTime = GetWorld()->GetTimeSeconds();
 }
@@ -103,23 +108,33 @@ void UBLWeaponComponent::GrantPickup(TSubclassOf<ABLProjectile> ProjectileClass,
 	{
 		return;
 	}
-	if (ProjectileClass == PickupProjectileClass)
+	// same weapon anywhere in the rack: stack its ammo
+	for (FBLWeaponSlot& Slot : Inventory)
 	{
-		PickupAmmo += Ammo;        // same weapon: stack
+		if (Slot.ProjectileClass == ProjectileClass)
+		{
+			Slot.Ammo += Ammo;
+			BroadcastSelected();
+			return;
+		}
 	}
-	else
+	// new weapon: add a slot (auto-select if the rack was empty)
+	FBLWeaponSlot Slot;
+	Slot.ProjectileClass = ProjectileClass;
+	Slot.Ammo = Ammo;
+	Slot.Name = WeaponName;
+	Inventory.Add(Slot);
+	if (SelectedIndex == INDEX_NONE)
 	{
-		PickupProjectileClass = ProjectileClass;  // new weapon: replace
-		PickupAmmo = Ammo;
+		SelectedIndex = Inventory.Num() - 1;
 	}
-	PickupName = WeaponName;
-	OnPickupChanged.Broadcast(PickupName, PickupAmmo);
+	BroadcastSelected();
 }
 
 void UBLWeaponComponent::FirePickup()
 {
 	AActor* Owner = GetOwner();
-	if (!Owner || !PickupProjectileClass || PickupAmmo <= 0)
+	if (!Owner || !Inventory.IsValidIndex(SelectedIndex))
 	{
 		return;
 	}
@@ -129,8 +144,9 @@ void UBLWeaponComponent::FirePickup()
 		return;
 	}
 
+	FBLWeaponSlot& Slot = Inventory[SelectedIndex];
 	ABLProjectile* Shot = SpawnProjectile(
-		PickupProjectileClass, PickupMuzzleOffset, Owner->GetActorForwardVector());
+		Slot.ProjectileClass, PickupMuzzleOffset, Owner->GetActorForwardVector());
 	if (!Shot)
 	{
 		return;
@@ -141,15 +157,41 @@ void UBLWeaponComponent::FirePickup()
 		Missile->SetHomingTarget(FindHomingTarget());
 	}
 	FlashMuzzle(PickupMuzzleOffset);
+	if (UBLAudioSubsystem* Audio = GetWorld()->GetSubsystem<UBLAudioSubsystem>())
+	{
+		Audio->PostMissileLaunch(Owner->GetActorTransform().TransformPosition(PickupMuzzleOffset));
+	}
 
 	LastPickupShotTime = Now;
-	PickupAmmo--;
-	if (PickupAmmo <= 0)
+	Slot.Ammo--;
+	if (Slot.Ammo <= 0)
 	{
-		PickupProjectileClass = nullptr;
-		PickupName = NAME_None;
+		Inventory.RemoveAt(SelectedIndex);
+		if (Inventory.Num() == 0)
+		{
+			SelectedIndex = INDEX_NONE;
+		}
+		else
+		{
+			SelectedIndex = SelectedIndex % Inventory.Num(); // slide to the next weapon
+		}
 	}
-	OnPickupChanged.Broadcast(PickupName, PickupAmmo);
+	BroadcastSelected();
+}
+
+void UBLWeaponComponent::CycleWeapon(int32 Direction)
+{
+	if (Inventory.Num() < 2)
+	{
+		return;
+	}
+	SelectedIndex = (SelectedIndex + Direction + Inventory.Num()) % Inventory.Num();
+	BroadcastSelected();
+}
+
+void UBLWeaponComponent::BroadcastSelected()
+{
+	OnPickupChanged.Broadcast(GetPickupName(), GetPickupAmmo());
 }
 
 ABLProjectile* UBLWeaponComponent::SpawnProjectile(

@@ -50,11 +50,21 @@ void ABLHazardActor::BeginPlay()
 {
 	Super::BeginPlay();
 	WarnLight->SetAttenuationRadius(ZoneRadius * 2.5f);
-	// pool disc sized to the damage zone (engine cylinder = 50 cm radius)
-	PourPool->SetRelativeScale3D(FVector(ZoneRadius / 50.f, ZoneRadius / 50.f, 0.06f));
-	if (UMaterialInstanceDynamic* MID = PourPool->CreateDynamicMaterialInstance(0))
+	// shape the pour pool to match the damage footprint (Circular/Fan/River)
+	ShapePourPool();
+	// flowing molten slag (scripted M_BL_MoltenSlag); falls back to the flat emissive, then
+	// the engine basic-shape material, so the pour always renders.
+	UMaterialInterface* Molten = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/BlackLedger/FX/M_BL_MoltenSlag.M_BL_MoltenSlag"));
+	if (!Molten)
+	{
+		Molten = LoadObject<UMaterialInterface>(
+			nullptr, TEXT("/Game/BlackLedger/FX/M_BL_Emissive.M_BL_Emissive"));
+	}
+	if (UMaterialInstanceDynamic* MID = PourPool->CreateDynamicMaterialInstance(0, Molten))
 	{
 		MID->SetVectorParameterValue(TEXT("Color"), FLinearColor(1.f, 0.32f, 0.05f));
+		MID->SetScalarParameterValue(TEXT("Strength"), 4.f);
 	}
 	PhaseTime = FMath::Clamp(StartOffsetSeconds, 0.f, CooldownSeconds);
 }
@@ -90,6 +100,15 @@ void ABLHazardActor::Tick(float DeltaTime)
 	UpdateFX();
 }
 
+void ABLHazardActor::CommandeerCycle(float NewCooldownSeconds, float FirstDelaySeconds)
+{
+	CooldownSeconds = FMath::Max(NewCooldownSeconds, 5.f);
+	if (Phase == EBLHazardPhase::Idle)
+	{
+		PhaseTime = CooldownSeconds - FMath::Max(FirstDelaySeconds, 0.f);
+	}
+}
+
 void ABLHazardActor::SetPhase(EBLHazardPhase NewPhase)
 {
 	Phase = NewPhase;
@@ -104,7 +123,7 @@ void ABLHazardActor::ApplyZoneDamage(float DeltaTime)
 	{
 		APawn* Pawn = *It;
 		const FVector ToPawn = Pawn->GetActorLocation() - Center;
-		if (ToPawn.SizeSquared2D() > FMath::Square(ZoneRadius))
+		if (!IsInPourZone(ToPawn))
 		{
 			continue;
 		}
@@ -150,5 +169,82 @@ void ABLHazardActor::UpdateFX()
 	if (PourPool->IsVisible() != bPoolVisible)
 	{
 		PourPool->SetVisibility(bPoolVisible);
+	}
+}
+
+bool ABLHazardActor::IsInPourZone(const FVector& ToPoint) const
+{
+	const float DistSq = ToPoint.SizeSquared2D();
+	if (DistSq > FMath::Square(ZoneRadius))
+	{
+		return false; // ZoneRadius bounds every shape
+	}
+	if (PourShape == EBLPourShape::Circular)
+	{
+		return true;
+	}
+
+	const FVector2D P(ToPoint.X, ToPoint.Y);
+	const float Dist = FMath::Sqrt(DistSq);
+	if (Dist < 1.f)
+	{
+		return true; // dead centre is always in
+	}
+	const FVector Fwd3 = FRotator(0.f, PourYawDeg, 0.f).Vector();
+	const FVector2D Fwd(Fwd3.X, Fwd3.Y);
+	const float Along = FVector2D::DotProduct(P, Fwd); // signed forward distance
+
+	if (PourShape == EBLPourShape::Fan)
+	{
+		if (Along <= 0.f)
+		{
+			return false; // spray only goes forward
+		}
+		const float CosToFwd = Along / Dist;
+		return CosToFwd >= FMath::Cos(FMath::DegreesToRadians(FanHalfAngleDeg));
+	}
+
+	// River: a straight strip crossing the pit along PourYaw
+	const float Lateral = FMath::Abs(FVector2D::CrossProduct(Fwd, P)); // Fwd is unit -> perp dist
+	const float Len = (RiverLength > 0.f) ? RiverLength : ZoneRadius;
+	return FMath::Abs(Along) <= Len && Lateral <= RiverHalfWidth;
+}
+
+void ABLHazardActor::ShapePourPool()
+{
+	// engine Cylinder/Cube basic shapes are 100 cm; cylinder radius = 50 cm.
+	const FVector Up(0.f, 0.f, 18.f);
+	switch (PourShape)
+	{
+	case EBLPourShape::Circular:
+	default:
+		PourPool->SetRelativeRotation(FRotator::ZeroRotator);
+		PourPool->SetRelativeLocation(Up);
+		PourPool->SetRelativeScale3D(FVector(ZoneRadius / 50.f, ZoneRadius / 50.f, 0.06f));
+		break;
+
+	case EBLPourShape::Fan:
+	{
+		// an ellipse tongue ahead of the pit: long on the aim axis, narrower across.
+		PourPool->SetRelativeRotation(FRotator(0.f, PourYawDeg, 0.f));
+		const FVector Fwd = FRotator(0.f, PourYawDeg, 0.f).Vector();
+		PourPool->SetRelativeLocation(Fwd * (ZoneRadius * 0.45f) + Up);
+		PourPool->SetRelativeScale3D(FVector(ZoneRadius * 1.05f / 50.f, ZoneRadius * 0.62f / 50.f, 0.06f));
+		break;
+	}
+
+	case EBLPourShape::River:
+	{
+		// straight molten line: swap to a cube strip along the aim axis.
+		if (UStaticMesh* Cube = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube")))
+		{
+			PourPool->SetStaticMesh(Cube);
+		}
+		const float Len = (RiverLength > 0.f) ? RiverLength : ZoneRadius;
+		PourPool->SetRelativeRotation(FRotator(0.f, PourYawDeg, 0.f));
+		PourPool->SetRelativeLocation(Up);
+		PourPool->SetRelativeScale3D(FVector(Len * 2.f / 100.f, RiverHalfWidth * 2.f / 100.f, 0.12f));
+		break;
+	}
 	}
 }

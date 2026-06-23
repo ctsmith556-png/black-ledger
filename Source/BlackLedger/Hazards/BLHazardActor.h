@@ -21,6 +21,17 @@ enum class EBLHazardPhase : uint8
 	Active
 };
 
+/** Pour footprint (Bible 5.1 / Mill plan section 8: distinct shapes teach the map).
+ *  Circular = overflow ring around the pit; Fan = directed spray; River = straight
+ *  molten line across the floor. Fan/River aim along PourYawDeg. */
+UENUM(BlueprintType)
+enum class EBLPourShape : uint8
+{
+	Circular,
+	Fan,
+	River
+};
+
 UCLASS()
 class BLACKLEDGER_API ABLHazardActor : public AActor
 {
@@ -51,8 +62,33 @@ public:
 	UPROPERTY(EditAnywhere, Category = "BL|Hazard")
 	float StartOffsetSeconds = 0.f;
 
+	// ---- pour footprint (Mill plan section 8) ----
+	UPROPERTY(EditAnywhere, Category = "BL|Hazard|Shape")
+	EBLPourShape PourShape = EBLPourShape::Circular;
+
+	/** Aim for Fan/River, degrees (world yaw). Ignored by Circular. */
+	UPROPERTY(EditAnywhere, Category = "BL|Hazard|Shape")
+	float PourYawDeg = 0.f;
+
+	/** Fan half-angle (degrees) - total spread is twice this. */
+	UPROPERTY(EditAnywhere, Category = "BL|Hazard|Shape")
+	float FanHalfAngleDeg = 42.f;
+
+	/** River lateral half-width (cm). */
+	UPROPERTY(EditAnywhere, Category = "BL|Hazard|Shape")
+	float RiverHalfWidth = 700.f;
+
+	/** River reach each way from the pit along PourYaw (cm); 0 = use ZoneRadius. */
+	UPROPERTY(EditAnywhere, Category = "BL|Hazard|Shape")
+	float RiverLength = 0.f;
+
 	UFUNCTION(BlueprintPure, Category = "BL|Hazard")
 	EBLHazardPhase GetPhase() const { return Phase; }
+
+	/** Boss commandeering (TDD section 7): new cycle speed + force the next
+	 *  telegraph after FirstDelaySeconds (if currently idle). */
+	UFUNCTION(BlueprintCallable, Category = "BL|Hazard")
+	void CommandeerCycle(float NewCooldownSeconds, float FirstDelaySeconds);
 
 protected:
 	virtual void BeginPlay() override;
@@ -71,6 +107,9 @@ private:
 	void SetPhase(EBLHazardPhase NewPhase);
 	void ApplyZoneDamage(float DeltaTime);
 	void UpdateFX();
+	/** True if a point offset (cm, world) from the pit lies in the active pour footprint. */
+	bool IsInPourZone(const FVector& ToPoint) const;
+	void ShapePourPool();
 
 	EBLHazardPhase Phase = EBLHazardPhase::Idle;
 	float PhaseTime = 0.f;

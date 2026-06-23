@@ -12,6 +12,8 @@ class UBoxComponent;
 class UStaticMeshComponent;
 class USpringArmComponent;
 class UCameraComponent;
+class UPointLightComponent;
+class UMaterialInstanceDynamic;
 class UBLHealthComponent;
 class UBLWeaponComponent;
 class UBLSpecialComponent;
@@ -65,6 +67,18 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|Vehicle")
 	TObjectPtr<UBLSpecialComponent> Special;
+
+	// ---- damage-state FX (health-driven smoke + fire; procedural, no Niagara) ----
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|FX")
+	TObjectPtr<UStaticMeshComponent> DamageSmoke;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "BL|FX")
+	TObjectPtr<UPointLightComponent> DamageFire;
+
+	/** Which contestant this pawn is - drives VO barks (UBLVOBank key). The
+	 *  data-driven character will set this; defaults to the slice's Surgeon. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BL|Character")
+	FName CharacterKey = TEXT("Surgeon");
 
 	// ---- chassis geometry (Surgeon, June 10 re-prep report; data assets later) ----
 	UPROPERTY(EditAnywhere, Category = "BL|Chassis")
@@ -183,6 +197,10 @@ protected:
 	void InputFireReleased();
 	void InputFirePickup();
 	void InputSpecial();
+	void InputRestart();
+	void InputCycleNext();
+	void InputCyclePrev();
+	void InputPause();   // Esc / Start -> UBLUISubsystem pause overlay
 
 	UFUNCTION()
 	void OnVehicleDeath();
@@ -190,6 +208,14 @@ protected:
 	UFUNCTION()
 	void OnChassisHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	/** Health-driven smoke (<55%) + fire (<28%), flickering as HP drops. */
+	void UpdateDamageFX();
+
+	UPROPERTY()
+	TObjectPtr<UMaterialInstanceDynamic> DamageSmokeMID;
+
+	bool bSaidLowHealth = false;   // gate the low-HP bark to once per low spell
 
 private:
 	struct FBLWheel

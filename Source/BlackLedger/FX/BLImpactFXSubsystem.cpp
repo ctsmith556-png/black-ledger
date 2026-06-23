@@ -1,6 +1,7 @@
 // Black Ledger - centralized combat feel
 
 #include "BLImpactFXSubsystem.h"
+#include "Audio/BLAudioSubsystem.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Engine/World.h"
 #include "FX/BLCameraShake_Impact.h"
@@ -59,8 +60,12 @@ void UBLImpactFXSubsystem::PlayImpact(const FVector& Location, EBLImpactWeight W
 		Burst->Configure(Weight);
 	}
 
-	// TODO: 3-layer impact audio event (AUDIO_EVENTS.md) once wavs exist; matched micro audio gap
-	// TODO: real particles + decals by surface/weapon
+	// 3-layer impact audio (AUDIO_EVENTS.md) via the audio director; the matched
+	// micro audio-gap is implicit in the hit-stop above. Real particles/decals = TODO.
+	if (UBLAudioSubsystem* Audio = World->GetSubsystem<UBLAudioSubsystem>())
+	{
+		Audio->PostImpact(Location, Weight);
+	}
 }
 
 void UBLImpactFXSubsystem::PlayDeathMoment()

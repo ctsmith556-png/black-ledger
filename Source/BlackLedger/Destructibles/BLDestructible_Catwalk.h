@@ -10,6 +10,8 @@
 #include "Destructibles/BLDestructibleFeature.h"
 #include "BLDestructible_Catwalk.generated.h"
 
+class UStaticMeshComponent;
+
 UCLASS()
 class BLACKLEDGER_API ABLDestructible_Catwalk : public ABLDestructibleFeature
 {
@@ -17,4 +19,18 @@ class BLACKLEDGER_API ABLDestructible_Catwalk : public ABLDestructibleFeature
 
 public:
 	ABLDestructible_Catwalk();
+
+	/** When false, the catwalk drops its own floor entry ramps - used when it's a flush
+	 *  section of the square loop (you reach it by driving the loop, not its own ramps). */
+	UPROPERTY(EditAnywhere, Category = "BL|Catwalk")
+	bool bEntryRamps = true;
+
+protected:
+	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY()
+	TObjectPtr<UStaticMeshComponent> EntryRampW;
+	UPROPERTY()
+	TObjectPtr<UStaticMeshComponent> EntryRampE;
 };
